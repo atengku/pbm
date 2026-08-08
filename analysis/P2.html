@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Orchid Phase 1 (2022) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P2</div></div></header>
+<div class="wrap"><h1>Project Orchid Phase 1 (2022)</h1><p class="byline">Three-stage analytical chain · ref [P2]</p>
+<div class="docbar"><a href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: MAS's first retail digital-SGD report — introduces PBM publicly, frames the "capability without commitment" doctrine, and documents four live industry trials.
+SOURCE / RELIABILITY: <strong>Primary</strong> — MAS FTIG publication, Nov 2022. Foreword by Sopnendu Mohanty (Chief FinTech Officer).
+ENTITIES: MAS · DBS · Grab · Fazz · NETS · OCBC · UOB · Temasek · OGP [RedeemSG] · CDC vouchers / MOF Household Support Package (S$1.5bn) · Global CBDC Challenge partners (IMF, World Bank, ADB, UNCDF, UNHCR, UNDP, OECD). Temasek + UOB NEW vs doc 01's cast.
+KEY CLAIMS:
+- Orchid launched SFF 2021 as first <em>retail</em> extension of the Ubin lineage; objective = build capability to issue retail CBDC "should Singapore decide to."
+- MAS assessed <strong>no urgent need</strong> for retail CBDC (cites the 2021 economic paper) — but won't rule it out; trigger = foreign digital currencies gaining local traction.
+- PBM introduced as third model beyond programmable payment / programmable money; four trials ran on tokenised deposits and an SGD stablecoin, <strong>not</strong> on any MAS-issued CBDC.
+- Pain points motivating PBM: scheme proliferation (RedeemSG vs Grab silos), misuse/deviation risk, admin overhead, merchant settlement delays of days-to-weeks under current voucher claims.
+- Retail CBDC envisioned as open common back-end, interoperable, public-rail minimum standards; cash = 8% of money supply, deposits 92%.
+CONTRADICTIONS w/ KB: None; supplies the policy frame doc 01 assumes.
+CLASSIFY: Digital money / PBM · retail CBDC posture · tags: MAS, Orchid, RedeemSG, CDC, tokenised deposits. Feeds MAS PBM mandate.
+SIGNIFICANCE: The <em>why</em> behind PBM: MAS solving voucher-scheme fragmentation and misuse first, monetary futures second. Also the on-record statement of the optionality doctrine.
+ROUTE: → knowledge map → SA note. File as <a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2</a>.</p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Executive Summary (Alphas)</h2>
+<p><strong>Alpha 1 — Optionality is the strategy, not indecision.</strong> "No urgent need, build anyway" is a deliberate doctrine: accumulate issuance capability while deferring the political decision indefinitely. The trigger condition MAS names is <em>currency substitution</em> — foreign digital money gaining local traction. Retail CBDC is a defensive weapon held in reserve.
+<strong>Alpha 2 — PBM was born as voucher plumbing.</strong> The genuine motivating problems are administrative: scheme fragmentation, merchant settlement lag, misuse control for CDC-type disbursements. The monetary-futures language is the wrapper; RedeemSG's pain points are the collateral.
+<strong>Alpha 3 — Private money does the work.</strong> Every trial ran on tokenised deposits or a stablecoin. The state supplies the standard; banks supply the money. This is the two-tier system defending itself by absorbing the innovation.</p>
+<h2>4-Quadrant Matrix</h2>
+<p><strong>KNOWN KNOWNS:</strong> Orchid timeline (Ubin 2016 → Orchid 2021) · no-urgent-need assessment · PBM three-model framing · 4 trials (DBS/Grab/Fazz/NETS/OCBC/UOB/Temasek/OGP) · CDC voucher context (S$1.5bn package) · 8/92 split · public+private blockchain feasibility tested.
+<strong>KNOWN UNKNOWNS:</strong> future MAS-CBDC-backed phase · public-chain suitability as FMI (explicitly disclaimed) · scheme rulebook/governance (deferred to Blueprint).
+<strong>UNKNOWN KNOWNS:</strong> Singapore's non-internationalisation instinct for SGD · GovTech/OGP's existing RedeemSG rails as the real deployment path · the 2021 econ paper's bank-protection logic silently constraining every design choice here.
+<strong>UNKNOWN UNKNOWNS (gaps):</strong>
+- <em>The substitution-trigger paradox.</em> The named trigger for issuing retail CBDC (foreign digital currency traction) is the one scenario where SG's capability-building must already be finished. Optionality has a deadline someone else sets — USD stablecoin adoption curves, not MAS.
+- <em>Merchant float politics.</em> Days-to-weeks settlement lag under current voucher claims = working-capital extraction from heartland merchants. PBM's instant unwrap kills that float. Nobody in the paper asks who currently earns it.
+- <em>Trial-to-policy laundering.</em> Industry "trials" with named commercial partners generate the evidence base that later justifies the standard those same partners implement. Circular legitimation, standard MAS playbook — worth naming for the sentiment work.</p>
+<h2>Narrative Vector</h2>
+<p>The report validates PBM as concept but <strong>reframes the whole programme</strong>: Orchid is not about issuing a digital dollar; it is about making sure nobody else's digital dollar matters in Singapore. Defensive monetary sovereignty wearing an innovation lanyard. That framing is directly useful to the MAS mandate — sentiment research that speaks to <em>sovereignty protection</em> will land better with FTIG than research framed around CBDC enthusiasm.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2</a> Orchid P1 is MAS's declaration of the optionality doctrine: build every capability required to issue a retail digital SGD while formally concluding there is no case to issue one. PBM debuts here not as monetary innovation but as an administrative fix for a real, costed problem — fragmented voucher schemes, misuse risk, and merchant settlement lag in S$1.5bn-scale disbursement programmes. All trials ran on private money (tokenised deposits, one SGD stablecoin); the state's contribution is the standard, not the currency. The strategic tell is the named trigger for reversal: foreign digital currencies gaining domestic traction. Orchid is monetary defence procurement.</p>
+<h2>2. Entity &amp; People Map</h2>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAS FTIG / S. Mohanty</td>
+<td>Programme owner, foreword</td>
+</tr>
+<tr>
+<td>DBS, OCBC, UOB</td>
+<td>Tokenised-deposit issuers in trials</td>
+</tr>
+<tr>
+<td>Grab, Fazz, NETS</td>
+<td>Wallet/rails/acceptance</td>
+</tr>
+<tr>
+<td>Temasek</td>
+<td>State-capital participant</td>
+</tr>
+<tr>
+<td>OGP (RedeemSG)</td>
+<td>Government voucher rail — the live testbed</td>
+</tr>
+<tr>
+<td>MOF / CDC</td>
+<td>S$1.5bn Household Support Package context</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Mechanics (evidence chain)</h2>
+<p><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2 §1</a> Orchid = first retail extension of Ubin lineage; explicit purpose = capability to issue "should Singapore decide to." <a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2 §1</a> MAS assessment: no urgent need (cites 2021 econ monograph); reversal trigger = non-SGD digital currencies gaining local traction. <a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2 §2</a> Motivating frictions: scheme proliferation (RedeemSG vs Grab), misuse/deviation ("not possible to direct that recipients spend at approved merchants and not on vices"), admin overhead, merchant claims settled after days-to-weeks. <a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2 §3</a> PBM architecture: four components (money, wrapper, infra, wallet); works on DLT and non-DLT; trials used tokenised deposits + regulated stablecoin, MAS CBDC deferred to a future phase.</p>
+<h2>4. Pattern / Network Analysis</h2>
+<p><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2 Appendix</a> Same repertory cast as <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a> plus UOB and Temasek. Pattern across the lineage: MAS convenes incumbents → runs "trials" → publishes findings authored with the trial participants → findings become the standard the participants operate. Closed evidentiary loop; effective, and exactly the structure an external sentiment-research mandate sits outside of — which is its value to MAS.</p>
+<h2>5. Quantification</h2>
+<p><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2 §2</a> CDC context: S$1.5bn support package. Merchant settlement lag: days-to-weeks → instant on PBM unwrap. Float destroyed = (claim value × lag days × prevailing rate) currently sitting with scheme administrators/banks; at billion-dollar scheme scale, a real number nobody in the paper owns up to. Cash 8% / deposits 92% of money supply — the ratio PBM is engineered not to disturb.</p>
+<h2>6. Bull / Base / Bear (on the Orchid programme)</h2>
+<ul>
+<li><strong>Bull:</strong> Optionality converts to issuance on a substitution scare; SG ships the first credible retail CBDC in a major financial centre; PBM standard exports via ERC-7291.</li>
+<li><strong>Base:</strong> Perpetual capability-building; PBM absorbs government disbursement rails through OGP; retail CBDC stays a press-conference hypothetical. (This is the trajectory to date.)</li>
+<li><strong>Bear:</strong> Trials plateau, incumbent banks slow-walk tokenised deposits to protect deposit franchise economics, and the programme's public face becomes "expiring vouchers" — a sentiment liability instead of an innovation story.</li>
+</ul>
+<h2>7. Open Threads</h2>
+<ol>
+<li>Phase 2 pilot outcomes — which of the four P1 trials survived contact with production? (Blueprint <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> partially answers.)</li>
+<li>The float question: who currently earns the settlement lag on CDC/RedeemSG claims. (FOI/parliamentary-answer pull.)</li>
+<li>Whether any trial tested <em>holder recourse</em> on expiry — no evidence in P1 or P2 that anyone has.</li>
+</ol>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2</a> MAS, <em>Project Orchid: Programmability of Digital SGD</em>, Nov 2022 (papers/02). Primary. Cross-refs: <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a>, <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a> 2021 econ monograph, MOF press release on Household Support Package.</p></div></div></body></html>

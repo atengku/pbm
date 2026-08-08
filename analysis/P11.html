@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cedar II × Ubin+ (2022) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P11</div></div></header>
+<div class="wrap"><h1>Cedar II × Ubin+ (2022)</h1><p class="byline">Three-stage analytical chain · ref [P11]</p>
+<div class="docbar"><a href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: NY Fed NYIC × MAS experiment — wholesale cross-border FX through <strong>vehicle currencies</strong> across heterogeneous DLT ledgers via HTLC; atomic settlement in under 30 seconds across multi-hop payment chains.
+SOURCE / RELIABILITY: <strong>Primary</strong>; joint NYIC/MAS report with unusually heavy disclaimers (no policy signal, no CBDC decision implied — Fed sensitivities visible).
+ENTITIES: FRBNY / NYIC · MAS (Ubin+ programme) · BISIH partnership context · vehicle-currency FX structure (illiquid pair → USD/SGD bridge).
+KEY CLAIMS: Hypotheses validated on interoperability, speed, atomicity; settlement &lt;30s in all scenarios incl. multi-hop chains; each participant's claim conditional on all claims (counterparty risk reduced); limitations candid — scale, privacy (Sepolia public testnet), liquidity optimisation open; PTLC and ZKP flagged as future work.
+CONTRADICTIONS w/ KB: None; technically a re-validation of Jasper–Ubin's HTLC primitive extended to multi-hop vehicle-currency chains.
+CLASSIFY: Cross-border wholesale FX · tags: NYIC, vehicle currency, HTLC, Ubin+, EME pairs.
+SIGNIFICANCE: The signalling is the substance — MAS pairing with the NY Fed anchors Singapore in the USD-corridor conversation; the illiquid-EME-pair framing targets exactly the corridors correspondent de-risking <a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a> abandoned.
+ROUTE: → map → SA note. <a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — Vehicle currency = USD, formalised.</strong> The experiment's structure enshrines the bridge-currency role in the settlement layer itself. A "future-state" system built this way hard-codes dollar (and by courtesy SGD) centrality — dollarisation as protocol design, wearing neutrality language.
+<strong>A2 — The partnership is the payload.</strong> Three years after Jasper–Ubin proved HTLC atomicity, re-proving it with the NY Fed adds little science and much positioning: MAS becomes the Fed's default Asian counterpart in wholesale digital-dollar research.
+<strong>A3 — Sub-30s is the first real performance number.</strong> The corpus's chronic omission (latency/cost vs correspondent baseline) finally gets a datum — under 30 seconds across multi-hop chains, on toy infrastructure (m5.large VMs). Honest about scale limits.</p>
+<h2>Quadrants</h2>
+<p>KK: HTLC multi-hop chains, vehicle-currency FX mechanics, &lt;30s result, system metrics appendix. KU: scale-up, PTLC alternatives, ZKP privacy, non-DLT integration. UK: BISIH/NYIC institutional context; the EME-pair focus as response to de-risked corridors <a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a>; Ubin+ as Ubin's international continuation brand. UU: <em>protocol-level dollar entrenchment</em> (above) — no participating author can say it, so nobody does; <em>liquidity-provision economics of on-chain vehicle currencies</em> — who market-makes the bridge leg and at what spread is the commercial question the experiment structurally cannot ask.</p>
+<h2>Narrative Vector</h2>
+<p>Technically confirmatory, strategically declarative: Singapore inserts itself into the USD wholesale-settlement future while the science re-treads 2019. For the mandate: cite it as evidence MAS's cross-border track is diplomacy conducted by prototype.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a> The NYIC-MAS experiment settled simulated multi-hop, vehicle-currency FX chains atomically across heterogeneous ledgers in under 30 seconds using HTLCs. As research it extends Jasper–Ubin incrementally; as statecraft it pairs MAS with the NY Fed on the design of dollar-bridged wholesale settlement and aims squarely at the illiquid EME corridors that correspondent de-risking abandoned. The report's disclaimers are the loudest in the corpus — no policy signal intended — which is itself the signal of how sensitive Fed-adjacent CBDC work is.</p>
+<h2>2. Entity Map</h2>
+<p>FRBNY NYIC (BISIH partnership) | MAS Ubin+ | prior nodes: <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a> method, <a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a> problem set.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a> Illiquid pair routed via vehicle currency; each leg an HTLC; claims mutually conditional → chain-wide atomicity; &lt;30s all scenarios; Sepolia testnet (public — privacy explicitly unsolved); PTLC/ZKP future work.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a> Third HTLC validation in the corpus (after <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a>, echoing <a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a> locks) — the primitive is settled science; the variable is the partner. Corridor diplomacy sequence: Canada (2019) → USA (2022). EME-pair framing answers <a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a>'s de-risking datum.</p>
+<h2>5. Quantification</h2>
+<p>&lt;30s settlement across all 11 scenarios; system metrics on 2vCPU/8GB VMs (toy scale, honestly labelled). No spread/liquidity economics — structurally out of scope.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: architecture informs a production USD-bridge wholesale network with MAS-regulated nodes. Base: findings feed BISIH successors (Agorá-class work); no deployment. <strong>Base likely.</strong> Bear: US retail-CBDC politics freezes Fed-adjacent work; the partnership's option value expires.</p>
+<h2>7. Open Threads</h2>
+<p>Successor programme mapping (Ubin+ → what, NYIC → Agorá?) — refresh search. Liquidity-provision economics of on-chain vehicle legs — unowned question, advisory whitespace.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a> papers/11, primary. Cross: <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a><a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a>, BIS PvP adoption paper (cited in-doc).</p></div></div></body></html>

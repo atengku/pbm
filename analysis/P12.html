@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Layer One Whitepaper (2024) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P12</div></div></header>
+<div class="wrap"><h1>Global Layer One Whitepaper (2024)</h1><p class="byline">Three-stage analytical chain · ref [P12]</p>
+<div class="docbar"><a href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: MAS-convened design for a shared ledger infrastructure — "public permissioned" (Model 3) network operated by regulated FIs via <strong>GL1 Operating Companies</strong>, hosting tokenised assets/money across jurisdictions with DvP/PvP/DvPvP composability.
+SOURCE / RELIABILITY: <strong>Primary</strong>; MAS publication with BNY, Citi, MUFG, Onyx (JPM), SocGen-FORGE.
+ENTITIES: MAS · BNY · Citi · MUFG · Onyx · SocGen-FORGE · BIS "Finternet"/Unified Ledger cited · GL1 OpCo [NEW — the industry utility construct].
+KEY CLAIMS: Three network models — public permissionless (unaccountable, no SLA, unsuitable), private permissioned (fragmenting liquidity), <strong>public permissioned</strong> (open to any qualifying entity, activities restricted, FI-operated nodes, KYC'd participants) as the synthesis; asset-agnostic; trapped-liquidity thesis; institutional-grade DeFi protocols (AMMs with safeguards); rollout select-jurisdictions-first.
+CONTRADICTIONS w/ KB: None — GL1 is the direct answer to Dunbar's operator vacuum <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> and generalises the Blueprint's OCL <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> internationally.
+CLASSIFY: Shared infrastructure · tags: GL1, OpCo, public permissioned, Finternet.
+SIGNIFICANCE: The concession architecture goes global: whoever sits in the OpCo consortium owns the settlement layer of tokenised finance. Five global banks are already at the table; the table is the product.
+ROUTE: <a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — The OpCo is Dunbar's missing operator, incorporated.</strong> Dunbar proved no sovereign can run the shared platform; GL1's answer is an industry utility run by a bank consortium. The governance vacuum becomes a company — and the five contributors (BNY, Citi, MUFG, Onyx, SocGen) are the presumptive shareholders of tokenised finance's TCP/IP.
+<strong>A2 — "Public permissioned" is a franchise, worded as openness.</strong> Open to "any entity that fulfils the criteria" — with the criteria set by the incumbents operating the nodes. Model 3 rhetoric imports internet-scale legitimacy while the KYC gate keeps internet-scale participation out.
+<strong>A3 — MAS exports the Blueprint.</strong> GL1 is the OCL pattern <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> scaled from Singapore-domestic to cross-jurisdictional — same whitelist logic, same designated-operator logic, now with BIS Finternet framing as air cover.</p>
+<h2>Quadrants</h2>
+<p>KK: 3-model taxonomy, OpCo construct, asset-agnostic scope, DvP/PvP/DvPvP composability, trapped-liquidity motivation. KU: OpCo governance detail, jurisdiction rollout order, regulatory perimeter per jurisdiction. UK: Dunbar inheritance; Partior overlap (same JPM/settlement space — GL1 vs Partior lane-division unstated); Onyx's presence in both. UU: <em>OpCo antitrust surface</em> — a bank-owned utility setting participation criteria for competitors is a competition-law question nobody in the paper touches; <em>sovereignty round-trip</em> — Dunbar said sovereigns won't cede control to a shared platform, GL1's answer hands control to private banks instead, which solves the central-bank objection by creating a bigger one for everyone else.</p>
+<h2>Narrative Vector</h2>
+<p>GL1 completes the arc: decentralisation explored (P2) → declined (P4) → re-offered as a bank-consortium franchise wearing open-network language. For the mandate: "who governs the operating company" is the next decade's question, and MAS is convening the answer.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a> GL1 proposes the settlement fabric for tokenised finance: a "public permissioned" shared ledger operated by GL1 Operating Companies — bank-consortium utilities — hosting tokenised money and assets with composable DvP/PvP/DvPvP. It is Dunbar's unsolved operator problem answered by incorporation, and the Orchid Blueprint's gatekeeping pattern exported cross-border. The five contributing institutions (BNY, Citi, MUFG, Onyx, SocGen-FORGE) sit at a table whose seat allocation <em>is</em> the economic prize; the openness language describes the membership form, not the power structure.</p>
+<h2>2. Entity Map</h2>
+<p>MAS (convener) | BNY, Citi, MUFG, Onyx/JPM, SocGen-FORGE (contributors/presumptive OpCo core) | BIS (Finternet/Unified Ledger intellectual cover) | absent: any buy-side, any non-G-SIB, any citizen-facing body.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a> Model taxonomy → public permissioned synthesis; FI-operated nodes, KYC'd participants, restricted activities; asset-agnostic multi-currency hosting; institutional-grade protocols (safeguarded AMMs); select-jurisdiction rollout.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a> OCL <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> → GL1: identical concession logic at two scales. Dunbar <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> → GL1: vacuum → OpCo. Onyx bridges GL1 and Partior — JPM positioned on both candidate fabrics. The corpus's repertory-company pattern goes global with a heavier cast.</p>
+<h2>5. Quantification</h2>
+<p>None published; the addressable stake is the fee/float pool of tokenised settlement (BCG/ADDX US$16tn-by-2030 tokenisation forecast cited in the Guardian track as the industry's own sizing).</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: GL1 OpCos launch in 2–3 jurisdictions; network effects consolidate; contributors capture utility economics. Base: extended standards-building; pilots on existing rails (Partior et al.) while GL1 governance gestates. <strong>Likely near-term.</strong> Bear: antitrust/sovereignty objections stall OpCo formation; fabric race fragments (GL1 vs Partior vs regional unified-ledger builds) — reproducing the fragmentation GL1 exists to solve.</p>
+<h2>7. Open Threads</h2>
+<p>OpCo incorporation status, domicile, shareholding — track MAS announcements. GL1↔Partior lane division (both Onyx-adjacent). Competition-law analysis of bank-owned participation criteria — unowned, advisory whitespace.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a> papers/12, primary. Cross: <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a>, BIS Finternet (Carstens &amp; Nilekani 2024), BIS Unified Ledger (2023).</p></div></div></body></html>

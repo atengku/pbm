@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubin Phase 3: DvP on DLT (2018) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P7</div></div></header>
+<div class="wrap"><h1>Ubin Phase 3: DvP on DLT (2018)</h1><p class="byline">Three-stage analytical chain · ref [P7]</p>
+<div class="docbar"><a href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: Delivery-versus-Payment of tokenised SGS (govvies) against central-bank cash-depository receipts across <strong>separate</strong> ledgers — interledger settlement finality with investor protections.
+SOURCE / RELIABILITY: <strong>Primary</strong>; MAS+SGX co-chaired (Mohanty / Tinku Gupta), tech partners Anquan, Deloitte, Nasdaq.
+ENTITIES: MAS · SGX · Anquan Capital · Deloitte · Nasdaq · platforms: Quorum, Fabric, Ethereum, Anquan, Chain · comparators: ECB/BoJ STELLA, ASX CHESS replacement.
+KEY CLAIMS: Cross-ledger DvP achieved trade-by-trade; smart-contract DvP encodes rights/obligations consistently; settlement-cycle compression beyond T+2 plausible; design keeps a <strong>Recognised Market Operator central</strong> for monitoring; investor protections: multi-sig account controls, contract locks with secret disclosure, time-bounded asset recovery, <strong>arbitration for disputes</strong>.
+CONTRADICTIONS w/ KB: None. Notably P3 builds the dispute/arbitration state that the retail PBM lifecycle <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a> lacks — institutions got recourse rails; citizens didn't.
+CLASSIFY: Wholesale / capital markets settlement · tags: DvP, SGS, SGX, HTLC-precursor, arbitration.
+SIGNIFICANCE: The recourse asymmetry — engineered dispute resolution for wholesale participants vs none in the retail PBM design — is a load-bearing finding for the sentiment mandate.
+ROUTE: → map → SA note. <a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — Recourse was built where the counterparties are banks.</strong> P3's design features — time-bounded recovery, arbitration on dispute, reversal states (Expired/Reversed/Disputed appear in its state diagrams) — are exactly the contestability machinery absent from the citizen-facing PBM lifecycle. The asymmetry is a design fingerprint: protection follows institutional power.
+<strong>A2 — Decentralisation retreat begins here.</strong> One phase after P2 proved operator-removal feasible, P3 deliberately re-centres a Recognised Market Operator. The permissioned trajectory that ends in the Blueprint starts in 2018.
+<strong>A3 — "Distributed, not decentralised" said out loud.</strong> The report's own sidebar concedes every layer is a centric implementation — the honest sentence the rest of the corpus avoids.</p>
+<h2>Quadrants</h2>
+<p>KK: cross-ledger DvP mechanics, 5 platforms, investor-protection feature set, STELLA/ASX context. KU: scale, multi-jurisdiction complications, non-DLT RTGS integration. UK: SGX's commercial stake in whichever settlement future wins — co-chair is also incumbent CSD/RMO; T+2→T+0 compression's margin impact on custody revenue, unexamined. UU: <em>the recourse asymmetry vs <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a></em> (nobody has cross-read these); <em>arbitration on-chain as precedent</em> — a template for citizen-facing PBM disputes that MAS already owns and hasn't reused.</p>
+<h2>Narrative Vector</h2>
+<p>Validates cross-ledger DvP; the durable insight is comparative: when the users are banks, the state machine grows Disputed and Reversed states. Carry that spec sheet into any argument about what retail PBM <em>could</em> include.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a> P3 settled tokenised Singapore Government Securities against central-bank receipts across separate ledgers, trade-by-trade, with settlement finality — and wrapped the mechanism in institutional-grade protections: multi-sig controls, secret-locked contracts, time-bounded recovery, arbitration. It quietly re-centred a Recognised Market Operator one phase after P2 showed operators removable. Its most valuable content today is comparative: the wholesale state machine includes Disputed and Reversed; the retail PBM lifecycle does not. Recourse was engineered for banks and omitted for citizens.</p>
+<h2>2. Entity Map</h2>
+<p>MAS (Mohanty) + SGX (Gupta) co-chairs | Anquan, Deloitte, Nasdaq (tech) | platforms: Quorum/Fabric/Ethereum/Anquan/Chain.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a> Buyer-side CBDC transfer + seller-side SGS transfer linked; contract locks with secret disclosure; 48-hour windows then arbitration; states: Trade→Post-trade→Expired/Reversed/Disputed. RMO retained for monitoring/facilitation.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a> Cross-read vs <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a>: identical wrapper logic, opposite recourse design. Vendor rotation back to Deloitte + exchange-adjacent Nasdaq/Anquan. SGX as co-author of its own disruption — classic incumbent absorption.</p>
+<h2>5. Quantification</h2>
+<p>Settlement-cycle compression T+3→T+2 industry context; DLT floated as enabler beyond. No cost-of-settlement deltas published.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: SGS settlement migrates on-ledger; SGX runs it. Base: learnings absorbed into SGX digital ventures (Marketnode lineage) without displacing CDP core. <strong>Base broadly realised.</strong> Bear: fragmentation of liquidity across old/new rails — contained to pilots.</p>
+<h2>7. Open Threads</h2>
+<p>Marketnode's inheritance of P3 designs (SGX/Temasek JV — ACRA pull). Whether MAS has ever mapped P3's arbitration template onto retail PBM — no public evidence.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a> papers/07, primary. Cross: <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2 STELLA</a>[ASX CHESS].</p></div></div></body></html>

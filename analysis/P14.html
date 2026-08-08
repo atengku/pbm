@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Dunbar (2022) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P14</div></div></header>
+<div class="wrap"><h1>Project Dunbar (2022)</h1><p class="byline">Three-stage analytical chain · ref [P14]</p>
+<div class="docbar"><a href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: BISIH SG + RBA/BNM/MAS/SARB — a <strong>single shared platform</strong> hosting multiple CBDCs (BIS "model 3") so central and commercial banks transact directly across borders; prototypes by R3 and Partior.
+SOURCE / RELIABILITY: <strong>Primary</strong>; BIS report; unusually candid — "ended with more questions than answers."
+ENTITIES: BISIH SG · RBA · BNM · MAS · SARB · R3 + <strong>Partior</strong> (prototype builders — the Ubin V commercial child now building BIS prototypes) · G20/FSB roadmap building block 19.
+KEY CLAIMS: Common platform (model 3) chosen over compatible (1) / interlinked (2) systems; default PvP for all FX; addresses fragmentation head-on; central banks' core discomfort named — liabilities issued/recorded on a platform outside their control; open questions catalogued across policy, business, technology; framed as an open call for collaboration.
+CONTRADICTIONS w/ KB: None; the platform strand complementing corridors <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a> and compliance <a class="cite" href="../papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank" title="Project Mandala (2024)">P13</a>. Mandala later tests against Dunbar prototypes — the strands interlock.
+CLASSIFY: Multi-CBDC platform · tags: model 3, mCBDC, BISIH, SARB, Partior.
+SIGNIFICANCE: The maximal architecture — and the honest documentation of why sovereigns resist it. Its unsolved governance question is GL1's founding inheritance.
+ROUTE: → map → SA note. <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — Sovereignty is the binding constraint, stated plainly.</strong> No central bank will let its liability be issued/recorded on infrastructure outside its control; there is no natural operator all trust. Dunbar proves the tech and documents why the tech is not the problem — the same governance wall <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a> and <a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a> hit, now with four flags planted on it.
+<strong>A2 — Partior building BIS prototypes closes a loop.</strong> The commercial JV born of Ubin V returns as contractor to the multilateral successor programme. Public research → private company → public research's vendor, in 24 months. The revolving door is infrastructural.
+<strong>A3 — "More questions than before it started" is the finding.</strong> Dunbar's candour converts it from failed platform pitch into the field's honest problem census — the direct predecessor of both Mandala (compliance subset) and GL1 (governance/operating-company subset).</p>
+<h2>Quadrants</h2>
+<p>KK: model 1/2/3 taxonomy, model-3 choice, PvP-by-default, R3+Partior prototypes, G20 BB19 alignment. KU: the catalogued open questions (access, jurisdiction, governance, resilience). UK: SARB's presence = deliberate global-south legitimacy; Project Atom/Khokha lineages folded in; the correspondent super-structure it would displace. UU: <em>the operator vacuum as market opportunity</em> — if no sovereign can operate it, a neutral operating company must, which is precisely GL1's later design; Dunbar creates the demand for the entity GL1 proposes; <em>exit asymmetry</em> — nothing on how a central bank leaves a shared platform, the analogue of <a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a>'s missing unwind analysis at sovereign scale.</p>
+<h2>Narrative Vector</h2>
+<p>Dunbar reframes the platform dream as a governance problem with a technology demo attached. Its unanswered questions are not residue — they are the product, and GL1 is their commercial answer. For the mandate: the arc "corridors → platform → operating company" is the cleanest one-slide history of where this is all going.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> Dunbar prototyped the maximal architecture — one shared platform hosting multiple CBDCs with default PvP — with Australia, Malaysia, Singapore and South Africa, built by R3 and Partior. It validated the technology and then documented, with rare candour, why technology was never the constraint: no sovereign will host its liability on infrastructure it doesn't control, and no operator exists that all trust. The report ends with a catalogued problem set rather than a solution, and that catalogue is its legacy — Mandala takes the compliance subset, GL1 takes the governance/operating-company subset.</p>
+<h2>2. Entity Map</h2>
+<p>BISIH SG | RBA, BNM, MAS, SARB | R3 + Partior (builders) | G20/FSB roadmap BB19 context.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> Model 3 (single mCBDC system) vs models 1–2; direct central/commercial bank participation; PvP by default; prototypes on two stacks; open-question taxonomy across policy/business/technology.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> Partior's contractor role closes the Ubin V loop (<a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a>) — public→private→public-vendor in two years. Sovereignty wall recurs from <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a>/<a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a>; Mandala <a class="cite" href="../papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank" title="Project Mandala (2024)">P13</a> later tests against Dunbar builds. The three strands (corridor, platform, compliance) are one programme viewed from three angles.</p>
+<h2>5. Quantification</h2>
+<p>None — appropriately, since the binding constraints identified are non-quantitative (trust, control, governance).</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: regional mCBDC platform emerges among aligned jurisdictions with a neutral operating company — the GL1 bet. Base: Dunbar's census guides successor projects; no deployment this cycle. <strong>Current state.</strong> Bear: mCBDC platforms fragment along geopolitical lines (mBridge vs GL1-aligned tracks) — visibly underway.</p>
+<h2>7. Open Threads</h2>
+<p>GL1 operating-company progress as Dunbar's answer — track. mBridge divergence (BIS exit dynamics) as the geopolitical bear case. Central-bank exit mechanics from shared platforms — still unwritten anywhere.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> papers/14, primary. Cross: <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a><a class="cite" href="../papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank" title="Project Mandala (2024)">P13</a>, BIS Papers no 115 (Auer et al), G20/FSB roadmap.</p></div></div></body></html>

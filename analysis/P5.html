@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubin Phase 1 (2017) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P5</div></div></header>
+<div class="wrap"><h1>Ubin Phase 1 (2017)</h1><p class="byline">Three-stage analytical chain · ref [P5]</p>
+<div class="docbar"><a href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: First tokenised-SGD proof of concept — banks exchange a central-bank-backed digital SGD on Ethereum-lineage DLT for interbank payment.
+SOURCE / RELIABILITY: <strong>Primary</strong> (MAS-commissioned), but authored with/by <strong>Deloitte</strong> and R3 — vendor voice throughout; treat framing (DLT evangelism, "Internet of Value") as consultant marketing layered on a genuine experiment.
+ENTITIES: MAS (Stanley Yong, Toh Wee Kee) · Deloitte (author) · R3 · BAML · BCS · Credit Suisse · DBS · HSBC · JPM (Naveen Mallela — later Onyx head, recurring node) · MUFG · OCBC · SGX · UOB.
+KEY CLAIMS: Banks pledge cash to MAS, receive tokenised SGD 1:1; P2P interbank transfer without intermediary; positions SG as first Asian financial centre exploring DLT broadly; WEF "80% of banks will initiate DLT projects in 2017" cited uncritically.
+CONTRADICTIONS w/ KB: None; establishes the consortium cast reused for a decade.
+CLASSIFY: Wholesale CBDC / Ubin lineage · tags: tokenised SGD, R3, Deloitte, MEPS+.
+SIGNIFICANCE: Origin node. The names matter more than the tech — Mallela (JPM), the local banks, BCS all recur through 2023's Blueprint.
+ROUTE: → map → SA note. <a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — The pledge model is a synthetic CBDC.</strong> Cash pledged to MAS, tokens issued 1:1 against it: functionally a fully-reserved stablecoin operated inside the central bank. The design pattern PBM later inherits (collateral locked, representation circulates) is born here.
+<strong>A2 — The consortium is the product.</strong> Eleven institutions learning together under MAS convening; the durable output was relationships and shared vocabulary, not code. Ubin P1's real deliverable was the repertory company.
+<strong>A3 — Vendor-authored state research.</strong> Deloitte's brand and worldview saturate a central-bank publication; the hype baseline (WEF 80% claim) dates instantly. Reliability discipline: separate the experiment (real) from the narrative (sold).</p>
+<h2>Quadrants</h2>
+<p>KK: pledge/issue/transfer mechanics · consortium roster · Ethereum-lineage PoC. KU: scalability, privacy, LSM (deferred to P2) · legal status of the token. UK: MEPS+'s SGD 70bn/day incumbency as the quiet benchmark · 2017 ICO-era hype context inflating claims. UU: <em>No exit analysis</em> — nothing on what unwinding tokenised SGD does to reserves accounting; <em>the vendor-capture pattern</em> — each Ubin phase is authored by the consultant who delivered it (Deloitte→Accenture→Accenture), meaning the record of what "succeeded" is written by the party paid to succeed.</p>
+<h2>Narrative Vector</h2>
+<p>Validates feasibility trivially; the enduring value is genealogical. Read P1 as the cap-table of Singapore's digital-money establishment.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a> Ubin P1 tokenised the SGD via a pledge model — banks post cash to MAS, receive 1:1 tokens, transfer P2P on DLT. Technically a solved problem even in 2017; strategically the founding of the MAS-convened consortium (11 FIs + Deloitte/R3) that has run Singapore's digital-money agenda since. The report is vendor-authored, and its hype claims aged badly; its roster did not.</p>
+<h2>2. Entity Map</h2>
+<p>MAS (Yong, Toh) | Deloitte (author) | R3 | DBS, OCBC, UOB, HSBC, BAML, CS, JPM (Mallela), MUFG | SGX | BCS.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a> Pledge → mint 1:1 → P2P transfer → redeem. Central-bank collateral, private circulation — the synthetic-CBDC pattern PBM later generalises.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a> First appearance of the recurring cast: Mallela→Onyx (<a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a>), BCS→Blueprint (<a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>), SGX→P3 DvP. Vendor authorship pattern begins (Deloitte P1/P3, Accenture P2/P5/Jasper).</p>
+<h2>5. Quantification</h2>
+<p>MEPS+ benchmark: ~25k txns/day, up to SGD 1bn each, ~SGD 70bn/day — the incumbent Ubin never displaced.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: pattern matured into production tokenised-deposit rails (partially realised via Partior). Base: capability + relationships banked; MEPS+ untouched. <strong>Base realised.</strong> Bear: consortium fatigue — did not materialise; cast retained.</p>
+<h2>7. Open Threads</h2>
+<p>Partior lineage from Ubin P5 → JPM/DBS/Temasek JV — trace equity and mandate. Legal characterisation of the pledged-token claim, never published.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a> papers/05, primary (vendor-authored). Cross: <a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a><a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>.</p></div></div></body></html>

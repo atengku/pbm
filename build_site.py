@@ -1,6 +1,21 @@
 #!/usr/bin/env python3
 import html
 
+
+PDF2REF = {
+ "papers/01_PBM_Technical_Whitepaper_2023.pdf":"P1","papers/02_Project_Orchid_Phase1_Report_2022.pdf":"P2",
+ "papers/03_Retail_CBDC_Economic_Considerations_2021.pdf":"P3","papers/04_Project_Orchid_Blueprint_2023.pdf":"P4",
+ "papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf":"P5","papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf":"P6",
+ "papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf":"P7","papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf":"P8",
+ "papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf":"P9","papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf":"P10",
+ "papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf":"P11","papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf":"P12",
+ "papers/13_Project_Mandala_Compliance_2024.pdf":"P13","papers/14_Project_Dunbar_Multi_CBDC_2022.pdf":"P14",
+ "papers/G1_Guardian_Fixed_Income_Framework_2024.pdf":"G1","papers/G2_Guardian_Funds_Framework_2024.pdf":"G2",
+ "papers/G3_Guardian_Interlinking_Networks_2023.pdf":"G3","papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf":"G4",
+ "papers/G5_Guardian_FX_Workstream_2024.pdf":"G5","papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf":"G6",
+ "papers/G7_Guardian_Open_Interoperable_Network_2023.pdf":"G7",
+}
+
 FEATURED = {
     "file":"papers/01_PBM_Technical_Whitepaper_2023.pdf",
     "title":"Purpose Bound Money (PBM) — Technical Whitepaper",
@@ -47,6 +62,8 @@ SECTIONS = [
 ]
 
 def card(file,title,date,summary,featured=False):
+    ref=PDF2REF.get(file)
+    analysis=f'<a class="open alt" href="analysis/{ref}.html">Analysis</a>' if ref else ""
     return f'''
       <article class="card{' feat' if featured else ''}">
         <div class="card-top">
@@ -54,7 +71,7 @@ def card(file,title,date,summary,featured=False):
         </div>
         <h3>{html.escape(title)}</h3>
         <p class="summary">{summary}</p>
-        <a class="open" href="{file}" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a>
+        <div class="links"><a class="open" href="{file}" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a>{analysis}</div>
       </article>'''
 
 sections_html=""
@@ -144,6 +161,11 @@ header.top{{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10
 .open:hover{{color:#fff}}
 .open span{{transition:.15s;display:inline-block}}
 .open:hover span{{transform:translate(2px,-2px)}}
+.links{{display:flex;gap:16px;align-items:center}}
+.open.alt{{color:var(--mut)}}
+.open.alt:hover{{color:var(--gold2)}}
+.btn.ghost{{background:transparent;color:var(--gold2);border:1px solid rgba(201,162,75,.45);margin-left:10px}}
+.btn.ghost:hover{{background:rgba(201,162,75,.1)}}
 
 footer{{border-top:1px solid var(--line);padding:34px 0 60px;margin-top:20px}}
 footer p{{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);margin:4px 0}}
@@ -177,10 +199,21 @@ footer a{{color:var(--gold)}}
     <p class="auth">{html.escape(FEATURED["authors"])}</p>
     <p class="sum">{FEATURED["summary"]}</p>
     <a class="btn" href="{FEATURED["file"]}" target="_blank" rel="noopener">Open the White Paper &#8599;</a>
+    <a class="btn ghost" href="synthesis.html">Read the Full Analysis</a>
+    <a class="btn ghost" href="analysis/P1.html">Whitepaper Analysis</a>
   </div>
 </div></div>
 
-<div class="wrap">{sections_html}</div>
+<div class="wrap">
+  <section class="band" style="border-top:none;padding-top:8px">
+    <div class="orig" style="border-color:var(--line);background:var(--panel)">
+      <h2 style="font-size:20px">The Machine Singapore Built &mdash; master synthesis</h2>
+      <p class="sum" style="margin-bottom:18px">All twenty-one papers read as one document: how the money layer was settled in 2021, why every constraint citizens meet is authored rather than inherent, where recourse was engineered and where it was omitted, who holds the unassigned concessions, and the one document this corpus proves is missing. Every claim cites and links the primary source.</p>
+      <a class="btn" href="synthesis.html">Read the synthesis</a>
+      <a class="btn ghost" href="analysis/index.html">Browse all 21 analyses</a>
+    </div>
+  </section>
+{sections_html}</div>
 
 <footer><div class="wrap">
   <p>Source: Monetary Authority of Singapore (mas.gov.sg). All documents &copy; MAS; hosted here for reference and study.</p>

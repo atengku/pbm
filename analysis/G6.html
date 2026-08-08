@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operationalising Tokenised Funds (2024) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · G6</div></div></header>
+<div class="wrap"><h1>Operationalising Tokenised Funds (2024)</h1><p class="byline">Three-stage analytical chain · ref [G6]</p>
+<div class="docbar"><a href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: The production playbook for tokenised funds — legal structures (Digital Mirror/Twin/Native mapped to GFF archetypes), cross-chain <strong>settlement finality</strong> law, live use cases (Franklin Templeton, Phillip Securities+stablecoin settlement, Fidelity+Citi digital FX, <strong>Swift</strong> TradFi bridge, Deutsche Bank DAMA 2), scalability enablers.
+SOURCE / RELIABILITY: <strong>Primary</strong>; Guardian AWM, pilots-to-production stage; tMMFs as global lead product.
+ENTITIES: Franklin Templeton · Phillip Securities · Fidelity · Citi · <strong>Swift</strong> (bridging role) · Deutsche Bank (DAMA 2 MVP) · UK cross-border annex.
+KEY CLAIMS: tMMFs moving pilots→production; legal structure precedes tech benefits; bridged-token models (Lock-&amp;-Mint vs Burn-&amp;-Mint) analysed for <strong>when risk passes and finality attaches</strong> — critical for risk, tax, insolvency; DvP smart-contract model trade-offs; open-architecture custody/wallets; enabler stack (KYC, network effects, ops controls, standards, UX).
+CONTRADICTIONS w/ KB: None; G6 answers the finality/bridge-liability gaps <a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a> left open, and climbs <a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a>'s authority ladder with named products.
+CLASSIFY: Tokenised funds production · tags: tMMF, finality, bridges, Swift, DAMA 2.
+SIGNIFICANCE: The corpus's most production-real document — global asset managers, Swift in the loop, insolvency-grade finality analysis. Tokenisation stops being a prototype here.
+ROUTE: <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — Finality is the whole ballgame, finally said.</strong> The moment a cross-chain transfer becomes irrevocable — for risk, tax, insolvency — is named as the critical unknown. Everything the corpus built rests on this legal instant, and G6 is the first document to put insolvency analysis around bridged tokens. The lawyers have arrived; that's the maturity signal.
+<strong>A2 — Swift inside the tokenised tent.</strong> The incumbent messaging monopoly appears as the TradFi bridge use case — the same accommodation pattern as <a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a>'s SWIFT diplomacy and Mandala's ISO 20022 pathway <a class="cite" href="../papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank" title="Project Mandala (2024)">P13</a>. Every revolution in this corpus ends with the incumbent holding a workstream.
+<strong>A3 — Named product, named managers.</strong> Franklin Templeton, Fidelity, Citi, DB running use cases converts Guardian from framework factory to distribution channel: MAS convening now moves real AUM logos, which is precisely the credibility the adoption-gap paper <a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a> said was missing.</p>
+<h2>Quadrants</h2>
+<p>KK: four tokenisation models with legal analysis, bridge finality treatment, five use cases, DvP model trade-offs, custody architectures, enabler stack. KU: per-jurisdiction finality recognition; tax treatment of bridge events. UK: <a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a> ladder + <a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a> bridges converging here; tMMF global momentum (BUIDL-era context) as the external tide. UU: <em>insolvency of the bridge operator</em> — analysed for token models but the bridge <em>entity's</em> failure (who is administrator over locked collateral) remains thinner than the token analysis; <em>stablecoin settlement leg</em> (Phillip case) quietly normalises private stablecoins in regulated fund settlement ahead of SCS licensing volume — practice outrunning the whitelist <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>.</p>
+<h2>Narrative Vector</h2>
+<p>G6 is the corpus's arrival document: legal reality, incumbent accommodation, production logos. The remaining frontier it names — finality across chains and jurisdictions — is where the next five years of value and litigation live.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a> The operational playbook marks tokenised funds' pilots-to-production turn, led globally by tokenised MMFs. It grounds every technical benefit in legal structure first, delivers the corpus's only insolvency-grade analysis of cross-chain settlement finality and bridged-token risk passage (Lock-&amp;-Mint vs Burn-&amp;-Mint), and carries five named use cases — Franklin Templeton, Phillip Securities with stablecoin settlement, Fidelity+Citi digital FX, Swift's TradFi bridge, Deutsche Bank's DAMA 2. The pattern completes: incumbents (Swift) accommodated, global managers enlisted, and the decisive open question named in law's language — the moment finality attaches.</p>
+<h2>2. Entity Map</h2>
+<p>Franklin Templeton | Phillip Securities | Fidelity + Citi | Swift | Deutsche Bank (DAMA 2) | Guardian AWM (MAS-convened) | UK annex (FCA-side continuity with <a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a>).</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a> Digital Mirror/Twin/Native models mapped to register archetypes; bridge mechanics with risk-passage and finality analysis; PvP stablecoin settlement; PvDvP FX swaps cross-network; post-trade lifecycle orchestration; enabler stack for scale.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a> Converges <a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a>+<a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a>; Swift accommodation echoes <a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a><a class="cite" href="../papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank" title="Project Mandala (2024)">P13</a>; stablecoin-leg practice runs ahead of the <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> whitelist — regulatory catch-up risk; named-logo strategy answers <a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a>'s trust deficit.</p>
+<h2>5. Quantification</h2>
+<p>tMMF production status asserted; AUM figures not printed (external trackers required). Finality-failure loss scenarios unquantified — consistent with a frontier the law hasn't priced.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: finality recognised statutorily in lead jurisdictions; tMMFs become cash-management default; Guardian branding graduates to market standard. Base: production grows inside guarded perimeters; finality clarified piecemeal via contract. <strong>Current.</strong> Bear: a cross-chain insolvency event tests bridged-collateral title before statute catches up — the litigation that would define the field.</p>
+<h2>7. Open Threads</h2>
+<p>Jurisdictional finality-recognition tracker (UK annex suggests where next). DAMA 2 production status. Stablecoin-settlement perimeter vs SCS licensing reality — regulatory-gap watch.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a> papers/G6, primary. Cross: <a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a><a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a><a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a><a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a><a class="cite" href="../papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank" title="Project Mandala (2024)">P13</a>.</p></div></div></body></html>

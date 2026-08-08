@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ubin Phase 2: Re-imagining RTGS (2017) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P6</div></div></header>
+<div class="wrap"><h1>Ubin Phase 2: Re-imagining RTGS (2017)</h1><p class="byline">Three-stage analytical chain · ref [P6]</p>
+<div class="docbar"><a href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: Decentralised RTGS functions — fund transfer, queuing, gridlock resolution (LSM) — prototyped on Corda, Hyperledger Fabric, Quorum with transaction privacy preserved.
+SOURCE / RELIABILITY: <strong>Primary</strong>; MAS+ABS led, <strong>Accenture-delivered</strong> (vendor voice), 11 FIs, Azure platform.
+ENTITIES: MAS · ABS · Accenture · BAML · Citi · CS · DBS · HSBC · JPM · MUFG · OCBC · SGX · StanChart · UOB · Microsoft Azure.
+KEY CLAIMS: All three platforms achieved decentralised LSM/gridlock resolution without compromising privacy (Corda UTXO+confidential identities; Fabric channels; Quorum Constellation+ZKP). Headline: feasible to <strong>remove the central infrastructure operator</strong> — "the role of MAS as an infrastructure operator needs to be re-evaluated."
+CONTRADICTIONS w/ KB: The 2023 Blueprint <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> answers this question in the opposite direction — permissioned, FMI-grade, operator-centric. P2's decentralisation enthusiasm was quietly reversed.
+CLASSIFY: Wholesale CBDC / RTGS · tags: LSM, gridlock, Corda, Fabric, Quorum, MEPS+.
+SIGNIFICANCE: The high-water mark of decentralisation rhetoric in official SG fintech literature — useful contrast object.
+ROUTE: → map → SA note. <a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — The road not taken, documented.</strong> P2 proves the central operator can be removed and openly invites re-evaluating MAS's operator role. Six years later the Blueprint reinstates the operator with FMI-grade requirements. The corpus contains its own refutation — decentralisation was tested, feasible, and declined. That is a policy choice on the record.
+<strong>A2 — Privacy tech menu established.</strong> UTXO/confidential identities vs channels vs ZKP — the 2017 catalogue Mandala's ZKP work later industrialises.
+<strong>A3 — LSM decentralisation is the hard genuinely-new result.</strong> Gridlock resolution without a single consolidated view was the real cryptographic contribution; everything else was integration.</p>
+<h2>Quadrants</h2>
+<p>KK: 3 prototypes, 3 privacy models, LSM feasibility, 13-week build. KU: scalability, resilience at production loads, legal finality of decentralised netting. UK: ABS as co-lead — the banking cartel's formal seat at the design table; Azure dependency (decentralised ledger on centralised cloud, unremarked). UU: <em>finality-in-law gap</em> — no analysis of whether decentralised gridlock netting satisfies settlement-finality statutes; <em>the operator-economics silence</em> — removing MAS as operator removes a fee/oversight structure nobody models.</p>
+<h2>Narrative Vector</h2>
+<p>Validates technical decentralisation, and thereby <strong>converts every later centralisation into a documented preference</strong>. Quote P2 against P4 when the "technology requires it" defence appears.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a> P2 decentralised the crown jewels of an RTGS — queuing and gridlock resolution — across Corda, Fabric and Quorum, each with a distinct privacy solution, and concluded the central operator could be removed, explicitly inviting re-evaluation of MAS's own role. That invitation was never taken up: the 2023 Blueprint restores an operator-centric, FMI-grade model. P2 therefore functions today as the corpus's counterfactual — proof that Singapore's permissioned architecture is chosen, not compelled.</p>
+<h2>2. Entity Map</h2>
+<p>MAS + ABS (co-leads) | Accenture (delivery) | 11 FIs incl. Citi, StanChart (only appearances) | Azure.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a> Fund transfer, queue, gridlock netting decentralised; privacy via UTXO/confidential identities (Corda), channels (Fabric), Constellation+ZKP (Quorum). MEPS+ context: ~SGD 70bn/day.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a> Vendor rotation to Accenture; ABS's structural seat = incumbent banks co-author the future of their own settlement layer. Cross-ref <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>: the decentralisation finding is the corpus's largest unacknowledged reversal.</p>
+<h2>5. Quantification</h2>
+<p>13-week build; three parallel workstreams. No cost or throughput figures published against MEPS+ — the comparison that would have mattered.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull (then): DLT-RTGS replaces MEPS+. Base: findings absorbed, MEPS+ retained, LSM learnings inform future rail design. <strong>Base realised.</strong> Bear: prototypes shelved entirely — avoided; lineage continued to P3-P5.</p>
+<h2>7. Open Threads</h2>
+<p>Whether any P2 LSM design survived into Partior/Ubin V production specs. Settlement-finality legal opinion on decentralised netting — never published.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a> papers/06, primary (Accenture-delivered). Cross: <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a><a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a>.</p></div></div></body></html>

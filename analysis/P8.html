@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jasper–Ubin Design Paper (2019) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P8</div></div></header>
+<div class="wrap"><h1>Jasper–Ubin Design Paper (2019)</h1><p class="byline">Three-stage analytical chain · ref [P8]</p>
+<div class="docbar"><a href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: First cross-border, cross-currency, cross-platform atomic W-CBDC payment — CAD (Corda/Jasper) ↔ SGD (Quorum/Ubin) via Hash Time-Locked Contracts, no trusted third party.
+SOURCE / RELIABILITY: <strong>Primary</strong>; Bank of Canada + MAS, delivered with JPM + Accenture.
+ENTITIES: BoC (Scott Hendry) · MAS (Mohanty) · JPM · Accenture · HTLC as the named mechanism.
+KEY CLAIMS: Atomic all-or-nothing CAD-SGD transfer achieved across heterogeneous platforms; trust relocated "in the technical system rather than in a third party"; open questions candidly listed — scale, many-jurisdiction complexity, governance of protocol updates, legal/regulatory, non-DLT RTGS integration.
+CONTRADICTIONS w/ KB: None; the HTLC method is the same primitive Cedar×Ubin <a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a> re-validates in 2022 — three years of re-proving the same atom.
+CLASSIFY: Cross-border wholesale CBDC · tags: HTLC, atomicity, Corda, Quorum, BoC.
+SIGNIFICANCE: Establishes the bilateral-corridor model and its ceiling: HTLC solves the two-party atom, not the N-jurisdiction network — the gap Dunbar then attacks from the platform side and Mandala from the compliance side.
+ROUTE: → map → SA note. <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — Trust was relocated, not removed.</strong> The paper's own admission: HTLC shifts trust from correspondent banks into code + timeout parameters. Timeout selection, platform bugs, and protocol governance become the new counterparty risk — unpriced.
+<strong>A2 — The bilateral ceiling.</strong> HTLC scales as corridors (N² problem), not networks. Everything after — Dunbar's common platform, Mandala's compliance proofs — is the system discovering this limit and routing around it.
+<strong>A3 — The candour benchmark.</strong> Jasper–Ubin's open-questions list (governance, legality, scale) is the most honest in the Ubin corpus; later reports narrow, not answer, these questions.</p>
+<h2>Quadrants</h2>
+<p>KK: HTLC mechanics (lock, secret, timeout), CAD-SGD atomic PoC, Corda↔Quorum bridge. KU: scale, N-jurisdiction, non-DLT integration, protocol-update governance. UK: descends from the tri-central-bank models paper <a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a>; JPM's position inside both legs (and later Onyx/Partior) — the private beneficiary of public corridor research. UU: <em>timeout risk as the new Herstatt</em> — a mis-set HTLC window recreates settlement risk in miniature, nowhere quantified; <em>who runs the bridge</em> — the interop layer between two sovereign ledgers has no proposed owner, the void GL1 later claims.</p>
+<h2>Narrative Vector</h2>
+<p>Validates the atom, exposes the network problem. Read as the moment cross-border CBDC research split into three roads: corridors (this), platforms (Dunbar), compliance layers (Mandala).</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a> BoC and MAS proved a CAD-SGD atomic settlement across Corda and Quorum using HTLCs — no trusted intermediary, all-or-nothing by construction. The honest core: trust was moved into the technical system, not eliminated, and the method is inherently bilateral. The report's open-questions list (governance, legality, scale) defines the agenda the next five years of BIS-track work (Dunbar, Mandala, Cedar×Ubin) worked through without fully closing.</p>
+<h2>2. Entity Map</h2>
+<p>BoC (Hendry) | MAS (Mohanty) | JPM | Accenture. JPM's recurrence across Ubin P5/Onyx/Partior makes it the constant private node in public corridor research.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a> Lock asset → disclose secret → claim; timeout releases encumbrance on failure. Platforms must support encumbrance, secret disclosure, timeout — the minimal interop contract.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a> Bilateral corridor model; N² scaling ceiling; successor projects fork by strategy. Cedar×Ubin <a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a> re-runs the same primitive with the NY Fed in 2022 — validation politics as much as research.</p>
+<h2>5. Quantification</h2>
+<p>None published on cost/latency vs correspondent baseline — the omission that recurs until Cedar×Ubin's sub-30s claim.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: corridor mesh of bilateral HTLC links — did not emerge. Base: primitive banked; platform/compliance tracks take over. <strong>Realised.</strong> Bear: interop stalls entirely — avoided.</p>
+<h2>7. Open Threads</h2>
+<p>Timeout-parameter risk analysis — still unpublished anywhere in the corpus. Governance of cross-sovereign protocol updates — inherited by GL1, unresolved.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a> papers/08, primary. Cross: <a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a><a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a>.</p></div></div></body></html>

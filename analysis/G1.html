@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guardian Fixed Income Framework (2024) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · G1</div></div></header>
+<div class="wrap"><h1>Guardian Fixed Income Framework (2024)</h1><p class="byline">Three-stage analytical chain · ref [G1]</p>
+<div class="docbar"><a href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: Industry framework for tokenised debt — full lifecycle (primary, secondary, maturity), operating models, data model (ICMA Bond Data Taxonomy), design principles, risks; case studies incl. SGX digital bonds, HSBC pilots, Project Trident; addenda on DvP settlement + custody lessons.
+SOURCE / RELIABILITY: <strong>Primary</strong> industry framework under MAS convening (Guardian FI workstream).
+ENTITIES: Guardian FI group · ICMA (taxonomy) · SGX (digital bond listing/DA register) · HSBC · Project Trident.
+KEY CLAIMS: Honest adoption-gap diagnosis: weak business case (high start-up cost, efficient incumbents, <strong>absence of cash on chain</strong> blocking lifecycle automation), legal uncertainty across jurisdictions, infra immaturity, custody expectations (clients want licensed custodians — "contrary to what is sometimes claimed"); framework standardises lifecycle + data to lower these barriers.
+CONTRADICTIONS w/ KB: None; the cash-on-chain gap is the demand signal for the Orchid/tokenised-money track — the two programmes need each other and G1 says so.
+CLASSIFY: Tokenised fixed income · tags: ICMA BDT, digital bonds, custody, DvP.
+SIGNIFICANCE: The frankest cost-benefit text in the Guardian set; its barrier list is the adoption-gap thesis <a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a> in bond-specific form.
+ROUTE: <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — "Absence of cash on chain" is the keystone admission.</strong> Tokenised bonds can't self-execute coupons/redemptions without tokenised money on the same rails. Guardian's asset track openly depends on Orchid's money track — the corpus's two halves declare their coupling here.
+<strong>A2 — Custody realism deflates the disintermediation myth.</strong> Clients want licensed custodians, full stop. The framework re-centres exactly the intermediaries tokenisation rhetoric promised to remove — incumbency absorbs again.
+<strong>A3 — Standards as the moat-leveller.</strong> ICMA BDT adoption is the play to stop every issuer minting incompatible bond tokens — taxonomy first, market second; whoever's taxonomy wins, wins.</p>
+<h2>Quadrants</h2>
+<p>KK: lifecycle mapping, deployment archetypes, ICMA data model, design principles, risk/mitigant tables, SGX/HSBC/Trident cases, DvP + custody addenda. KU: cross-jurisdiction legal treatment; secondary-liquidity formation. UK: SGX digital-bond lineage from <a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a>; MAS-regulated stablecoin/TBL supply as the pending cash leg <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>. UU: <em>incentive asymmetry</em> — the parties asked to fund migration (issuers/banks) earn the float and fees the migration destroys; the framework never prices the cannibalisation, which is the actual adoption gap; <em>coupon-automation liability</em> — who answers when a smart-contract coupon misfires is absent, custody addendum notwithstanding.</p>
+<h2>Narrative Vector</h2>
+<p>Validates tokenised FI technically while cataloguing why it hasn't happened — and in doing so hands the Orchid track its demand case. The two programmes are one machine; G1 is where that's admitted in writing.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a> The FI framework standardises tokenised debt end-to-end — lifecycle, operating models, ICMA-aligned data, custody and DvP practice — while delivering the Guardian set's frankest diagnosis of why adoption lags: no on-chain cash for lifecycle automation, weak switching incentives against efficient incumbents, legal fragmentation, and clients who want licensed custodians regardless of the technology. Its keystone sentence couples the corpus's halves: tokenised assets need tokenised money, making Orchid the demand-side answer to Guardian's supply-side build.</p>
+<h2>2. Entity Map</h2>
+<p>Guardian FI workstream (MAS-convened) | ICMA | SGX (digital bonds/DA register) | HSBC | Project Trident.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a> Primary/secondary/maturity lifecycle on-chain; recording-medium archetypes; BDT data model; DvP settlement guide; custody lessons addendum.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a> Cash-leg dependency → <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> money forms; SGX lineage → <a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a>; barrier taxonomy → <a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a> generalisation; incumbency absorption pattern (custody) consistent corpus-wide.</p>
+<h2>5. Quantification</h2>
+<p>Cost/benefit asserted qualitatively; no published unit economics of tokenised vs conventional issuance — the number that would settle the business-case debate is absent across the industry.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: MAS-regulated tokenised cash arrives at scale; coupon/redemption automation flips the business case; digital issuance normalises. Base: episodic flagship issuances; standards consolidate; conventional rails dominate. <strong>Current.</strong> Bear: a lifecycle-automation failure (coupon misfire) with unallocated liability chills institutional issuance.</p>
+<h2>7. Open Threads</h2>
+<p>SCS-licensed stablecoin/TBL issuance volumes — the cash-leg tracker. Trident status. Tokenised-vs-conventional issuance cost study — unowned, publishable.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a> papers/G1, primary. Cross: <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a><a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a><a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a>, ICMA BDT.</p></div></div></body></html>

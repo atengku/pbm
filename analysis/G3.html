@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guardian Interlinking Networks (2023) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · G3</div></div></header>
+<div class="wrap"><h1>Guardian Interlinking Networks (2023)</h1><p class="byline">Three-stage analytical chain · ref [G3]</p>
+<div class="docbar"><a href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: Technical models for the third interop approach from <a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a> — connecting heterogeneous digital-asset networks bilaterally; common model for cross-network asset transfer.
+SOURCE / RELIABILITY: <strong>Primary</strong>; MAS, v1.0 Nov 2023; explicitly no-policy/no-endorsement.
+ENTITIES: MAS · case studies: cross-network ABS/trade receivables, discretionary portfolios w/ alternatives, cross-network fund distribution · cites McKinsey $4bn/yr cross-border DLT savings · Dunbar cited for common-network coordination cost.
+KEY CLAIMS: Common universal platform requires heavy legal/regulatory coordination (per Dunbar), so bilateral interlinking is the pragmatic alternative; proposes a common transfer model across networks; walled-garden proliferation risk restated.
+CONTRADICTIONS w/ KB: Tension, not contradiction — G3 (2023) advocates interlinking because common platforms are hard; GL1 (2024) pivots back to the layered common base. The programme runs both horses.
+CLASSIFY: Tokenisation interop · tags: interlinking, bridges, cross-network transfer.
+SIGNIFICANCE: The bridge layer is where wholesale interop actually happens near-term — and where risk concentrates (lock-&amp;-mint custody, finality across chains, <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a> later confronts this legally).
+ROUTE: <a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — Two-horse strategy, quietly.</strong> G3 argues interlinking because common platforms need impossible coordination; GL1 then pursues the common platform anyway. MAS funds both the pragmatic path and the maximal one — optionality doctrine applied to infrastructure.
+<strong>A2 — Bridges are the new custody.</strong> Every cross-network transfer model concentrates risk at the bridge (locked collateral, mint/burn integrity, cross-chain finality). The crypto industry's worst loss events live exactly here; the paper models mechanics, not failure economics.
+<strong>A3 — Dunbar's lesson absorbed sideways.</strong> The sovereign-coordination wall <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> becomes the stated reason to interlink rather than unify — the corpus learning from itself in real time.</p>
+<h2>Quadrants</h2>
+<p>KK: interlinking models, common transfer model, three case studies. KU: bridge liability, finality across heterogeneous chains (deferred to <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a>). UK: Jasper–Ubin's HTLC as the ancestral bilateral bridge <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a>; GL1's parallel bet. UU: <em>bridge-failure loss allocation</em> — no treatment of who eats a mint/burn mismatch; <em>N² economics</em> — interlinking recreates the correspondent-mesh cost structure <a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a> at the token layer, unpriced.</p>
+<h2>Narrative Vector</h2>
+<p>The pragmatic middle chapter: connects <a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a>'s taxonomy to <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a>'s legal reckoning. Read as evidence the programme knows the common platform may not arrive and is building the mesh it criticised.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a> G3 operationalises the interlinked-networks option: since universal platforms demand coordination Dunbar showed sovereigns won't give, connect heterogeneous networks bilaterally with a common transfer model. It is the pragmatic hedge against GL1's maximalism — both funded, both alive. The unpriced core: bridges concentrate custody and finality risk at exactly the point the wider industry has suffered its largest losses, and the paper's mechanics-first treatment leaves loss allocation to <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a>'s later legal analysis.</p>
+<h2>2. Entity Map</h2>
+<p>MAS (sole author) | case-study contributors across ABS, portfolios, fund distribution | intellectual debts: Dunbar <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a>, Jasper–Ubin <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a>.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a> Bilateral network linkage; common asset-transfer model; three illustrative cases; walled-garden critique restated from <a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a>.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a> Corridor logic <a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a> re-emerges at the asset layer; two-horse strategy vs GL1 <a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a>; N² mesh economics echo the correspondent structure <a class="cite" href="../papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" title="Cross-Border Interbank Payments (2019)">P9</a> the programme set out to escape.</p>
+<h2>5. Quantification</h2>
+<p>McKinsey $4bn/yr cross-border DLT savings (consultant provenance, treat as directional). No bridge-risk quantification — the missing number.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: standardised interlinking model adopted; mesh grows organically ahead of any common fabric. Base: pilots per case study; production interlinks stay rare pending legal finality clarity. <strong>Current.</strong> Bear: a bridge failure in regulated tokenised assets crystallises the unallocated-loss problem publicly.</p>
+<h2>7. Open Threads</h2>
+<p>Which G3 case studies went live. Bridge insurance/liability market formation — advisory whitespace. Convergence or divergence with GL1 as OpCo forms.</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" title="Guardian Interlinking Networks (2023)">G3</a> papers/G3, primary. Cross: <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a><a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a><a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a>, McKinsey 2019.</p></div></div></body></html>

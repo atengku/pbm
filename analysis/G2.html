@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guardian Funds Framework (2024) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
+.brand a{color:inherit;text-decoration:none}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
+h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
+h3{font-size:17px;margin:30px 0 8px}
+p,li{font-size:16px;color:#cdd6e2}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+strong{color:var(--ink)}
+em{color:var(--gold2);font-style:normal}
+a{color:var(--gold2)}
+a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
+a.cite:hover{background:rgba(201,162,75,.12)}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
+blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
+.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+.docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
+.docbar a:hover{border-color:var(--gold)}
+.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
+.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
+.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
+.idx a{text-decoration:none}
+.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+</style></head><body>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · G2</div></div></header>
+<div class="wrap"><h1>Guardian Funds Framework (2024)</h1><p class="byline">Three-stage analytical chain · ref [G2]</p>
+<div class="docbar"><a href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: Non-prescriptive standards for tokenised funds — lifecycle (issuance→distribution→secondary→custody→servicing), operating archetypes, and the <strong>Guardian Composable Token Taxonomy (GCTT)</strong>; tokenised MMF case study.
+SOURCE / RELIABILITY: <strong>Primary</strong>; Guardian Asset &amp; Wealth Management (AWM) industry group under MAS.
+ENTITIES: Guardian AWM group · fund admin/custody chain actors · GCTT [NEW construct].
+KEY CLAIMS: Fund industry pain: cost, opacity, access; tokenisation enables modularised lifecycle and direct personalisation; three register archetypes (mirror / partial on-chain / full on-chain authoritative); GCTT as composable technical standard; explicit admission that tokenising existing fund structures has capped benefits — a "future state" beyond current structures is sketched.
+CONTRADICTIONS w/ KB: None; the register-archetype ladder is the same authority-migration question as the FI recording-medium models <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a>.
+CLASSIFY: Tokenised funds · tags: GFF, GCTT, MMF, register archetypes.
+SIGNIFICANCE: The register question — when does the chain become the <em>authoritative</em> record — is the whole legal ballgame; G2 names the ladder, <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a> climbs it.
+ROUTE: <a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a></p></div>
+<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
+<p><strong>A1 — Authority migration is the real product.</strong> Mirror → partial → full on-chain registers is a ladder of legal authority moving from administrator to ledger. Everything else (efficiency, personalisation) is decoration on the question of who holds the authoritative record — and thus the fees, the liability, and the veto.
+<strong>A2 — The capped-benefit admission.</strong> G2 concedes tokenising today's fund structures yields limited gains; the promised land requires <em>new</em> structures. Translation: the framework standardises a transitional product while the endgame remains unlegislated.
+<strong>A3 — GCTT as taxonomy land-grab.</strong> Like ICMA BDT in <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a>, whoever's composable token taxonomy becomes default owns the integration layer of a trillion-dollar industry's plumbing.</p>
+<h2>Quadrants</h2>
+<p>KK: lifecycle mapping, three register archetypes, GCTT, MMF case. KU: future-state fund structures (sketched, not specified); cross-border register recognition. UK: transfer-agency/fund-admin incumbents whose franchise is the register — the displaced party is unnamed throughout; MMF-as-first-product logic (cash-like, tMMF momentum) imported from market reality. UU: <em>register bifurcation risk</em> — mirror/partial models create two records that can disagree; reconciliation failure in a "tokenised" fund would be a scandal precisely because the tech promised its impossibility; <em>the personalisation-privacy trade</em> — direct-to-investor personalisation via immutable ledgers builds a permanent behavioural record of retail investors; no privacy treatment exists in the paper.</p>
+<h2>Narrative Vector</h2>
+<p>G2 standardises the transition and quietly admits the destination needs different law. The authority-migration ladder is the analytical spine to carry into <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a>, where legal reality bites.</p></div>
+<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
+<p><a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a> The Funds Framework standardises tokenised funds around a lifecycle map, three register archetypes, and the Guardian Composable Token Taxonomy, with tokenised MMFs as the beachhead product. Its two honest cores: legal authority migrates rung by rung from administrator to ledger (mirror → partial → full), and tokenising existing structures delivers capped benefits — the real prize needs fund structures that don't yet exist in law. The displaced incumbent (the transfer-agency/admin franchise) is never named; the retail-privacy cost of ledgered personalisation is never priced.</p>
+<h2>2. Entity Map</h2>
+<p>Guardian AWM group (MAS-convened) | fund managers, admins, custodians (roles, largely unnamed) | GCTT as the standard artefact.</p>
+<h2>3. Mechanics</h2>
+<p><a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a> Origination→issuance→distribution→secondary→custody→servicing on-chain variants; register archetypes 1–3; GCTT composition and flows; MMF use case.</p>
+<h2>4. Pattern</h2>
+<p><a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a> Authority-ladder mirrors <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a>'s recording-medium models; taxonomy strategy mirrors ICMA play; tMMF beachhead consistent with global market momentum; feeds <a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a>'s legal deep-dive directly.</p>
+<h2>5. Quantification</h2>
+<p>None; the industry's own sizing (US$16tn by 2030 <a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a>) stands in for fund-specific economics. tMMF AUM growth is the trackable proxy — refresh externally.</p>
+<h2>6. Bull / Base / Bear</h2>
+<p>Bull: full on-chain authoritative registers recognised in lead jurisdictions; admin layer re-prices; GCTT becomes lingua franca. Base: mirror/partial deployments proliferate; authority stays off-chain; benefits stay capped as admitted. <strong>Current.</strong> Bear: a register-reconciliation failure in a dual-record fund triggers regulatory retrenchment.</p>
+<h2>7. Open Threads</h2>
+<p>Jurisdictions recognising on-chain authoritative fund registers — legal tracker. GCTT adoption beyond Guardian. The unnamed displaced party's countermove (admin industry response).</p>
+<h2>8. Sources</h2>
+<p><a class="cite" href="../papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" title="Guardian Funds Framework (2024)">G2</a> papers/G2, primary. Cross: <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a><a class="cite" href="../papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" title="Operationalising Tokenised Funds (2024)">G6</a><a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a>.</p></div></div></body></html>
