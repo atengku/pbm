@@ -29,10 +29,13 @@ SECTIONS = [
    ("papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf","Ubin — Cross-Border Interbank Payments & Settlements","2019","A blockchain-based multi-currency payments network prototype for cross-border interbank settlement, developed with industry partners."),
    ("papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf","Ubin Phase 5 — Enabling Broad Ecosystem Opportunities","2020","The capstone report: a multi-currency payments network prototype with commercial applications and interfaces, produced with Temasek, JPMorgan and Accenture."),
    ("papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf","Project Cedar Phase II × Ubin — Cross-Border","Nov 2022","Joint experiment with the Federal Reserve Bank of New York on wholesale cross-border, multi-currency settlement using a vehicle currency and distributed-ledger interoperability."),
+   ("papers/14_Project_Dunbar_Multi_CBDC_2022.pdf","Project Dunbar — International Settlements Using Multi-CBDCs","Mar 2022","BIS Innovation Hub Singapore Centre with MAS, RBA, BNM and SARB: a shared multi-CBDC platform prototype enabling direct cross-border settlement between commercial banks in different central bank digital currencies."),
+   ("papers/13_Project_Mandala_Compliance_2024.pdf","Project Mandala — Streamlining Cross-Border Transaction Compliance","Oct 2024","BIS Innovation Hub Singapore Centre with MAS, RBA, BOK and BNM: a compliance-by-design architecture (peer-to-peer messaging, rules engine, proof engine) that embeds sanctions screening and capital-flow rules into cross-border payments, generating a compliance proof before funds move."),
   ]),
- ("Asset Tokenisation — Project Guardian  (adjacent, not CBDC)",
-  "Included for completeness. Guardian is MAS's asset- and FX-tokenisation track — related digital-money infrastructure, but distinct from the CBDC / digital-SGD lineage above.",
+ ("Shared Infrastructure & Tokenisation — GL1 / Project Guardian  (adjacent, not CBDC)",
+  "Included for completeness. GL1 and Guardian are MAS's shared-ledger and asset-tokenisation tracks — related digital-money infrastructure, but distinct from the CBDC / digital-SGD lineage above.",
   [
+   ("papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf","Global Layer One (GL1) — Whitepaper","Jun 2024","MAS with international policymakers and financial institutions: design principles, governance and architecture for a multi-purpose shared-ledger infrastructure on which regulated institutions deploy interoperable tokenised-asset applications across jurisdictions."),
    ("papers/G1_Guardian_Fixed_Income_Framework_2024.pdf","Guardian Fixed Income Framework","2024","Industry framework for applying tokenisation to fixed-income instruments and issuance."),
    ("papers/G2_Guardian_Funds_Framework_2024.pdf","Guardian Funds Framework","2024","Framework for tokenised investment funds — structuring, distribution and lifecycle."),
    ("papers/G3_Guardian_Interlinking_Networks_2023.pdf","Guardian — Interlinking Networks Technical Paper","2023","Technical models for connecting digital-asset networks to enable interoperable tokenised transactions."),
@@ -159,7 +162,7 @@ footer a{{color:var(--gold)}}
   <h1>Purpose Bound Money &amp; the Singapore CBDC record.</h1>
   <p class="lede">Every primary MAS paper behind programmable money in Singapore — from the founding PBM specification through Project Orchid, the full Project Ubin wholesale-CBDC series, and the adjacent tokenisation track — in one place, each opening directly.</p>
   <div class="stat">
-    <div><div class="n">19</div><div class="l">Papers</div></div>
+    <div><div class="n">21</div><div class="l">Papers</div></div>
     <div><div class="n">2016&ndash;2024</div><div class="l">Span</div></div>
     <div><div class="n">3</div><div class="l">Programmes</div></div>
     <div><div class="n">MAS</div><div class="l">Source</div></div>
@@ -181,7 +184,7 @@ footer a{{color:var(--gold)}}
 
 <footer><div class="wrap">
   <p>Source: Monetary Authority of Singapore (mas.gov.sg). All documents &copy; MAS; hosted here for reference and study.</p>
-  <p>Library staged 8 August 2026 &middot; 19 documents &middot; <a href="papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank">start with the PBM whitepaper &#8599;</a></p>
+  <p>Library staged 8 August 2026 &middot; 21 documents &middot; <a href="papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank">start with the PBM whitepaper &#8599;</a></p>
 </div></footer>
 </body></html>'''
 
