@@ -1,0 +1,9 @@
+# KNOWLEDGE MAP — 10 Ubin Phase 5
+## Alphas
+**A1 — The exit was the point.** P1's eleven-bank consortium becomes P5's MAS+Temasek+JPM trio; within a year the same trio's commercial echo (Partior: JPM/DBS/Temasek) launches with the multi-currency settlement mandate Ubin V prototyped. Public R&D → private JV, cleanly executed. Who captured the option value of five years of convened research is a fair and unasked question.
+**A2 — Governance named as the real problem.** P5's most durable text: no single party is trusted to hold central-bank liabilities across borders, but "trust is not binary" — less-critical functions can be centralised where incentives suffice. This sentence is the intellectual seed of both Dunbar's platform governance and GL1's operating-company model.
+**A3 — Escrow as first-class primitive.** The public API set ships ESCROW.INIT/SIGN/ENQUIRY/NOTIFY with release/revert/**dispute** actions — wholesale rails got a dispute verb in their message schema; retail PBM still lacks one. Second sighting of the recourse asymmetry ([id P7]).
+## Quadrants
+KK: Ubin V architecture, production-fidelity claim, use-case survey, API/github publication. KU: commercial/operating model, cross-network connectivity models. UK: Partior's imminent formation; Temasek's dual role as state investor and network participant. UU: *option-value capture* (above); *the SWIFT accommodation* — P5 praises SWIFT's cooperative model while sketching its replacement, the diplomatic ambiguity that lets both futures be pursued.
+## Narrative Vector
+Shifts the Ubin story from technology to industrial policy: the programme's deliverable was a commercialisable network and a chosen set of commercial champions. Everything the sentiment mandate needs to say about public-private value transfer has its cleanest example here.
