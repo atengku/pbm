@@ -1,0 +1,9 @@
+# KNOWLEDGE MAP — G5 FX Workstream
+## Alphas
+**A1 — TBLs win the money race by default.** Of the Blueprint's three permitted monies [id P4], tokenised bank liabilities are the one shipping in corporate use cases — CBDC deferred, stablecoins licensing slowly. The two-tier system's digital heir is the bank deposit, exactly as the 2021 monograph's protective doctrine [id P3] would predict.
+**A2 — Ant inside the tent.** A platform giant's treasury operating on bank-issued tokenised money under MAS convening is the co-option play in miniature: big tech joins the rails as *client*, not issuer — the walled-garden threat [id P3] neutralised by membership.
+**A3 — Documentation is destiny.** The standardised tokenised-FX documentation push is ISDA-style infrastructure: whoever writes the master terms writes the market.
+## Quadrants
+KK: FX/transaction-banking lifecycle on shared ledgers, TBL definition vs alternatives, three use cases, ops/risk catalogues, documentation agenda. KU: legal enforceability of tokenised-FX docs across jurisdictions; intraday liquidity effects of 24/7. UK: FSB/CPMI RTGS-hours workstreams as the incumbent-rail response; Partior as the unnamed adjacent production rail. UU: *24/7 risk transformation* — continuous settlement abolishes the overnight batch that current risk/ops models assume; the paper lists risks but not the institutional redesign continuous FX implies; *platform-treasury power* — Ant-scale treasuries on tokenised rails could internalise FX flow at volumes that rival mid-tier banks; the co-option may breed the next disintermediation.
+## Narrative Vector
+G5 is where the wholesale corpus touches commercial ground: TBLs as the winning money, platforms as clients, documentation as the next battlefield. The research phase is ending; the market-structure phase has begun.

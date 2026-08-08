@@ -1,0 +1,9 @@
+# KNOWLEDGE MAP — 12 GL1
+## Alphas
+**A1 — The OpCo is Dunbar's missing operator, incorporated.** Dunbar proved no sovereign can run the shared platform; GL1's answer is an industry utility run by a bank consortium. The governance vacuum becomes a company — and the five contributors (BNY, Citi, MUFG, Onyx, SocGen) are the presumptive shareholders of tokenised finance's TCP/IP.
+**A2 — "Public permissioned" is a franchise, worded as openness.** Open to "any entity that fulfils the criteria" — with the criteria set by the incumbents operating the nodes. Model 3 rhetoric imports internet-scale legitimacy while the KYC gate keeps internet-scale participation out.
+**A3 — MAS exports the Blueprint.** GL1 is the OCL pattern [id P4] scaled from Singapore-domestic to cross-jurisdictional — same whitelist logic, same designated-operator logic, now with BIS Finternet framing as air cover.
+## Quadrants
+KK: 3-model taxonomy, OpCo construct, asset-agnostic scope, DvP/PvP/DvPvP composability, trapped-liquidity motivation. KU: OpCo governance detail, jurisdiction rollout order, regulatory perimeter per jurisdiction. UK: Dunbar inheritance; Partior overlap (same JPM/settlement space — GL1 vs Partior lane-division unstated); Onyx's presence in both. UU: *OpCo antitrust surface* — a bank-owned utility setting participation criteria for competitors is a competition-law question nobody in the paper touches; *sovereignty round-trip* — Dunbar said sovereigns won't cede control to a shared platform, GL1's answer hands control to private banks instead, which solves the central-bank objection by creating a bigger one for everyone else.
+## Narrative Vector
+GL1 completes the arc: decentralisation explored (P2) → declined (P4) → re-offered as a bank-consortium franchise wearing open-network language. For the mandate: "who governs the operating company" is the next decade's question, and MAS is convening the answer.

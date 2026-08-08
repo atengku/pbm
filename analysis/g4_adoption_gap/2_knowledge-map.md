@@ -1,0 +1,9 @@
+# KNOWLEDGE MAP — G4 Bridging the Adoption Gap
+## Alphas
+**A1 — Kenneth Gay's fingerprint.** The CFO's foreword commits him publicly to: investors at the heart, trust/confidence/resilience as preconditions, tech justified only by concrete user benefit, international coordination as the scaling mechanism. A sentiment-research pitch is almost a restatement of his own paragraph — the mandate can be framed as *operationalising* Gay's stated doctrine.
+**A2 — The gap is institutional, and the citizen version is unwritten.** G4 maps why *institutions* don't adopt (fiduciary/ops/reg requirements unmet). No equivalent document maps why *citizens* would or wouldn't trust programmable money — the corpus's final, still-open seat, and precisely the SAA proposition.
+**A3 — Bilateralism as moat and megaphone.** SG–UK regulator pairing manufactures cross-border legitimacy; frameworks agreed by two hub regulators become de facto standards for everyone smaller.
+## Quadrants
+KK: adoption-gap thesis, buy-side requirement stack, SG–UK institutional pairing, IF3 Lab reference. KU: which specific reforms close the gap (directional, not specified). UK: [id G1]'s bond-level barriers as the concrete substrate; IMAS/IA as buy-side cartels lending legitimacy. UU: *the retail silence* (above) — "investors at the heart" means institutional investors throughout; the individual whose pension is the ultimate buy-side is absent from a paper titled around investors; *doctrine-vs-architecture tension* — Gay's "enhance not disrupt" foreword sits atop an architecture (Blueprint/GL1 gating) that is quietly re-drawing market structure; the gap between the CFO's language and the concession map is itself analysable.
+## Narrative Vector
+G4 completes the target-psychographics pair: Lim's doctrine [id G7] + Gay's doctrine here. The mandate walks through the door both men built — citizen-sentiment research as the missing volume in their own series.

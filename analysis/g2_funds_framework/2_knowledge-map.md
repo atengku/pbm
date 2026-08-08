@@ -1,0 +1,9 @@
+# KNOWLEDGE MAP — G2 Funds Framework
+## Alphas
+**A1 — Authority migration is the real product.** Mirror → partial → full on-chain registers is a ladder of legal authority moving from administrator to ledger. Everything else (efficiency, personalisation) is decoration on the question of who holds the authoritative record — and thus the fees, the liability, and the veto.
+**A2 — The capped-benefit admission.** G2 concedes tokenising today's fund structures yields limited gains; the promised land requires *new* structures. Translation: the framework standardises a transitional product while the endgame remains unlegislated.
+**A3 — GCTT as taxonomy land-grab.** Like ICMA BDT in [id G1], whoever's composable token taxonomy becomes default owns the integration layer of a trillion-dollar industry's plumbing.
+## Quadrants
+KK: lifecycle mapping, three register archetypes, GCTT, MMF case. KU: future-state fund structures (sketched, not specified); cross-border register recognition. UK: transfer-agency/fund-admin incumbents whose franchise is the register — the displaced party is unnamed throughout; MMF-as-first-product logic (cash-like, tMMF momentum) imported from market reality. UU: *register bifurcation risk* — mirror/partial models create two records that can disagree; reconciliation failure in a "tokenised" fund would be a scandal precisely because the tech promised its impossibility; *the personalisation-privacy trade* — direct-to-investor personalisation via immutable ledgers builds a permanent behavioural record of retail investors; no privacy treatment exists in the paper.
+## Narrative Vector
+G2 standardises the transition and quietly admits the destination needs different law. The authority-migration ladder is the analytical spine to carry into [id G6], where legal reality bites.
