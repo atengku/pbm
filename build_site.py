@@ -211,6 +211,10 @@ footer a{{color:var(--gold)}}
       <p class="sum" style="margin-bottom:18px">All twenty-one papers read as one document: how the money layer was settled in 2021, why every constraint citizens meet is authored rather than inherent, where recourse was engineered and where it was omitted, who holds the unassigned concessions, and the one document this corpus proves is missing. Every claim cites and links the primary source.</p>
       <a class="btn" href="synthesis.html">Read the synthesis</a>
       <a class="btn ghost" href="analysis/index.html">Browse all 21 analyses</a>
+      <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--line)">
+        <p class="meta" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold2);margin:0 0 8px">LISTEN &middot; Episode 1 &middot; 8 min</p>
+        <audio controls preload="none" style="width:100%;max-width:560px"><source src="audio/The_Machine_Singapore_Built_E1.mp3" type="audio/mpeg"></audio>
+      </div>
     </div>
   </section>
 {sections_html}</div>
