@@ -103,6 +103,73 @@ footer a{color:var(--gold)}
   </div>
 </div></div>
 
+
+<div class="wrap">
+  <section class="band" id="thetake" style="border-top:none;padding-top:34px">
+    <div class="band-head">
+      <h2>Read this first — what this record shows</h2>
+    </div>
+    <div class="orig" style="border-color:var(--gold);background:linear-gradient(160deg,#161c25,#10141a)">
+      <p class="sum" style="margin-bottom:14px">Since Bitcoin was introduced to the world, central banks have — quietly, in papers the public was never shown — been building digital ledgers of their own. In Singapore that work began with <em>Project Ubin</em> in 2016, and <em>twenty-one official papers</em> have followed since the first, every one of them hosted on this site. This library exists to put that record in front of the public: purpose-bound money and CBDC are being positioned as the future of currency — and Singapore, under the pretext of assistance, has been running the live test on its own population through the voucher schemes.</p>
+      <p class="sum" style="margin-bottom:14px">Understand what the end goal of this architecture is. A conventional central bank controls the <em>supply</em> of money. A central bank issuing programmable money controls its <em>velocity</em> — money with a spend-by date is money that must move when the issuer decides, at the shops the issuer permits, or be extinguished. That capability is not speculation; it is specified in MAS's own whitepaper below, expiry and revocation included.</p>
+      <p class="sum" style="margin-bottom:0">And when you are told Singapore does not print money from thin air — read the record on this page, watch the grey money-supply curve rising behind the timeline, and form your own opinion.</p>
+    </div>
+    <div class="band-head" style="margin-top:34px">
+      <h2>The timeline — crisis &rarr; whitepapers &rarr; rollout</h2>
+      <p>One axis: the US money supply (M2), the crisis-and-counter-idea lane, the BIS/IMF paper arc, and Singapore's build — in lockstep. <b style="color:var(--gold2)">Every plotted point is clickable</b> and opens the document it stands for, with its analysis. Read it as chronology, not proof of a single hand; the clustering is the point worth interrogating.</p>
+    </div>
+    <div id="chart" style="background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 10px 8px"></div>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin:12px 2px 0;line-height:1.7">Sources: US M2, FRED series M2SL ($15.4T Feb 2020 &rarr; $21.7T peak Apr 2022) &middot; BIS CPMI Mar 2018 &middot; IMF Lagarde &ldquo;Winds of Change,&rdquo; Singapore, 14 Nov 2018 &middot; BIS foundational principles, 9 Oct 2020 &middot; MAS Project Ubin / Orchid / PBM whitepaper &mdash; all hosted below.</p>
+  </section>
+</div>
+
+<script>
+(function(){
+  var M2=[[2007,7.5],[2008,8.2],[2009,8.5],[2010,8.8],[2011,9.7],[2012,10.5],[2013,11.0],[2014,11.7],[2015,12.4],[2016,13.3],[2017,13.9],[2018,14.5],[2019,15.4],[2020,19.1],[2021,21.6],[2022,21.4],[2023,20.9],[2024,21.9],[2025,22.0]];
+  var EV=[
+    {y:2008.70,lane:0,t:"Lehman collapses",d:"Sep 2008"},
+    {y:2008.83,lane:0,t:"Satoshi Bitcoin paper",d:"Oct 2008",off:1,url:"analysis/X1.html"},
+    {y:2011.71,lane:0,t:"Occupy Wall Street",d:"Sep 2011"},
+    {y:2016.20,lane:2,t:"MAS Project Ubin",d:"2016",url:"#ubin"},
+    {y:2018.20,lane:1,t:"BIS CPMI — CBDCs",d:"Mar 2018",url:"analysis/X2.html"},
+    {y:2018.87,lane:1,t:"IMF Lagarde, Singapore",d:"Nov 2018",off:1,url:"analysis/X3.html"},
+    {y:2020.77,lane:1,t:"BIS foundational principles",d:"Oct 2020",url:"analysis/X4.html"},
+    {y:2020.40,lane:2,t:"CDC Vouchers launched",d:"2020"},
+    {y:2021.85,lane:2,t:"MAS Project Orchid",d:"2021",off:1,url:"#orchid"},
+    {y:2023.47,lane:2,t:"MAS PBM whitepaper",d:"Jun 2023",url:"#whitepaper"},
+    {y:2026.05,lane:2,t:"FY2026 rollout hardens",d:"2026"}
+  ];
+  var laneColor=["#EC3013","#c9a24b","#4f8ff0"];
+  var W=1000,H=470,PL=44,PR=54,PT=24,PB=42;
+  var x0=2007,x1=2026.4,yMax=24;
+  function X(y){return PL+(y-x0)/(x1-x0)*(W-PL-PR);}
+  function Y(v){return H-PB-(v/yMax)*(H-PT-PB);}
+  var s='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto">';
+  for(var yr=2008;yr<=2026;yr+=2){var gx=X(yr);s+='<line x1="'+gx+'" y1="'+PT+'" x2="'+gx+'" y2="'+(H-PB)+'" stroke="#1d242e"/>';s+='<text x="'+gx+'" y="'+(H-PB+18)+'" fill="#8c98a8" font-size="11" text-anchor="middle" font-family="IBM Plex Mono, monospace">'+yr+'</text>';}
+  var area='M '+X(M2[0][0])+' '+(H-PB);
+  M2.forEach(function(p){area+=' L '+X(p[0])+' '+Y(p[1]);});
+  area+=' L '+X(M2[M2.length-1][0])+' '+(H-PB)+' Z';
+  s+='<path d="'+area+'" fill="#8c98a8" fill-opacity="0.12"/>';
+  var line='M';M2.forEach(function(p,i){line+=(i?' L':' ')+X(p[0])+' '+Y(p[1]);});
+  s+='<path d="'+line+'" fill="none" stroke="#8c98a8" stroke-width="2"/>';
+  [8,12,16,20].forEach(function(v){s+='<text x="'+(W-PR+8)+'" y="'+(Y(v)+4)+'" fill="#8c98a8" font-size="10" font-family="IBM Plex Mono, monospace">$'+v+'T</text>';});
+  s+='<text x="'+(W-PR+8)+'" y="'+(PT+4)+'" fill="#8c98a8" font-size="10" font-family="IBM Plex Mono, monospace">M2</text>';
+  var laneY=[H-PB-92,H-PB-158,H-PB-224];
+  EV.forEach(function(e){
+    var ex=X(e.y),ly=laneY[e.lane]-(e.off?26:0),c=laneColor[e.lane];
+    s+='<line x1="'+ex+'" y1="'+ly+'" x2="'+ex+'" y2="'+(H-PB)+'" stroke="'+c+'" stroke-width="1.4" stroke-opacity="0.55"/>';
+    var anchor='start',tx=ex+9;
+    if(e.y>2022.5){anchor='end';tx=ex-9;}
+    var marker='<circle cx="'+ex+'" cy="'+ly+'" r="'+(e.url?6:5)+'" fill="'+c+'"'+(e.url?' stroke="#e8edf4" stroke-width="1.2"':'')+'/>';
+    marker+='<text x="'+tx+'" y="'+(ly-6)+'" fill="#e8edf4" font-size="12.5" font-weight="600" text-anchor="'+anchor+'" font-family="Inter, sans-serif"'+(e.url?' text-decoration="underline"':'')+'>'+e.t+'</text>';
+    marker+='<text x="'+tx+'" y="'+(ly+8)+'" fill="#8c98a8" font-size="10.5" text-anchor="'+anchor+'" font-family="IBM Plex Mono, monospace">'+e.d+'</text>';
+    if(e.url){ s+='<a href="'+e.url+'" style="cursor:pointer">'+marker+'</a>'; } else { s+=marker; }
+  });
+  s+='</svg>';
+  var el=document.getElementById('chart'); if(el) el.innerHTML=s;
+})();
+</script>
+
 <div class="original" id="whitepaper"><div class="wrap">
   <p class="orig-label">Original White Paper</p>
   <div class="orig">
