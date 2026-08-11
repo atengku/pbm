@@ -1,68 +1,100 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Satoshi — Bitcoin: A Peer-to-Peer Electronic Cash System (2008) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
-*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
-header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
-header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
-.brand a{color:inherit;text-decoration:none}
+<title>X1 · Satoshi — Bitcoin: A Peer-to-Peer Electronic Cash System (2008) — Forensic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--red:#e5544b;--amber:#d9a441;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 90px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
 .crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
-h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
-h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
-h3{font-size:17px;margin:30px 0 8px}
-p,li{font-size:16px;color:#cdd6e2}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-strong{color:var(--ink)}
-em{color:var(--gold2);font-style:normal}
-a{color:var(--gold2)}
-a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
-a.cite:hover{background:rgba(201,162,75,.12)}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
-blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
-.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
-.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
-.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;margin:40px 0 6px;letter-spacing:-.01em}
+.themetag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0a0c10;background:var(--gold);padding:4px 10px;border-radius:5px;margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 22px;font-size:13.5px}
+.meta div span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.oneline{font-size:17px;color:var(--gold2);margin:14px 0 0;line-height:1.5}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
 .docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
 .docbar a:hover{border-color:var(--gold)}
-.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
-.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
-.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
-.idx a{text-decoration:none}
-.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+h2{font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);margin-right:10px}
+p,li{font-size:16px;color:#cdd6e2}
+.find{margin:16px 0;padding-left:16px;border-left:2px solid var(--gold)}
+.find b{color:var(--gold2)}
+strong{color:var(--ink)}
+.trail{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.gap{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.audio{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.audio .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding:8px 9px;text-align:left;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:9px 9px;vertical-align:top;color:#cdd6e2}
+td b{color:var(--ink)}
+.f-none{color:var(--grn)}.f-watch{color:var(--amber)}.f-conflict{color:var(--red);font-weight:700}
+.disc-no{color:var(--red);font-weight:600}.disc-part{color:var(--amber)}.disc-yes{color:var(--grn)}
+.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px}
+.src{font-size:13px;color:var(--mut);line-height:1.7}.src a{color:var(--gold2)}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px}
 </style></head><body>
-<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · X1</div></div></header>
-<div class="wrap"><h1>The Bitcoin Whitepaper (2008) — the starting point</h1><p class="byline">Three-stage analytical chain · ref [X1] · context document (not MAS)</p>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Forensic Analysis · X1 · SA-DOC v1</div></div></header>
+<div class="wrap">
+
+<h1>The Bitcoin Whitepaper</h1>
+<div class="themetag">T0 · Origins &amp; Officialisation</div>
+<div class="card">
+  <div class="meta">
+    <div><span>Ref</span>X1</div>
+    <div><span>Publisher</span>&#8220;Satoshi Nakamoto&#8221; (pseudonymous, unverified)</div>
+    <div><span>Date</span>31 Oct 2008</div>
+    <div><span>Reliability</span>Text Tier 1 · Authorship Tier 3</div>
+    <div><span>Version</span>v2.0</div>
+    <div><span>Tags</span>origins · proof-of-work · bearer · Tier-3 authorship</div>
+  </div>
+  <p class="oneline">The starting point — proof that money can move at scale without banks; the counter-idea the entire official corpus answers by keeping the ledger and stripping every liberating property.</p>
+</div>
 <div class="docbar"><a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">Open the original paper ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
 
-<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: "Bitcoin: A Peer-to-Peer Electronic Cash System" — nine pages, posted to the metzdowd cryptography mailing list on 31 Oct 2008, six weeks after Lehman Brothers failed (15 Sep 2008). <strong>The starting point of the entire timeline this library documents.</strong>
-SOURCE / RELIABILITY: Primary text, universally available and unaltered — but the <strong>only document in this corpus whose author is unverified</strong>. "Satoshi Nakamoto" is a pseudonym; the person or group behind it has never been established. Treat the text as Tier 1, the authorship as Tier 3.
-KEY CLAIMS (from the paper itself): a purely peer-to-peer version of electronic cash, allowing online payments to move without any financial institution; double-spending solved by proof-of-work over a public chain rather than by a trusted third party; the network needs "minimal structure"; privacy by pseudonymous keys rather than identity. Implemented weeks later with a fixed 21m issuance cap (in code, not in the paper) and a genesis block (3 Jan 2009) embedding that day's Times of London headline: <em>"Chancellor on brink of second bailout for banks."</em>
-SIGNIFICANCE: every document that follows on this timeline — BIS 2018 [X2], Lagarde 2018 [X3], BIS 2020 [X4], and the whole MAS build from Ubin to the PBM whitepaper [P5]→[P1] — is downstream of the possibility this paper proved: <strong>money can move at scale without banks.</strong>
-ROUTE: → timeline anchor, Oct 2008. The counter-idea the rest of the corpus answers.</p></div>
+<h2><span class="n">01</span>What this is</h2>
+<p>Nine pages posted to the metzdowd cryptography mailing list on 31 Oct 2008, six weeks after Lehman failed. It defines peer-to-peer electronic cash: double-spending solved by <strong>proof-of-work over a public chain</strong> rather than a trusted third party, privacy by pseudonymous keys. Implemented weeks later with a fixed 21m issuance cap (in code, not the paper) and a genesis block (3 Jan 2009) embedding the Times headline &#8220;Chancellor on brink of second bailout for banks.&#8221; It is the <strong>only document in this corpus whose author is unverified</strong> — text Tier 1, authorship Tier 3.</p>
 
-<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Executive Summary (Alphas)</h2>
-<p><strong>Alpha 1 — The starting gun.</strong> The crisis (Sep 2008) and the counter-idea (Oct 2008) are six weeks apart. Whatever else is contested, the sequence is not: the modern digital-currency era begins as a response to the bailout system, stated in the author's own genesis message.
-<strong>Alpha 2 — Point-by-point inversion.</strong> Set Bitcoin's parameters against the PBM stack [P1][P4] and every one is flipped:</p>
-<table><tr><th>Property</th><th>Bitcoin (2008)</th><th>PBM / CBDC stack (2023)</th></tr>
-<tr><td>Issuance</td><td>Fixed cap, algorithmic</td><td>Discretionary, policy-set</td></tr>
-<tr><td>Access</td><td>Permissionless</td><td>Licensed / designated deployers [P4]</td></tr>
-<tr><td>Holder status</td><td>Bearer, key = ownership</td><td>Identity-bound, credentialed [G7]</td></tr>
-<tr><td>Reversibility</td><td>Irreversible by design</td><td>Revocable by creator (Fig 15) [P1]</td></tr>
-<tr><td>Expiry</td><td>None — value persists</td><td>Configurable, default in voucher schemes [P1]</td></tr>
-<tr><td>Operator</td><td>None — proven removable</td><td>Reinstated, FMI-grade [P4][P6]</td></tr></table>
-<p><strong>Alpha 3 — The absorption.</strong> The official corpus kept the distributed ledger and stripped every liberating property. Ubin Phase 2 proved the operator could be removed [P6]; the Blueprint put the operator back [P4]. The revolution's technology was retained; its point was not.</p></div>
+<h2><span class="n">02</span>Why it matters</h2>
+<p>Everything downstream — BIS 2018 <a class="cite" href="X2.html">X2</a>, Lagarde 2018 <a class="cite" href="X3.html">X3</a>, BIS 2020 <a class="cite" href="X4.html">X4</a>, and the MAS build from Ubin to PBM <a class="cite" href="P1.html">P1</a> — is downstream of the possibility this paper proved: <strong>money can move at scale without banks</strong>. The official corpus kept the distributed ledger and inverted its properties — permissionless became licensed, bearer became credentialed, irreversible became revocable.</p>
 
-<p class="stagehead">Stage 3 — Research Note: The Authorship Question</p><div class="stage">
-<h2>The hypothesis on the table</h2>
-<p>The question asked of this file: could the paper have come from <em>the same actors</em> — the central-banking establishment — as a controlled way of testing digital currencies and their effect on a population?</p>
-<h3>What feeds the suspicion</h3>
-<p>The timing is surgical — six weeks after Lehman, landing exactly when trust in banks was at its generational low. The cryptography is establishment-grade: Bitcoin runs on <strong>SHA-256, a hash standard designed and published by the NSA</strong>, and the concept of state-adjacent interest in anonymous digital cash is on the record as early as the NSA's own 1996 paper <em>"How to Make a Mint: The Cryptography of Anonymous Electronic Cash."</em> The author's operational discipline — flawless pseudonymity for years, a clean exit in 2011, an untouched fortune of roughly a million coins — reads more like an institution's tradecraft than a hobbyist's. And the outcome pattern fits a probe: within a decade the official sector had its taxonomy [X2], its permission speech [X3], its bloc doctrine [X4], and its pilots (Ubin, 2016 [P5]) — a remarkably fast harvest of a supposedly hostile experiment.</p>
-<h3>What cuts against it</h3>
-<p>The idea has a documented 25-year public lineage through the cypherpunk community — Chaum's ecash (1982), Back's hashcash (1997), Dai's b-money (1998), Szabo's bit gold — evolving in an openly anti-state milieu, not a lab. The genesis message is a taunt at the bailout system, an odd signature for its supposed author. The early code was idiosyncratic in ways institutional software is not. The BIS's own contemporaneous posture was hostile ("Bitcoin not the answer to a cashless society," Mar 2018) — consistent with an institution reacting, not directing. And the incentive logic fails: an establishment wanting to test digital money does not need to release an uncontrollable, permissionless global network — it builds sandboxes, which is precisely what MAS then did [P5]→[P10].</p>
-<h3>Verdict — and the read that survives either way</h3>
-<p><strong>Under this file's confidence tiering the authorship hypothesis is Tier 3: state it as a question, never as a fact.</strong> The chronology is consistent with reaction, not origination. But the functional claim is Tier 1 and it is the one that matters: <em>whoever wrote the paper, Bitcoin became the world's live, unpaid experiment in digital money</em> — seventeen years of free field data on adoption, custody behaviour, volatility tolerance, loss, theft, crime and sentiment, at population scale — and the official corpus visibly harvested the technology while inverting its properties. You do not need to have authored an experiment to own its results.</p>
-<p>The population-effects contrast is the sharpest line: what Bitcoin tested, it tested on <strong>volunteers</strong> — people who chose self-custody, irreversibility and bearer risk. What the voucher stack deploys — expiry, merchant locks, revocability — is tested on <strong>enrollees</strong>, a national population that never opted in and is not shown the clock <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank">P1</a>. The timeline on the brief reads it correctly: chronology, not proof of a single hand — and the clustering is the point worth interrogating.</p></div>
+<h2><span class="n">03</span>Key findings</h2>
+<div class="find"><b>Finding 1 — The starting gun.</b> Crisis (Sep 2008) and counter-idea (Oct 2008) are six weeks apart. Whatever is contested, the sequence is not: the digital-currency era begins as a response to the bailout system, stated in the author&#39;s own genesis message.</div>
+<div class="find"><b>Finding 2 — Point-by-point inversion.</b> Every Bitcoin parameter is flipped in the PBM/CBDC stack: fixed cap → discretionary issuance; permissionless → designated deployers <a class="cite" href="P4.html">P4</a>; bearer → identity-bound <a class="cite" href="G7.html">G7</a>; irreversible → revocable <a class="cite" href="P1.html">P1</a>; no expiry → configurable expiry; no operator → FMI-grade operator reinstated <a class="cite" href="P4.html">P4</a>.</div>
+<div class="find"><b>Finding 3 — The absorption.</b> Ubin Phase 2 proved the operator could be removed <a class="cite" href="P6.html">P6</a>; the Blueprint put it back <a class="cite" href="P4.html">P4</a>. The revolution&#39;s technology was retained; its point was not.</div>
 
+<h2><span class="n">04</span>The Entity Register</h2>
+<p class="legend">Every entity the text names, its role here, and — the point — whether any downstream commercial interest was disclosed alongside that role. ● none · ▲ watch · ■ interest + no disclosure.</p>
+<div class="tablewrap"><table>
+<tr><th>Entity</th><th>Type</th><th>Role in this document</th><th>Commercial interest?</th><th>Downstream benefit</th><th>Disclosed?</th><th></th></tr>
+<tr><td><b>&#8220;Satoshi Nakamoto&#8221;</b></td><td>Pseudonymous author (unverified)</td><td>Wrote the paper; mined the first coins</td><td>Unknown</td><td>~1m coins, untouched since 2011</td><td class="disc-no">Identity unestablished</td><td class="f-watch">▲</td></tr>
+<tr><td>David Chaum</td><td>Individual · lineage</td><td>ecash (1982) — prior art</td><td>None direct</td><td>Intellectual antecedent</td><td class="disc-yes">n/a</td><td class="f-none">●</td></tr>
+<tr><td>Adam Back</td><td>Individual · lineage</td><td>hashcash (1997) — cited in the paper</td><td>None direct</td><td>Proof-of-work antecedent</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td>Wei Dai</td><td>Individual · lineage</td><td>b-money (1998) — cited in the paper</td><td>None</td><td>Design antecedent</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td>Nick Szabo</td><td>Individual · lineage</td><td>bit gold — antecedent; recurrent same-author speculation target</td><td>None established</td><td>Antecedent (authorship unproven)</td><td class="disc-yes">n/a</td><td class="f-watch">▲</td></tr>
+<tr><td><b>NSA</b></td><td>State agency (context)</td><td>Designed SHA-256, the hash Bitcoin runs on; authored &#8220;How to Make a Mint&#8221; (1996)</td><td>Institutional</td><td>Establishment-grade cryptographic substrate</td><td class="disc-no">n/a (context)</td><td class="f-watch">▲</td></tr>
+</table></div>
+
+<h2><span class="n">05</span>The Money Trail</h2>
+<div class="trail">There is no commercial sponsor in the paper — the money trail is the <em>absence</em> of one, and a ~1m-coin fortune never spent. The Tier-3 question this file holds open: <em>could the paper have come from the same central-banking establishment the rest of the corpus documents, as a controlled test of digital currency on a population?</em> What <strong>feeds the suspicion</strong>: surgical timing (six weeks post-Lehman), NSA-designed SHA-256, flawless multi-year operational pseudonymity, and a fast official harvest — taxonomy <a class="cite" href="X2.html">X2</a>, permission <a class="cite" href="X3.html">X3</a>, doctrine <a class="cite" href="X4.html">X4</a>, pilots (Ubin). What <strong>cuts against it</strong>: a documented 25-year cypherpunk lineage (Chaum, Back, Dai, Szabo), a genesis message taunting the bailout system, idiosyncratic early code, and a contemporaneous BIS posture that was hostile (&#8220;Bitcoin not the answer,&#8221; Mar 2018). <strong>Under SA-DOC v1 this stays a question, never a fact.</strong> The claim that survives either way is Tier 1: whoever wrote it, Bitcoin became the world&#39;s live, unpaid experiment in digital money, and the official corpus harvested the technology while inverting its properties.</div>
+
+<h2><span class="n">06</span>The Gap</h2>
+<div class="gap">The load-bearing gaps. <strong>(1) Authorship:</strong> unestablished — treated here as a question, not a finding, per Tier-3 discipline. <strong>(2) The population-effects contrast:</strong> Bitcoin tested on <strong>volunteers</strong> who chose self-custody, irreversibility and bearer risk; the voucher stack deploys expiry, merchant locks and revocability on <strong>enrollees</strong> who never opted in and are not shown the clock <a class="cite" href="P1.html">P1</a>. <strong>(3) Ownership of results:</strong> the official sector harvested seventeen years of free field data without having to author the experiment.</div>
+
+<h2><span class="n">07</span>Cross-references</h2>
+<p><a class="cite" href="X2.html">X2</a> first BIS CBDC taxonomy · <a class="cite" href="X3.html">X3</a> the permission speech · <a class="cite" href="X4.html">X4</a> bloc doctrine · <a class="cite" href="P1.html">P1</a> the PBM wrapper · <a class="cite" href="P4.html">P4</a> the Blueprint · <a class="cite" href="P6.html">P6</a> Ubin operator-removal.</p>
+
+<h2><span class="n">08</span>Podcast</h2>
+<div class="audio"><div class="k">Listen · read in your browser</div>
+<p class="src" id="pod" style="margin-bottom:10px">Host A: This is where the whole story starts — nine pages, October 2008, six weeks after Lehman. A pseudonymous author, Satoshi, proves money can move without banks. Host B: And the money trail is strange because there isn&#39;t one. No sponsor, and a fortune of about a million coins that&#39;s never been touched. Host A: There&#39;s a Tier-3 question we keep open, never assert: could this have come from the same establishment the rest of the library documents — a controlled test? The timing is surgical, the crypto is NSA-grade SHA-256. Host B: But against that, there&#39;s a 25-year cypherpunk lineage — Chaum, Back, Dai, Szabo — and a genesis message mocking the bailout. So we hold it as a question. Host A: What&#39;s not a question is what happened next. Officials kept the ledger and stripped everything that made it free — permissionless became licensed, irreversible became revocable. Host B: Bitcoin tested on volunteers who opted in. The voucher stack tests expiry and revocation on a whole population that never did — and isn&#39;t shown the clock.</p>
+<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+
+<h2><span class="n">09</span>Sources</h2>
+<p class="src">Primary text: <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">bitcoin.org/bitcoin.pdf</a>; the 3 Jan 2009 genesis block; NSA, &#8220;How to Make a Mint: The Cryptography of Anonymous Electronic Cash&#8221; (1996); cypherpunk prior art (Chaum 1982, Back 1997, Dai 1998, Szabo). The text is Tier 1; authorship and the same-actors hypothesis are assessed <strong>Tier 3 — question, not fact</strong> — per SA-DOC v1.</p>
 </div></body></html>
