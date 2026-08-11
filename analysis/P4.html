@@ -1,121 +1,105 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Orchid Blueprint (2023) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
-*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
-header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
-header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
-.brand a{color:inherit;text-decoration:none}
+<title>P4 · Orchid Blueprint (2023) — Forensic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--red:#e5544b;--amber:#d9a441;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 90px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
 .crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
-h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
-h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
-h3{font-size:17px;margin:30px 0 8px}
-p,li{font-size:16px;color:#cdd6e2}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-strong{color:var(--ink)}
-em{color:var(--gold2);font-style:normal}
-a{color:var(--gold2)}
-a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
-a.cite:hover{background:rgba(201,162,75,.12)}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
-blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
-.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
-.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
-.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;margin:40px 0 6px;letter-spacing:-.01em}
+.themetag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0a0c10;background:var(--gold);padding:4px 10px;border-radius:5px;margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 22px;font-size:13.5px}
+.meta div span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.oneline{font-size:17px;color:var(--gold2);margin:14px 0 0;line-height:1.5}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
 .docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
 .docbar a:hover{border-color:var(--gold)}
-.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
-.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
-.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
-.idx a{text-decoration:none}
-.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+h2{font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);margin-right:10px}
+p,li{font-size:16px;color:#cdd6e2}
+.find{margin:16px 0;padding-left:16px;border-left:2px solid var(--gold)}
+.find b{color:var(--gold2)}
+strong{color:var(--ink)}
+.trail{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.gap{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.audio{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.audio .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding:8px 9px;text-align:left;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:9px 9px;vertical-align:top;color:#cdd6e2}
+td b{color:var(--ink)}
+.f-none{color:var(--grn)}.f-watch{color:var(--amber)}.f-conflict{color:var(--red);font-weight:700}
+.disc-no{color:var(--red);font-weight:600}.disc-part{color:var(--amber)}.disc-yes{color:var(--grn)}
+.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px}
+.src{font-size:13px;color:var(--mut);line-height:1.7}.src a{color:var(--gold2)}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px}
 </style></head><body>
-<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P4</div></div></header>
-<div class="wrap"><h1>Orchid Blueprint (2023)</h1><p class="byline">Three-stage analytical chain · ref [P4]</p>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Forensic Analysis · P4 · SA-DOC v1</div></div></header>
+<div class="wrap">
+
+<h1>Orchid Blueprint (2023)</h1>
+<div class="themetag">T4 · The Concessions</div>
+<div class="card">
+  <div class="meta">
+    <div><span>Ref</span>P4</div>
+    <div><span>Publisher</span>MAS</div>
+    <div><span>Date</span>Nov 2023</div>
+    <div><span>Reliability</span>Tier 1 · Primary</div>
+    <div><span>Version</span>v1.0</div>
+    <div><span>Tags</span>OCL · settlement ledger · TBL · SCS · designated deployer · MEPS+</div>
+  </div>
+  <p class="oneline">The gatekeeping document. The wrapper writes policy — the Blueprint decides who is licensed to write wrappers, drawing a concession map for programmable money before the market exists.</p>
+</div>
 <div class="docbar"><a href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
-<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: The infrastructure blueprint for digital-money issuance and use in Singapore — settlement ledgers, tokenisation bridge, PBM as protocol layer, name service, and the governance perimeter.
-SOURCE / RELIABILITY: <strong>Primary</strong> — MAS, Nov 2023, with industry group input (Phase 2 output).
-ENTITIES: MAS · Amazon · BCS (Banking Computer Services) [NEW] · DBS · Fazz · Grab · Onyx (JPM) · NETS · OCBC · UOB · MEPS+ · FAST · OCL ["Orchid Compatible Ledger" — NEW term].
-KEY CLAIMS:
-- Three supported monies only: MAS-regulated stablecoins (SCS framework, Aug 2023), tokenised bank liabilities from MAS-licensed banks, and MAS-issued CBDC. Everything else excluded.
-- Building blocks: (1) Settlement Ledger with atomic settlement + native programmability, (2) Tokenisation Bridge to account-based rails, (3) PBM as the programmability protocol, (4) Name Service, (5) modular future blocks.
-- OCL qualification: operators face FMI-grade expectations (PFMI in scope as systemically important); <strong>permissionless networks "unlikely to meet the requirements"</strong>; rulebooks dictate permissible activity; e.g. all may transact, only designated providers deploy smart contracts.
-- Retail access only indirect, through licensed FIs post-KYC; whitelisting/subnets/verifiable credentials as access controls.
-- Scope excludes cross-border trade + capital markets (routed to Guardian).
-CONTRADICTIONS w/ KB: None; hardens P1/P2's open governance questions into a permissioned perimeter.
-CLASSIFY: Digital money infrastructure · tags: OCL, settlement ledger, PBM, TBL, SCS, MEPS+.
-SIGNIFICANCE: The gatekeeping document — decides who may operate, who may program, who may touch the ledger. The wrapper writes policy (P1); the Blueprint decides who gets to write wrappers.
-ROUTE: → knowledge map → SA note. File as <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>.</p></div>
-<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Executive Summary (Alphas)</h2>
-<p><strong>Alpha 1 — The Blueprint is a licensing perimeter drawn in advance.</strong> By defining OCL qualification (FMI-grade standards, rulebooks, permissioned deployment), MAS pre-decides the market structure of programmable money before any market exists. Incumbent settlement operators and licensed banks are grandfathered into the future by specification.
-<strong>Alpha 2 — Permissionless is out, by design.</strong> The explicit finding that permissionless networks are "unlikely to meet the requirements" quietly severs Singapore's retail digital money from public-chain ecosystems while Guardian courts them for wholesale assets. Two-track strategy: open for capital markets optics, closed for the money citizens hold.
-<strong>Alpha 3 — Smart-contract deployment as a licensable activity.</strong> "All participants may initiate transactions, but deployment of smart contracts may only be done by designated service providers" — wrapper authorship (the policy surface from P1) becomes a gated privilege. This is the choke point of the entire architecture.</p>
-<h2>4-Quadrant Matrix</h2>
-<p><strong>KNOWN KNOWNS:</strong> Three permitted money forms · five building blocks · OCL spec + PFMI exposure · indirect-only retail access · MEPS+/FAST augmentation logic · cybersecurity/OWASP smart-contract posture · scope exclusion of cross-border/capital markets.
-<strong>KNOWN UNKNOWNS (paper flags):</strong> commercial/operating model alignment among FIs · scheme rulebook detail · cross-border extension · onboarding streamlining · scalability of commercial arrangements.
-<strong>UNKNOWN KNOWNS:</strong> SCS framework timing (finalised Aug 2023, three months prior — the Blueprint operationalises it) · BCS's role as domestic clearing incumbent (FAST operator lineage) — the natural OCL operator hiding in the contributor list · P3's disintermediation doctrine silently enforced by the three-money whitelist.
-<strong>UNKNOWN UNKNOWNS (gaps):</strong>
-- <em>Designated-deployer capture risk.</em> Whoever wins "designated service provider" status owns the policy-authoring layer for programmable SGD. No criteria, no contestability process, no sunset — a concession being created without a tender.
-- <em>OCL plurality vs monopoly.</em> Paper gestures at domestic convergence to a single ledger for economies of scale; a single OCL operator = a new systemically-important private monopoly at the heart of retail money. Governance of that entity is unwritten.
-- <em>Bridge as the fragile joint.</em> The Tokenisation Bridge connecting token rails to MEPS+/FAST inherits both worlds' failure modes; it is the systemic single point the PFMI language circles without naming.</p>
-<h2>Narrative Vector</h2>
-<p>The Blueprint <strong>shifts the story</strong> from technology to market structure: Orchid's real Phase 2 output is a draft concession map for who operates, who programs, and who merely transacts. For the mandate: MAS will need public legitimacy for exactly these gatekeeping choices — sentiment research on "who should be allowed to program money" is unclaimed ground.</p></div>
-<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
-<p><a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> The Blueprint converts Orchid from experiment to market design. It whitelists three forms of money (MAS-regulated stablecoins, licensed-bank TBLs, MAS CBDC), specifies the Orchid Compatible Ledger with FMI-grade expectations, and gates the two powers that matter: operating the ledger and deploying smart contracts. Permissionless infrastructure is excluded from retail money outright. The document reads as pre-regulation — a concession framework published as a technical paper — and the unassigned "designated service provider" role for contract deployment is the single most valuable undistributed licence in the architecture.</p>
-<h2>2. Entity &amp; People Map</h2>
-<table>
-<thead>
-<tr>
-<th>Entity</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MAS</td>
-<td>Specifier / future gatekeeper</td>
-</tr>
-<tr>
-<td>BCS</td>
-<td>Domestic clearing incumbent in contributor list — natural OCL operator candidate</td>
-</tr>
-<tr>
-<td>DBS, OCBC, UOB</td>
-<td>TBL issuers; ledger participants</td>
-</tr>
-<tr>
-<td>Onyx (JPM), Amazon</td>
-<td>Tech/rails contributors</td>
-</tr>
-<tr>
-<td>Grab, Fazz, NETS</td>
-<td>Wallet/acceptance layer</td>
-</tr>
-<tr>
-<td>MEPS+ / FAST</td>
-<td>Legacy rails the Bridge must touch</td>
-</tr>
-</tbody>
-</table>
-<h2>3. Mechanics (evidence chain)</h2>
-<p><a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4 §3</a> Permitted monies: SCS-framework stablecoins, licensed-bank TBLs, MAS CBDC — closed list. <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4 §4</a> Five building blocks; settlement ledger carries atomic settlement + native programmability; PFMI applies to the extent systemically important. <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4 §4.1</a> Permissionless networks "unlikely to meet the requirements" of OCL qualification; rulebooks govern permissible activity; deployment of smart contracts restricted to designated providers; retail access indirect via licensed FIs with due diligence; whitelists/subnets/verifiable credentials as controls. <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4 §8</a> Cross-border deferred; industry group continues on open questions.</p>
-<h2>4. Pattern / Network Analysis</h2>
-<p><a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> Third appearance of the repertory cast (<a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2</a>), now with BCS added — the clearing-utility tell. Pattern: each Orchid document ratchets the perimeter tighter (P1 explores → whitepaper standardises → Blueprint licenses). Read in sequence, the "trials" were the consultation phase of a market-structure decision that was directionally made in <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a>.</p>
-<h2>5. Quantification</h2>
-<p>No financials disclosed. The quantifiable stake is concession value: OCL operator economics (clearing-utility fee pool across national retail disbursement + voucher flows) and designated-deployer economics (every wrapper for every scheme). Sizing thread: RedeemSG scheme volumes + CDC disbursement scale from <a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2</a> as the addressable flow.</p>
-<h2>6. Bull / Base / Bear (on the Blueprint's market design)</h2>
-<ul>
-<li><strong>Bull:</strong> Clean concession process, plural OCLs, contestable deployer licensing — SG gets a genuinely open programmable-money layer and exports the model.</li>
-<li><strong>Base:</strong> Single de-facto OCL emerges around incumbent clearing (BCS-adjacent), banks keep TBL issuance, deployer status lands with a short list of licensed providers. Orderly, closed, unremarked.</li>
-<li><strong>Bear:</strong> Perimeter hardens into monopoly before public debate happens; the first controversy (an expiring-voucher incident, a blacklisting error) lands on an architecture nobody consented to; MAS wears the legitimacy cost.</li>
-</ul>
-<h2>7. Open Threads</h2>
-<ol>
-<li>Who is designated to deploy — criteria, process, and whether it will be gazetted or contractual. (Watch MAS consultations 2024–26.)</li>
-<li>OCL operator candidacy: BCS corporate positioning post-2023. (ACRA/press pull.)</li>
-<li>Whether SCS-framework stablecoins have actually been licensed since — the whitelist's live population.</li>
-</ol>
-<h2>8. Sources</h2>
-<p><a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> MAS, <em>Orchid Blueprint</em>, Nov 2023 (papers/04). Primary. Cross-refs: <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2</a><a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a>, MAS SCS framework media release (Aug 2023), PFMI (BIS/IOSCO).</p></div></div></body></html>
+
+<h2><span class="n">01</span>What this is</h2>
+<p>MAS’s Nov 2023 infrastructure blueprint (Phase 2 output, with industry-group input). It whitelists <strong>three permitted monies</strong> — MAS-regulated stablecoins (the Aug 2023 SCS framework), tokenised bank liabilities from licensed banks, and a MAS CBDC — and specifies five building blocks: a Settlement Ledger with atomic settlement and native programmability, a Tokenisation Bridge to account rails, PBM as the programmability protocol, a Name Service, and modular future blocks. It defines the <strong>Orchid Compatible Ledger (OCL)</strong> and its qualification bar.</p>
+
+<h2><span class="n">02</span>Why it matters</h2>
+<p>It converts Orchid from experiment to market design. OCL operators face FMI-grade (PFMI) expectations; <strong>permissionless networks are ruled “unlikely to meet the requirements”</strong>; rulebooks dictate permissible activity — notably that all may transact but <strong>only designated service providers may deploy smart contracts</strong>. Retail access is indirect only, through licensed FIs after KYC. In other words: the wrapper is the policy surface (<a class="cite" href="P1.html">P1</a>), and this paper decides who holds the pen — a concession framework published as a technical spec.</p>
+
+<h2><span class="n">03</span>Key findings</h2>
+<div class="find"><b>Finding 1 — A licensing perimeter drawn in advance.</b> By defining OCL qualification before any market exists, MAS pre-decides the market structure of programmable money. Incumbent settlement operators and licensed banks are <strong>grandfathered into the future by specification.</strong></div>
+<div class="find"><b>Finding 2 — Permissionless is out, by design.</b> The explicit finding that permissionless networks are “unlikely to meet the requirements” severs retail digital money from public chains — while the Guardian track courts them for wholesale assets. Open for capital-markets optics, closed for the money citizens hold.</div>
+<div class="find"><b>Finding 3 — Smart-contract deployment is a licensable privilege.</b> “Deployment of smart contracts may only be done by designated service providers.” Wrapper authorship — the policy surface — becomes a gated concession with <strong>no published criteria, tender, or sunset.</strong> This is the choke point of the whole architecture.</div>
+
+<h2><span class="n">04</span>The Entity Register</h2>
+<p class="legend">Every entity the Blueprint names, its role here, and whether the commercial interest in a concession was disclosed alongside it. ● none · ▲ watch · ■ interest + no disclosure.</p>
+<div class="tablewrap"><table>
+<tr><th>Entity</th><th>Type</th><th>Role in this document</th><th>Commercial interest?</th><th>Downstream benefit</th><th>Disclosed?</th><th>Flag</th></tr>
+<tr><td><b>MAS</b></td><td>Regulator</td><td>Specifier / future gatekeeper</td><td>Institutional</td><td>Owns the concession-granting power</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>BCS (Banking Computer Services)</b></td><td>JV/Consortium</td><td>Domestic clearing incumbent in the contributor list</td><td>Yes</td><td>Natural OCL-operator candidate — a systemically-important private utility fee pool</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>Onyx by J.P. Morgan</b></td><td>Commercial Bank</td><td>Tech / rails contributor to the spec</td><td>Yes</td><td>Consortium rails; positioned for designated-deployer / settlement role</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>DBS</b></td><td>Commercial Bank</td><td>TBL issuer; ledger participant</td><td>Yes</td><td>Issues the tokenised bank liabilities on the whitelist</td><td class="disc-part">Partial</td><td class="f-watch">▲</td></tr>
+<tr><td><b>OCBC</b></td><td>Commercial Bank</td><td>TBL issuer; ledger participant</td><td>Yes</td><td>Tokenised-deposit issuance</td><td class="disc-part">Partial</td><td class="f-watch">▲</td></tr>
+<tr><td><b>UOB</b></td><td>Commercial Bank</td><td>TBL issuer; ledger participant</td><td>Yes</td><td>Tokenised-deposit issuance</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Amazon (AWS)</b></td><td>Tech Vendor</td><td>Infrastructure contributor</td><td>Yes</td><td>Cloud for OCL / PBM systems</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Grab</b></td><td>Tech Vendor</td><td>Wallet / acceptance layer</td><td>Yes</td><td>Distribution surface</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Fazz</b></td><td>Tech Vendor</td><td>Payment-infrastructure contributor</td><td>Yes</td><td>Payment plumbing</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>NETS</b></td><td>Tech Vendor</td><td>Acceptance layer</td><td>Yes</td><td>Merchant acceptance</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>MEPS+ / FAST</b></td><td>Standard</td><td>Legacy rails the Tokenisation Bridge must touch</td><td>No</td><td>—</td><td class="disc-yes">n/a</td><td class="f-none">●</td></tr>
+</table></div>
+
+<h2><span class="n">05</span>The Money Trail</h2>
+<div class="trail">This is where the money stops being abstract. The Blueprint creates two undistributed licences of enormous value and assigns neither in public: <strong>who operates the OCL</strong>, and <strong>who is designated to deploy smart contracts</strong> — the wrapper-authoring privilege itself. The natural OCL operator is hiding in the contributor list: <strong>BCS</strong>, the domestic clearing incumbent, whose fee pool would span national retail disbursement and voucher flows (sized off RedeemSG/CDC volumes in <a class="cite" href="P2.html">P2</a>). The designated-deployer role <em>likely</em> lands with a short list of licensed providers — and <strong>Onyx by J.P. Morgan</strong>, a private bank co-authoring the public spec, is exactly the kind of entity positioned to receive it, echoing its role in <a class="cite" href="P1.html">P1</a> and the consortium map in <a class="cite" href="P10.html">P10</a>. None of these contributors discloses a commercial stake in the concession they are helping design. A bank-owned utility setting participation criteria for its own competitors is an antitrust question the paper does not raise.</div>
+
+<h2><span class="n">06</span>The Gap</h2>
+<div class="gap">What the technical framing hides. <strong>(1) Designated-deployer capture:</strong> whoever wins the role owns the policy-authoring layer for programmable SGD — created with no criteria, no contestability, no sunset. <strong>(2) OCL monopoly:</strong> the paper gestures at convergence to a single ledger for scale — i.e. a new systemically-important private monopoly at the heart of retail money, with governance unwritten. <strong>(3) The Bridge as fragile joint:</strong> the Tokenisation Bridge inherits both worlds’ failure modes — the systemic single point the PFMI language circles without naming.</div>
+
+<h2><span class="n">07</span>Cross-references</h2>
+<p><a class="cite" href="P1.html">P1</a> the wrapper this paper decides who may author · <a class="cite" href="P2.html">P2</a> RedeemSG/CDC volumes that size the concession · <a class="cite" href="P3.html">P3</a> the disintermediation doctrine the three-money whitelist enforces · <a class="cite" href="P10.html">P10</a> / <a class="cite" href="P12.html">P12</a> the consortium and Operating-Company cap table onward.</p>
+
+<h2><span class="n">08</span>Podcast</h2>
+<div class="audio"><div class="k">Listen · read in your browser</div>
+<p class="src" id="pod" style="margin-bottom:10px">Two hosts, wry. So if the last few papers were about how the money works, this one’s about who gets the keys. The Blueprint sets up two jobs worth a fortune. One: running the official ledger everything settles on. Two — and this is the sneaky one — being “designated” to deploy the smart contracts. Remember, the smart contract is the wrapper, and the wrapper is where all the rules live. So “who’s allowed to write wrappers” is really “who gets to write the rules of your money.” And here’s the thing: the paper hands out neither job in public. No tender, no criteria, no expiry date. But the likely winners are already in the room — BCS, the clearing incumbent, is the obvious ledger operator; and JPMorgan’s Onyx is helping write the very spec it’s positioned to profit from. None of them disclose that interest. A bank-owned utility writing the rules its competitors have to follow — that’s an antitrust question. The paper just doesn’t ask it. The citizen cost isn’t a fee yet. It’s that a public concession is being drawn before anyone gets to object.</p>
+<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+
+<h2><span class="n">09</span>Sources</h2>
+<p class="src">Primary: <a href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank">MAS, <em>Orchid Blueprint</em>, Nov 2023</a>. Disclosed? and Money-Trail columns are analytical assessments of positioning and non-disclosure per SA-DOC v1 — they document interest and disclosure status, not wrongdoing. Cross-refs: MAS SCS framework release (Aug 2023); PFMI (BIS/IOSCO).</p>
+</div></body></html>
