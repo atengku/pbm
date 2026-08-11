@@ -37,7 +37,7 @@
   var btn=document.createElement('button'); btn.id='saaBtn'; btn.title='Ask the Archive'; btn.innerHTML='<span class="pulse"></span>✦';
   var panel=document.createElement('div'); panel.id='saaPanel';
   panel.innerHTML=''
-   +'<div id="saaHead"><span class="t">✦ Ask the Archive</span><button class="x" title="Close">×</button></div>'
+   +'<div id="saaHead"><span class="t">✦ Ask the Archive</span><span style="display:flex;gap:6px;align-items:center"><select id="saaVoiceSel" title="Voice" aria-label="Voice" style="background:#0f1319;color:#e5c877;border:1px solid #232c38;border-radius:6px;font-size:11px;padding:3px 4px;max-width:132px"></select><button class="x" title="Close">×</button></span></div>'
    +'<div id="saaLog"></div>'
    +'<div id="saaChips">'
      +'<span class="saaChip">Are the vouchers programmable money?</span>'
@@ -57,9 +57,13 @@
   function open(){ panel.classList.add('open'); if(!greeted){greeted=true;
     add("Hi — I can talk you through anything on Singapore's programmable-money record. Tap the mic and just ask.",'ai',false);} q.focus(); }
   function close(){ panel.classList.remove('open'); try{speechSynthesis.cancel();}catch(e){} }
+  var vsel=panel.querySelector('#saaVoiceSel');
+  function saaFillVoices(){ if(!vsel) return; var vs=speechSynthesis.getVoices().filter(function(v){return /en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name);}); if(!vs.length) return; var saved=null; try{saved=localStorage.getItem('saaVoice');}catch(e){} vsel.innerHTML=''; vs.forEach(function(v){ var o=document.createElement('option'); o.value=v.name; o.textContent=v.name.replace('Google US English','US English').replace('Microsoft ','').replace(' - English (United States)',''); if(saved===v.name)o.selected=true; vsel.appendChild(o); }); if(!saved){ var cur=saaPickVoice(); if(cur)vsel.value=cur.name; } }
+  if(vsel){ vsel.onclick=function(e){e.stopPropagation();}; vsel.onchange=function(){ try{localStorage.setItem('saaVoice',vsel.value);}catch(e){} speak('This is the archive voice. I can walk you through the record.'); }; }
+  try{ speechSynthesis.onvoiceschanged=saaFillVoices; }catch(e){} setTimeout(saaFillVoices,400); setTimeout(saaFillVoices,1200);
   btn.onclick=function(){ panel.classList.contains('open')?close():open(); };
   closeb.onclick=close;
-  function saaPickVoice(){var vs=speechSynthesis.getVoices();var names=['Samantha','Google US English','Microsoft Aria','Microsoft Jenny','Aria','Jenny','Ava','Allison','Microsoft Zira','Nicky','Susan'];for(var i=0;i<names.length;i++){var v=vs.find(function(x){return x.name.indexOf(names[i])>-1&&!/GB|UK/.test(x.name);});if(v)return v;}var us=vs.find(function(v){return /en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name);});if(us)return us;return vs.find(function(v){return /^en/.test(v.lang)&&!/GB|UK/.test(v.name);})||null;}
+  function saaPickVoice(){var vs=speechSynthesis.getVoices();var saved=null;try{saved=localStorage.getItem('saaVoice');}catch(e){}if(saved){var sv=vs.find(function(v){return v.name===saved;});if(sv)return sv;}var nat=vs.find(function(v){return /Natural/.test(v.name)&&/en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name);});if(nat)return nat;var names=['Google US English','Samantha','Microsoft Aria','Microsoft Jenny','Microsoft Zira'];for(var i=0;i<names.length;i++){var v=vs.find(function(x){return x.name.indexOf(names[i])>-1&&!/GB|UK/.test(x.name);});if(v)return v;}return vs.find(function(v){return /en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name);})||null;}
   function speak(t){ try{ if(!voiceOn)return; speechSynthesis.cancel(); var u=new SpeechSynthesisUtterance(t); u.rate=1.02;
     u.voice=saaPickVoice(); speechSynthesis.speak(u);}catch(e){} }
   function add(text,who,speakable){ var d=document.createElement('div'); d.className='saaMsg '+(who==='me'?'saaMe':'saaAi');
