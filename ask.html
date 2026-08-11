@@ -61,7 +61,7 @@ function add(text,who,speakable){
   if(who==='ai'&&speakable){ const s=document.createElement('span'); s.className='spk'; s.textContent='🔊 replay'; s.onclick=()=>speak(text); d.appendChild(document.createElement('br')); d.appendChild(s); }
   log.scrollTop=log.scrollHeight; return d;
 }
-function speak(t){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); u.rate=1.02; u.pitch=1; const vs=speechSynthesis.getVoices(); const pref=vs.find(v=>/en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)); if(pref)u.voice=pref; speechSynthesis.speak(u);}catch(e){} }
+function speak(t){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); u.rate=1.02; u.pitch=1; const vs=speechSynthesis.getVoices(); const names=['Samantha','Google US English','Microsoft Aria','Microsoft Jenny','Aria','Jenny','Ava','Allison','Microsoft Zira']; let pref=null; for(const n of names){pref=vs.find(v=>v.name.indexOf(n)>-1&&!/GB|UK/.test(v.name)); if(pref)break;} if(!pref)pref=vs.find(v=>/en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name)); if(pref)u.voice=pref; speechSynthesis.speak(u);}catch(e){} }
 async function ask(text){
   if(!text.trim())return; add(text,'me'); q.value='';
   const t=add('…','ai',false);
