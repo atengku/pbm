@@ -1,117 +1,100 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Retail CBDC: Economic Considerations (2021) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
-*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
-header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
-header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
-.brand a{color:inherit;text-decoration:none}
+<title>P3 · Retail CBDC: Economic Considerations (2021) — Forensic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--red:#e5544b;--amber:#d9a441;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 90px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
 .crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
-h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
-h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
-h3{font-size:17px;margin:30px 0 8px}
-p,li{font-size:16px;color:#cdd6e2}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-strong{color:var(--ink)}
-em{color:var(--gold2);font-style:normal}
-a{color:var(--gold2)}
-a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
-a.cite:hover{background:rgba(201,162,75,.12)}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
-blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
-.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
-.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
-.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;margin:40px 0 6px;letter-spacing:-.01em}
+.themetag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0a0c10;background:var(--gold);padding:4px 10px;border-radius:5px;margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 22px;font-size:13.5px}
+.meta div span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.oneline{font-size:17px;color:var(--gold2);margin:14px 0 0;line-height:1.5}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
 .docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
 .docbar a:hover{border-color:var(--gold)}
-.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
-.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
-.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
-.idx a{text-decoration:none}
-.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+h2{font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);margin-right:10px}
+p,li{font-size:16px;color:#cdd6e2}
+.find{margin:16px 0;padding-left:16px;border-left:2px solid var(--gold)}
+.find b{color:var(--gold2)}
+strong{color:var(--ink)}
+.trail{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.gap{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.audio{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.audio .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding:8px 9px;text-align:left;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:9px 9px;vertical-align:top;color:#cdd6e2}
+td b{color:var(--ink)}
+.f-none{color:var(--grn)}.f-watch{color:var(--amber)}.f-conflict{color:var(--red);font-weight:700}
+.disc-no{color:var(--red);font-weight:600}.disc-part{color:var(--amber)}.disc-yes{color:var(--grn)}
+.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px}
+.src{font-size:13px;color:var(--mut);line-height:1.7}.src a{color:var(--gold2)}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px}
 </style></head><body>
-<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P3</div></div></header>
-<div class="wrap"><h1>Retail CBDC: Economic Considerations (2021)</h1><p class="byline">Three-stage analytical chain · ref [P3]</p>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Forensic Analysis · P3 · SA-DOC v1</div></div></header>
+<div class="wrap">
+
+<h1>Retail CBDC: Economic Considerations (2021)</h1>
+<div class="themetag">T1 · The Money Layer</div>
+<div class="card">
+  <div class="meta">
+    <div><span>Ref</span>P3</div>
+    <div><span>Publisher</span>MAS (EPG)</div>
+    <div><span>Date</span>Nov 2021</div>
+    <div><span>Reliability</span>Tier 1 · Primary</div>
+    <div><span>Version</span>v1.0</div>
+    <div><span>Tags</span>EPG · disintermediation · substitution · two-tier · holding limits</div>
+  </div>
+  <p class="oneline">The policy constitution of Singapore’s digital-money programme: “no pressing need” for a retail CBDC — because deposits are 92% of the money supply, and a good CBDC is exactly the instrument that could drain them.</p>
+</div>
 <div class="docbar"><a href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
-<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: MAS EPG monograph — the economic case assessment that concluded "no compelling case now" and set the policy foundation everything after stands on.
-SOURCE / RELIABILITY: <strong>Primary</strong> — MAS Economic Policy Group, Nov 2021. The policy brain of the whole lineage.
-ENTITIES: MAS EPG · two-tier system actors (MAS ↔ commercial banks) · references: BIS, IMF, Riksbank e-krona, PBoC e-CNY, FAST/PayNow/SGQR, digital bank licensees (2020 awards).
-KEY CLAIMS:
-- Verdict: <strong>no pressing need</strong> for retail SGD CBDC; e-payments pervasive, competitive, cheap. But prudent to build technical + policy capability for possible future issuance.
-- Threat model: (1) cash's diminishing relevance; (2) payments market concentration / walled gardens from data-driven platforms; (3) <strong>currency substitution</strong> — a small open digital economy is vulnerable to a widely-used foreign digital currency; prudential regulation defends "only up to a point."
-- Risk model of issuing: deposit disintermediation (deposits = 92% of money supply, banks' cheap stable funding), faster systemic runs (friction to flee to central-bank money collapses), volatile capital flows if non-residents can hold.
-- Mitigants: holding limits/financial disincentives, non-resident restrictions — CBDC as medium of exchange, <strong>not</strong> store of value.
-- Model if issued: public-private — MAS issues, private sector distributes/KYCs; direct claim on MAS.
-CONTRADICTIONS w/ KB: None. This is the source of Orchid P1's "no urgent need" citation.
-CLASSIFY: Monetary policy / CBDC economics · tags: MAS EPG, disintermediation, currency substitution, two-tier system.
-SIGNIFICANCE: Explains <em>why</em> PBM rides private money: the entire architecture downstream is shaped to protect bank funding. Any client work touching digital-SGD must be read against this document's constraints.
-ROUTE: → knowledge map → SA note. File as <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a>.</p></div>
-<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Executive Summary (Alphas)</h2>
-<p><strong>Alpha 1 — Bank funding is the binding constraint.</strong> The document's true center of gravity: deposits are 92% of money supply and banks' cheap stable funding; an attractive CBDC threatens that base and accelerates runs. Every subsequent design choice — PBM over private money, holding limits, medium-of-exchange-not-store-of-value — descends from protecting this.
-<strong>Alpha 2 — The real fear is substitution, not innovation.</strong> MAS names the scenario that changes its mind: a foreign digital currency gaining domestic traction that prudential regulation can't hold back. The CBDC option is a sovereignty hedge with someone else's finger on the trigger.
-<strong>Alpha 3 — "Public option" logic imported into payments.</strong> The CBDC case is framed like a public utility backstop: if private payment costs/quality fail end-users, the state instrument disciplines the market. Regulation vs issuance presented as substitutes — issuance is the escalation rung.</p>
-<h2>4-Quadrant Matrix</h2>
-<p><strong>KNOWN KNOWNS:</strong> Two-tier system mechanics · 8/92 split · verdict + rationale · disintermediation/run/capital-flow risks · mitigants (limits, non-resident restrictions) · public-private issuance model · FAST/PayNow/SGQR as the regulatory alternative track.
-<strong>KNOWN UNKNOWNS (paper flags):</strong> legal/operational/regulatory design · AML-CFT trade-offs · privacy expectations of the citizenry · synthetic CBDCs and tokenised deposits "on their own merits."
-<strong>UNKNOWN KNOWNS:</strong> SGD non-internationalisation policy heritage (Ong 2003 cited) — the deep instinct that shapes non-resident restrictions · Singapore's state-capital structure (banks partly state-linked) meaning deposit-base protection is also portfolio protection.
-<strong>UNKNOWN UNKNOWNS (gaps):</strong>
-- <em>The substitution clock is exogenous.</em> USD-stablecoin network effects compound on global platforms regardless of SG readiness. The monograph treats the trigger as observable-in-time; adoption curves rarely are. Optionality may be exercised late by construction.
-- <em>Distributional silence.</em> Whole analysis is systemic (banks, flows, stability); zero analysis of which <em>households</em> bear costs when the public instrument (cash) fades pre-CBDC. The unbanked/elderly are one MAS parliamentary answer, not a modelled constituency.
-- <em>Privacy as afterthought.</em> Privacy appears as a regulatable service feature, not a rights baseline — the exact fault line public sentiment runs on, unmodelled in the economics.</p>
-<h2>Narrative Vector</h2>
-<p>Validates the no-issuance verdict on its own terms, but <strong>exposes the frame</strong>: this is a bank-stability document wearing a consumer-payments cover. The blind spot — household-level and sentiment analysis — is precisely the gap the SAA/MAS PBM mandate proposes to fill. Quote the monograph's own silences back to FTIG.</p></div>
-<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
-<p><a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a> The 2021 EPG monograph is the policy constitution of Singapore's digital-money programme: a formal finding of "no pressing need" for a retail CBDC, paired with a commitment to build issuance capability anyway. Its analytical spine is bank-funding protection — deposits are 92% of money supply, and a well-designed CBDC is precisely the instrument that could drain them and accelerate runs. The document's named reversal trigger is foreign digital-currency substitution, a clock MAS does not control. Everything built after 2021 — PBM over private money, tokenised deposits, holding-limit doctrine — is downstream compliance with this paper's constraints. Its blind spots (household distribution, privacy-as-rights, sentiment) define the whitespace for external advisory work.</p>
-<h2>2. Entity &amp; People Map</h2>
-<table>
-<thead>
-<tr>
-<th>Entity</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MAS EPG</td>
-<td>Author — economics, not FTIG tech track</td>
-</tr>
-<tr>
-<td>Commercial banks (DBS/OCBC/UOB et al.)</td>
-<td>Protected constituency: deposit franchise</td>
-</tr>
-<tr>
-<td>Non-bank fintechs / digital banks (2020 licences)</td>
-<td>Contestability channel MAS prefers over issuance</td>
-</tr>
-<tr>
-<td>Foreign digital currencies / global stablecoins</td>
-<td>The named threat</td>
-</tr>
-<tr>
-<td>Riksbank, PBoC, BIS, IMF</td>
-<td>Comparators/authorities cited</td>
-</tr>
-</tbody>
-</table>
-<h2>3. Mechanics (evidence chain)</h2>
-<p><a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3 Exec Summ</a> Verdict: no pressing need; capability-building prudent. <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3 Ch2</a> Two-tier system: MAS liabilities = cash (public) + reserves (banks); deposits = 92% of money and the basis of all digital payments. <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3 Ch3</a> Benefits case: public payment option as commerce digitalises; lower entry barriers for payment innovators; discipline on walled gardens. <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3 Ch4</a> Risk case: deposit outflow → funding cost/liquidity stress → tighter credit or fragile banks; run acceleration ("first signs of trouble"); non-resident demand → capital-flow volatility. Mitigants: holding limits, disincentives, non-resident restrictions — engineered to keep CBDC a medium of exchange, not a store of value. <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3 Ch5</a> Substitution threat named; prudential defence works "only up to a point."</p>
-<h2>4. Pattern / Network Analysis</h2>
-<p><a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a> The document inaugurates the pattern the whole corpus repeats: protect the two-tier system by absorbing innovation into it. Regulation-first (FAST/PayNow/SGQR, fee logic, digital-bank licences), issuance as reserve escalation. Cross-referenced against <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2</a>: PBM's money-neutral wrapper is this paper's disintermediation fear rendered as engineering.</p>
-<h2>5. Quantification</h2>
-<p><a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a> Cash ≈ 8% of money supply; deposits ≈ 92%. Run-dynamics claim is directional, not modelled publicly — no published elasticity of deposit→CBDC switching for SG (open thread). Non-resident SGD demand under a CBDC: flagged, unquantified — consistent with the non-internationalisation instinct.</p>
-<h2>6. Bull / Base / Bear (on the monograph's doctrine holding)</h2>
-<ul>
-<li><strong>Bull (doctrine vindicated):</strong> e-payments stay competitive, substitution never bites, optionality never exercised — the cheapest possible monetary defence.</li>
-<li><strong>Base:</strong> Doctrine holds through the decade; pressure vents through regulated stablecoins + tokenised deposits; the monograph gets a v2 refresh when US/EU stablecoin regimes mature.</li>
-<li><strong>Bear (doctrine caught out):</strong> A dominant foreign stablecoin embeds in regional platforms faster than SG can stand up retail issuance; the "up to a point" line on prudential defence is tested in public; capability built ≠ deployment-ready at the speed required.</li>
-</ul>
-<h2>7. Open Threads</h2>
-<ol>
-<li>Any internal MAS modelling of deposit-switching elasticity / run acceleration — referenced nowhere publicly.</li>
-<li>Post-2021 refresh: has EPG revisited the verdict since MiCA/US stablecoin legislation? (Search MAS monographs 2024–26.)</li>
-<li>Household-level payment-cost incidence data — the distributional analysis the paper skips.</li>
-</ol>
-<h2>8. Sources</h2>
-<p><a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a> MAS EPG, <em>A Retail CBDC: Economic Considerations in the Singapore Context</em>, Nov 2021 (papers/03). Primary. Cross-refs: <a class="cite" href="../papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" title="PBM Technical Whitepaper (2023)">P1</a><a class="cite" href="../papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" title="Project Orchid Phase 1 (2022)">P2</a>, Ong (2003) non-internationalisation, BIS/IMF/Riksbank literature per the paper's bibliography.</p></div></div></body></html>
+
+<h2><span class="n">01</span>What this is</h2>
+<p>A MAS Economic Policy Group monograph (Nov 2021) — the economic case assessment that concluded there is <strong>no compelling case now</strong> for a retail SGD CBDC, while judging it prudent to build the technical and policy capability anyway. It is the policy brain of the whole lineage: the source of Orchid’s “no urgent need” citation and the constraint every later design silently obeys.</p>
+
+<h2><span class="n">02</span>Why it matters</h2>
+<p>Its analytical spine is <strong>bank-funding protection</strong>. Deposits are 92% of the money supply and the banks’ cheap, stable funding; an attractive CBDC could drain that base and accelerate runs. Every downstream choice — PBM riding on private money, holding limits, “medium of exchange not store of value” — descends from protecting this. The named reversal trigger is foreign digital-currency substitution, a clock MAS does not control. Its blind spots (household distribution, privacy-as-a-right, sentiment) define the whitespace this library exists to fill.</p>
+
+<h2><span class="n">03</span>Key findings</h2>
+<div class="find"><b>Finding 1 — Bank funding is the binding constraint.</b> The document’s true centre of gravity: deposits are 92% of money supply. An attractive CBDC threatens that base and speeds runs, so <strong>every later design choice is engineered to keep CBDC unattractive as a store of value.</strong></div>
+<div class="find"><b>Finding 2 — The real fear is substitution, not innovation.</b> MAS names the scenario that changes its mind — a foreign digital currency prudential regulation “can only defend against up to a point.” The CBDC option is a sovereignty hedge with someone else’s finger on the trigger.</div>
+<div class="find"><b>Finding 3 — Distributional and privacy silence.</b> The analysis is entirely systemic — banks, flows, stability. Which <strong>households</strong> bear the cost as cash fades is unmodelled; privacy appears as a service feature, not a rights baseline. That silence is the fault line public sentiment runs on.</div>
+
+<h2><span class="n">04</span>The Entity Register</h2>
+<p class="legend">Every entity the monograph names, its role here, and whether any downstream commercial interest was disclosed alongside it. ● none · ▲ watch · ■ interest + no disclosure.</p>
+<div class="tablewrap"><table>
+<tr><th>Entity</th><th>Type</th><th>Role in this document</th><th>Commercial interest?</th><th>Downstream benefit</th><th>Disclosed?</th><th>Flag</th></tr>
+<tr><td><b>MAS EPG</b></td><td>Regulator</td><td>Author — economics track, not the FTIG tech track</td><td>Institutional</td><td>Sets the doctrine the whole corpus obeys</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>DBS · OCBC · UOB (commercial banks)</b></td><td>Commercial Bank</td><td>Protected constituency — the deposit franchise</td><td>Yes</td><td>Doctrine shields their 92% cheap funding from disintermediation</td><td class="disc-part">Partial</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Non-bank fintechs / 2020 digital-bank licensees</b></td><td>Commercial Bank</td><td>Contestability channel MAS prefers over issuance</td><td>Yes</td><td>Compete on payments so the state need not issue</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Foreign digital currencies / global stablecoins</b></td><td>Tech Vendor</td><td>The named threat (currency substitution)</td><td>n/a</td><td>—</td><td class="disc-yes">n/a</td><td class="f-none">●</td></tr>
+<tr><td><b>Riksbank · PBoC · BIS · IMF</b></td><td>Central Bank</td><td>Comparators and authorities cited</td><td>Policy</td><td>Template / literature</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>FAST · PayNow · SGQR</b></td><td>Standard</td><td>Regulatory alternative rails (issuance avoided)</td><td>No</td><td>—</td><td class="disc-yes">n/a</td><td class="f-none">●</td></tr>
+</table></div>
+
+<h2><span class="n">05</span>The Money Trail</h2>
+<div class="trail">This paper names few private actors, which is itself the tell. The <strong>beneficiary that never appears as a stakeholder is the banking sector</strong>: the entire doctrine — no issuance, private money does the work, holding limits keep any future CBDC a poor store of value — <em>appears</em> engineered to protect the deposit franchise that is 92% of the money supply and the banks’ cheapest funding. The paper discloses this as a “disintermediation risk” in prudential language, but never frames it as an interest being served. Because several of Singapore’s banks are state-linked, deposit-base protection is <em>likely</em> also portfolio protection. The commercial winners are diffuse and off-page — which is precisely why later papers (<a class="cite" href="P4.html">P4</a>) can hand them concessions without anyone noticing a constituency was chosen back in 2021.</div>
+
+<h2><span class="n">06</span>The Gap</h2>
+<div class="gap">Three silences. <strong>(1) No deposit-switching model:</strong> the run-acceleration claim is directional; no published elasticity of deposit→CBDC switching for Singapore exists. <strong>(2) Distributional incidence:</strong> zero analysis of which households bear cost as cash (8% of money) fades before any CBDC arrives. <strong>(3) Privacy as afterthought:</strong> treated as a regulatable feature, not a rights baseline — the exact issue that decides public consent, left out of the economics.</div>
+
+<h2><span class="n">07</span>Cross-references</h2>
+<p><a class="cite" href="P2.html">P2</a> Orchid P1 cites this paper’s “no urgent need” verdict · <a class="cite" href="P1.html">P1</a> PBM is this paper’s disintermediation fear rendered as engineering · <a class="cite" href="P4.html">P4</a> the Blueprint enforces the three-money whitelist that follows from this doctrine · <a class="cite" href="P5.html">P5</a> the wholesale lineage the retail posture sits atop.</p>
+
+<h2><span class="n">08</span>Podcast</h2>
+<div class="audio"><div class="k">Listen · read in your browser</div>
+<p class="src" id="pod" style="margin-bottom:10px">Two hosts, calm and clear. Okay, this is the boring-looking 2021 paper that actually decides everything. On the surface it says: Singapore doesn’t need a digital dollar, our payments are already cheap and fast. Fine. But read one layer down and it’s really a document about protecting the banks. Here’s the number that runs the whole thing — bank deposits are ninety-two percent of the money supply, and those deposits are the banks’ cheap funding. A really good central-bank digital currency would let people pull money out of banks in a crisis, fast. So the entire design after this is built to make sure any future digital dollar is deliberately unattractive to hold. Which is clever — but notice who’s being protected, and who isn’t. The paper models banks, capital flows, stability. It does not model you: which households actually lose out as cash quietly disappears, or whether privacy is a right or just a feature they can switch off. Those aren’t technical gaps. They’re the questions nobody with a seat at this table was asked to answer.</p>
+<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+
+<h2><span class="n">09</span>Sources</h2>
+<p class="src">Primary: <a href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank">MAS EPG, <em>A Retail CBDC: Economic Considerations in the Singapore Context</em>, Nov 2021</a>. Disclosed? and Money-Trail columns are analytical assessments of positioning and non-disclosure per SA-DOC v1 — they document interest and disclosure status, not wrongdoing. Cross-refs: Ong (2003) on SGD non-internationalisation; BIS/IMF/Riksbank literature per the paper’s bibliography.</p>
+</div></body></html>
