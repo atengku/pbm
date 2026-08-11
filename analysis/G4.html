@@ -1,69 +1,102 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guardian: Bridging the Adoption Gap (2024) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
-*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
-header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
-header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
-.brand a{color:inherit;text-decoration:none}
+<title>G4 · Guardian: Bridging the Adoption Gap (2024) — Forensic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--red:#e5544b;--amber:#d9a441;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 90px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
 .crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
-h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
-h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
-h3{font-size:17px;margin:30px 0 8px}
-p,li{font-size:16px;color:#cdd6e2}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-strong{color:var(--ink)}
-em{color:var(--gold2);font-style:normal}
-a{color:var(--gold2)}
-a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
-a.cite:hover{background:rgba(201,162,75,.12)}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
-blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
-.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
-.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
-.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;margin:40px 0 6px;letter-spacing:-.01em}
+.themetag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0a0c10;background:var(--gold);padding:4px 10px;border-radius:5px;margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 22px;font-size:13.5px}
+.meta div span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.oneline{font-size:17px;color:var(--gold2);margin:14px 0 0;line-height:1.5}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
 .docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
 .docbar a:hover{border-color:var(--gold)}
-.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
-.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
-.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
-.idx a{text-decoration:none}
-.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+h2{font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);margin-right:10px}
+p,li{font-size:16px;color:#cdd6e2}
+.find{margin:16px 0;padding-left:16px;border-left:2px solid var(--gold)}
+.find b{color:var(--gold2)}
+strong{color:var(--ink)}
+.trail{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.gap{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.audio{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.audio .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding:8px 9px;text-align:left;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:9px 9px;vertical-align:top;color:#cdd6e2}
+td b{color:var(--ink)}
+.f-none{color:var(--grn)}.f-watch{color:var(--amber)}.f-conflict{color:var(--red);font-weight:700}
+.disc-no{color:var(--red);font-weight:600}.disc-part{color:var(--amber)}.disc-yes{color:var(--grn)}
+.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px}
+.src{font-size:13px;color:var(--mut);line-height:1.7}.src a{color:var(--gold2)}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px}
 </style></head><body>
-<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · G4</div></div></header>
-<div class="wrap"><h1>Guardian: Bridging the Adoption Gap (2024)</h1><p class="byline">Three-stage analytical chain · ref [G4]</p>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Forensic Analysis · G4 · SA-DOC v1</div></div></header>
+<div class="wrap">
+
+<h1>Guardian: Bridging the Adoption Gap</h1>
+<div class="themetag">T5 · The Consortium & the Revolving Door</div>
+<div class="card">
+  <div class="meta">
+    <div><span>Ref</span>G4</div>
+    <div><span>Publisher</span>MAS · IMAS × FCA · IA</div>
+    <div><span>Date</span>2024</div>
+    <div><span>Reliability</span>Tier 1 · Primary</div>
+    <div><span>Version</span>v1.0</div>
+    <div><span>Tags</span>buy-side · adoption gap · SG–UK · foreword</div>
+  </div>
+  <p class="oneline">A SG–UK regulator-industry paper on why the buy-side won't adopt tokenised assets — foreworded by a MAS official whose "investors at the heart" doctrine means institutional investors throughout, while the citizen version stays unwritten.</p>
+</div>
 <div class="docbar"><a href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
-<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: SG–UK regulator-industry collaboration (MAS+IMAS × FCA+IA) on why buy-side adoption of tokenised assets lags and what closes the gap.
-SOURCE / RELIABILITY: <strong>Primary</strong>; foreworded by <strong>Kenneth Gay, Chief FinTech Officer, MAS</strong> [KB: the second official copied in the user's voucher exchange], Carmen Wee (IMAS), Chris Cummings (IA).
-ENTITIES: <strong>Kenneth Gay (MAS CFO — mandate-relevant)</strong> · MAS · IMAS · FCA · IA · UK IF3 Lab referenced.
-KEY CLAIMS: Adoption gap = tokenisation initiatives prioritise tech/efficiency while buy-side must satisfy operational, regulatory, fiduciary requirements first; investors must be "at the heart"; tech must make things cheaper/quicker/broader "not technology for technology's sake"; SG–UK coordination as confidence-builder for cross-border scale.
-CONTRADICTIONS w/ KB: None; generalises <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a>'s barrier list to the whole buy-side and gives it a bilateral-regulator imprimatur.
-CLASSIFY: Tokenisation adoption · tags: buy-side, MAS-FCA, IMAS, IA, Kenneth Gay.
-SIGNIFICANCE: <strong>Mandate-critical</strong>: Gay's authored frame — investor-centric, trust-and-confidence, "enhance not disrupt" — is the second target's published doctrine, paired with Lim's in <a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a>.
-ROUTE: <a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a></p></div>
-<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
-<p><strong>A1 — Kenneth Gay's fingerprint.</strong> The CFO's foreword commits him publicly to: investors at the heart, trust/confidence/resilience as preconditions, tech justified only by concrete user benefit, international coordination as the scaling mechanism. A sentiment-research pitch is almost a restatement of his own paragraph — the mandate can be framed as <em>operationalising</em> Gay's stated doctrine.
-<strong>A2 — The gap is institutional, and the citizen version is unwritten.</strong> G4 maps why <em>institutions</em> don't adopt (fiduciary/ops/reg requirements unmet). No equivalent document maps why <em>citizens</em> would or wouldn't trust programmable money — the corpus's final, still-open seat, and precisely the SAA proposition.
-<strong>A3 — Bilateralism as moat and megaphone.</strong> SG–UK regulator pairing manufactures cross-border legitimacy; frameworks agreed by two hub regulators become de facto standards for everyone smaller.</p>
-<h2>Quadrants</h2>
-<p>KK: adoption-gap thesis, buy-side requirement stack, SG–UK institutional pairing, IF3 Lab reference. KU: which specific reforms close the gap (directional, not specified). UK: <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a>'s bond-level barriers as the concrete substrate; IMAS/IA as buy-side cartels lending legitimacy. UU: <em>the retail silence</em> (above) — "investors at the heart" means institutional investors throughout; the individual whose pension is the ultimate buy-side is absent from a paper titled around investors; <em>doctrine-vs-architecture tension</em> — Gay's "enhance not disrupt" foreword sits atop an architecture (Blueprint/GL1 gating) that is quietly re-drawing market structure; the gap between the CFO's language and the concession map is itself analysable.</p>
-<h2>Narrative Vector</h2>
-<p>G4 completes the target-psychographics pair: Lim's doctrine <a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a> + Gay's doctrine here. The mandate walks through the door both men built — citizen-sentiment research as the missing volume in their own series.</p></div>
-<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
-<p><a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a> The SG–UK collaboration (MAS+IMAS, FCA+IA) diagnoses tokenisation's buy-side adoption gap: initiatives optimise technology while institutions must first satisfy fiduciary, operational and regulatory requirements. Kenneth Gay's foreword sets the doctrine — investors at the heart, trust and confidence as preconditions, technology justified only by tangible benefit. The report's structural silence is the retail citizen: "investor-centric" means institutional throughout, leaving citizen trust in programmable money as the unwritten companion volume — the precise whitespace of the SAA mandate, now attributable to the target's own framing.</p>
-<h2>2. Entity Map</h2>
-<p><strong>Kenneth Gay (MAS CFO)</strong> | Carmen Wee (IMAS) | Chris Cummings (IA) | FCA (UK) | IF3 Lab context.</p>
-<h2>3. Mechanics</h2>
-<p><a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a> Gap = requirement-stack mismatch; remedy = align design with buy-side needs + bilateral regulatory coordination; UK-SG framework alignment as confidence infrastructure.</p>
-<h2>4. Pattern</h2>
-<p><a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a> Generalises <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a> barriers; pairs with <a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a> to complete the two-target doctrine set; bilateral-standard-setting pattern (two hubs → de facto global norms) mirrors MAS's corridor diplomacy <a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a>.</p>
-<h2>5. Quantification</h2>
-<p>None; gap asserted qualitatively — consistent with a foreword-led policy document.</p>
-<h2>6. Bull / Base / Bear</h2>
-<p>Bull: SG–UK alignment unlocks cross-border tokenised fund flows; gap narrows measurably. Base: continued framework production; adoption inches via tMMFs. <strong>Current.</strong> Bear: doctrine-architecture gap (open language vs gated structure) surfaces publicly and costs the programme trust — the exact risk sentiment research pre-empts.</p>
-<h2>7. Open Threads</h2>
-<p>Gay's current initiatives/speeches — refresh pre-approach. FCA-side reciprocal documents. Whether any retail/citizen-facing trust study exists anywhere in the MAS corpus (none found to date — confirm the negative).</p>
-<h2>8. Sources</h2>
-<p><a class="cite" href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" title="Guardian: Bridging the Adoption Gap (2024)">G4</a> papers/G4, primary. Cross: <a class="cite" href="../papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" title="Guardian Fixed Income Framework (2024)">G1</a><a class="cite" href="../papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" title="Guardian: Open &amp; Interoperable Networks (2023)">G7</a><a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a>.</p></div></div></body></html>
+
+<h2><span class="n">01</span>What this is</h2>
+<p>A Singapore–UK regulator-and-industry collaboration (MAS with IMAS, FCA with the Investment Association) on why buy-side adoption of tokenised assets lags and what would close the gap. It is foreworded by <strong>Kenneth Gay, Chief FinTech Officer at MAS</strong>, alongside Carmen Wee (IMAS) and Chris Cummings (IA). The thesis: tokenisation initiatives prioritise technology and efficiency while institutions must first satisfy operational, regulatory and fiduciary requirements; investors must be "at the heart," and technology must make things cheaper, quicker or broader — "not technology for technology's sake."</p>
+
+<h2><span class="n">02</span>Why it matters</h2>
+<p>The paper's official framing is doctrine. Kenneth Gay's foreword, in his institutional capacity, commits the public position to being investor-centric, with trust and confidence as preconditions and technology justified only by tangible benefit. But the "investor" of this paper is institutional throughout — asset managers, funds, fiduciaries — represented by two industry associations (IMAS and IA). The document maps in detail why <em>institutions</em> don't yet adopt; it contains no equivalent map of whether or under what conditions <em>citizens</em> would trust programmable money. That silence is the point of interest: the buy-side gets a bilateral-regulator study of its concerns while the retail citizen — whose pension is the ultimate buy-side — has no companion volume.</p>
+
+<h2><span class="n">03</span>Key findings</h2>
+<div class="find"><b>Finding 1 — "Investors at the heart" means institutional investors.</b> The foreword's investor-centric doctrine reads as inclusive, but throughout the paper "investor" denotes asset managers and funds. The individual whose pension is the ultimate capital is absent from a paper organised around investors.</div>
+<div class="find"><b>Finding 2 — The gap mapped is institutional; the citizen version is unwritten.</b> G4 catalogues why institutions don't adopt — fiduciary, operational and regulatory requirements unmet. No document in the corpus maps why citizens would or wouldn't trust programmable money. That is the record's still-open seat.</div>
+<div class="find"><b>Finding 3 — Bilateralism as moat and megaphone.</b> A Singapore–UK regulator pairing manufactures cross-border legitimacy; a framework agreed by two hub regulators becomes a de facto standard for everyone smaller — positioning, not neutrality.</div>
+
+<h2><span class="n">04</span>The Entity Register</h2>
+<p class="legend">Every entity the paper names, its role here, and — the point — whether any downstream commercial interest was disclosed alongside that role. ● none · ▲ watch · ■ interest + no disclosure.</p>
+<div class="tablewrap"><table>
+<tr><th>Entity</th><th>Type</th><th>Role in this document</th><th>Commercial interest?</th><th>Downstream benefit</th><th>Disclosed?</th><th></th></tr>
+<tr><td><b>Kenneth Gay</b></td><td>Individual — Chief FinTech Officer, MAS</td><td>Foreword author; frames the doctrine</td><td>Positional / institutional</td><td>His office's "investors at the heart" doctrine frames a private-sector, institutional-investor programme; the citizen version is unwritten</td><td class="disc-part">Partial</td><td class="f-conflict">■</td></tr>
+<tr><td><b>MAS</b></td><td>Regulator</td><td>Co-convener</td><td>Institutional</td><td>Sets the standard; bilateral legitimacy</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>IMAS</b></td><td>Industry association (SG)</td><td>Buy-side co-author</td><td>Yes</td><td>Represents asset-manager members who adopt the standard</td><td class="disc-part">Partial</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Carmen Wee</b></td><td>Individual — IMAS</td><td>Foreword / leadership</td><td>Positional</td><td>Buy-side advocacy</td><td class="disc-yes">Disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>FCA</b></td><td>Regulator (UK)</td><td>Co-convener</td><td>Institutional</td><td>Bilateral standard-setting legitimacy</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>Investment Association (IA)</b></td><td>Industry association (UK)</td><td>Buy-side co-author</td><td>Yes</td><td>Represents UK asset managers who adopt the standard</td><td class="disc-part">Partial</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Chris Cummings</b></td><td>Individual — IA</td><td>Foreword</td><td>Positional</td><td>Buy-side advocacy</td><td class="disc-yes">Disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>UK IF3 Lab</b></td><td>Innovation lab</td><td>Referenced context</td><td>Institutional</td><td>Reference programme</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+</table></div>
+
+<h2><span class="n">05</span>The Money Trail</h2>
+<div class="trail">The value here is definitional, not monetary. By framing the "investor" as institutional and placing that investor "at the heart," the paper quietly draws the boundary of who the programme is for — and the two industry associations co-authoring it (<strong>IMAS</strong> and the <strong>IA</strong>) represent precisely the asset managers who profit when the standard lowers their adoption cost. The forensic point sits with the foreword: <strong>Kenneth Gay</strong>, in his capacity as MAS Chief FinTech Officer, lends a public regulator's doctrine to a private-sector, institutional-investor build. That positioning — a public official's framing legitimising an industry's standard — is real and undisclosed as such, though it is presented as neutral policy language; we document the positioning, not any wrongdoing. The bilateral SG–UK pairing turns two hubs into a de facto global norm, mirroring MAS's corridor diplomacy (<a class="cite" href="P11.html">P11</a>). The barrier substrate is the bond-level list in <a class="cite" href="G1.html">G1</a>; the paired doctrine is <a class="cite" href="G7.html">G7</a>; and the missing volume is the citizen-trust research the whole library shows was never written.</div>
+
+<h2><span class="n">06</span>The Gap</h2>
+<div class="gap">What the paper never writes. <strong>(1) The retail citizen:</strong> "investor-centric" means institutional throughout — the individual whose pension is the ultimate buy-side is absent from a paper titled around investors. <strong>(2) The doctrine-vs-architecture gap:</strong> Gay's "enhance not disrupt" framing sits atop an architecture (the Blueprint and GL1 gating) quietly re-drawing market structure; the distance between the language and the concession map is itself the unexamined gap. <strong>(3) The companion volume:</strong> no citizen-sentiment study of programmable money exists anywhere in the corpus — the confirmed negative.</div>
+
+<h2><span class="n">07</span>Cross-references</h2>
+<p><a class="cite" href="G1.html">G1</a> Fixed Income Framework (the concrete barrier substrate) · <a class="cite" href="G7.html">G7</a> Open &amp; Interoperable Networks (the paired doctrine) · <a class="cite" href="P11.html">P11</a> Cedar II × Ubin+ (bilateral corridor diplomacy) · <a class="cite" href="P4.html">P4</a> / <a class="cite" href="P12.html">P12</a> the gating architecture the doctrine sits atop.</p>
+
+<h2><span class="n">08</span>Podcast</h2>
+<div class="audio"><div class="k">Listen · read in your browser</div>
+<p class="src" id="pod" style="margin-bottom:10px">Two hosts on Bridging the Adoption Gap. Host A: This is Singapore and the UK asking why big investors haven't embraced tokenised assets. Host B: And it's foreworded by Kenneth Gay, the Chief FinTech Officer at Singapore's central bank. His line is "investors at the heart" — technology should serve the investor, not the other way round. Sounds great. Host A: So what's the catch? Host B: The word "investor." All through this paper it means institutions — asset managers, funds. It's written with two industry associations that represent exactly those firms. The ordinary person whose pension is the actual money at the bottom of all this? Not in the room. Host A: So a public official is framing doctrine for a private, institutional build. Host B: And it reads as neutral policy. We're not alleging anything improper — just noting the positioning. Host A: What's missing? Host B: The citizen volume. Nowhere in this whole library does anyone ask whether regular people trust programmable money, or on what terms. The buy-side gets a study. The public gets silence.</p>
+<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+
+<h2><span class="n">09</span>Sources</h2>
+<p class="src">Primary: <a href="../papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank">Guardian: Bridging the Adoption Gap, MAS–IMAS × FCA–IA, 2024</a> (foreword by Kenneth Gay, Chief FinTech Officer, MAS). Cross: Fixed Income Framework (<a class="cite" href="G1.html">G1</a>), Open &amp; Interoperable Networks (<a class="cite" href="G7.html">G7</a>), Cedar II × Ubin+ (<a class="cite" href="P11.html">P11</a>). Entity roles are as named in the paper; the Disclosed? and Money-Trail columns are analytical assessments of positioning and non-disclosure, tiered per SA-DOC v1 — they document positioning and disclosure status, not wrongdoing. The characterisation of the foreword's framing effect is a Tier-3 assessment.</p>
+</div></body></html>
