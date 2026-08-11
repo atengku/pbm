@@ -23,7 +23,7 @@ TONE: measured, factual, a little wry. You are not an activist; you point people
 async function askAnthropic(key, q){
   const r = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
     headers:{'x-api-key':key,'anthropic-version':'2023-06-01','content-type':'application/json'},
-    body:JSON.stringify({model:'claude-3-5-haiku-latest',max_tokens:300,system:FACTS,
+    body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:300,system:FACTS,
       messages:[{role:'user',content:q}]})});
   if(!r.ok) throw new Error('anthropic '+r.status);
   const j=await r.json(); return (j.content&&j.content[0]&&j.content[0].text)||'';
