@@ -1,69 +1,103 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Global Layer One Whitepaper (2024) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
-*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
-header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
-header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
-.brand a{color:inherit;text-decoration:none}
+<title>P12 · Global Layer One (GL1) Whitepaper (2024) — Forensic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--red:#e5544b;--amber:#d9a441;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 90px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
 .crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
-h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
-h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
-h3{font-size:17px;margin:30px 0 8px}
-p,li{font-size:16px;color:#cdd6e2}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-strong{color:var(--ink)}
-em{color:var(--gold2);font-style:normal}
-a{color:var(--gold2)}
-a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
-a.cite:hover{background:rgba(201,162,75,.12)}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
-blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
-.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
-.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
-.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;margin:40px 0 6px;letter-spacing:-.01em}
+.themetag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0a0c10;background:var(--gold);padding:4px 10px;border-radius:5px;margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 22px;font-size:13.5px}
+.meta div span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.oneline{font-size:17px;color:var(--gold2);margin:14px 0 0;line-height:1.5}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
 .docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
 .docbar a:hover{border-color:var(--gold)}
-.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
-.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
-.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
-.idx a{text-decoration:none}
-.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+h2{font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);margin-right:10px}
+p,li{font-size:16px;color:#cdd6e2}
+.find{margin:16px 0;padding-left:16px;border-left:2px solid var(--gold)}
+.find b{color:var(--gold2)}
+strong{color:var(--ink)}
+.trail{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.gap{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.audio{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.audio .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding:8px 9px;text-align:left;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:9px 9px;vertical-align:top;color:#cdd6e2}
+td b{color:var(--ink)}
+.f-none{color:var(--grn)}.f-watch{color:var(--amber)}.f-conflict{color:var(--red);font-weight:700}
+.disc-no{color:var(--red);font-weight:600}.disc-part{color:var(--amber)}.disc-yes{color:var(--grn)}
+.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px}
+.src{font-size:13px;color:var(--mut);line-height:1.7}.src a{color:var(--gold2)}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px}
 </style></head><body>
-<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P12</div></div></header>
-<div class="wrap"><h1>Global Layer One Whitepaper (2024)</h1><p class="byline">Three-stage analytical chain · ref [P12]</p>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Forensic Analysis · P12 · SA-DOC v1</div></div></header>
+<div class="wrap">
+
+<h1>Global Layer One Whitepaper</h1>
+<div class="themetag">T4 · The Concessions</div>
+<div class="card">
+  <div class="meta">
+    <div><span>Ref</span>P12</div>
+    <div><span>Publisher</span>MAS + bank consortium</div>
+    <div><span>Date</span>2024</div>
+    <div><span>Reliability</span>Tier 1 · Primary</div>
+    <div><span>Version</span>v1.0</div>
+    <div><span>Tags</span>GL1 · OpCo · public-permissioned · Finternet</div>
+  </div>
+  <p class="oneline">A MAS-convened "public permissioned" shared ledger whose operator is not a state but an incorporated bank consortium — the concession architecture of Singapore's domestic Blueprint, exported worldwide.</p>
+</div>
 <div class="docbar"><a href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
-<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: MAS-convened design for a shared ledger infrastructure — "public permissioned" (Model 3) network operated by regulated FIs via <strong>GL1 Operating Companies</strong>, hosting tokenised assets/money across jurisdictions with DvP/PvP/DvPvP composability.
-SOURCE / RELIABILITY: <strong>Primary</strong>; MAS publication with BNY, Citi, MUFG, Onyx (JPM), SocGen-FORGE.
-ENTITIES: MAS · BNY · Citi · MUFG · Onyx · SocGen-FORGE · BIS "Finternet"/Unified Ledger cited · GL1 OpCo [NEW — the industry utility construct].
-KEY CLAIMS: Three network models — public permissionless (unaccountable, no SLA, unsuitable), private permissioned (fragmenting liquidity), <strong>public permissioned</strong> (open to any qualifying entity, activities restricted, FI-operated nodes, KYC'd participants) as the synthesis; asset-agnostic; trapped-liquidity thesis; institutional-grade DeFi protocols (AMMs with safeguards); rollout select-jurisdictions-first.
-CONTRADICTIONS w/ KB: None — GL1 is the direct answer to Dunbar's operator vacuum <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> and generalises the Blueprint's OCL <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> internationally.
-CLASSIFY: Shared infrastructure · tags: GL1, OpCo, public permissioned, Finternet.
-SIGNIFICANCE: The concession architecture goes global: whoever sits in the OpCo consortium owns the settlement layer of tokenised finance. Five global banks are already at the table; the table is the product.
-ROUTE: <a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a></p></div>
-<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
-<p><strong>A1 — The OpCo is Dunbar's missing operator, incorporated.</strong> Dunbar proved no sovereign can run the shared platform; GL1's answer is an industry utility run by a bank consortium. The governance vacuum becomes a company — and the five contributors (BNY, Citi, MUFG, Onyx, SocGen) are the presumptive shareholders of tokenised finance's TCP/IP.
-<strong>A2 — "Public permissioned" is a franchise, worded as openness.</strong> Open to "any entity that fulfils the criteria" — with the criteria set by the incumbents operating the nodes. Model 3 rhetoric imports internet-scale legitimacy while the KYC gate keeps internet-scale participation out.
-<strong>A3 — MAS exports the Blueprint.</strong> GL1 is the OCL pattern <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> scaled from Singapore-domestic to cross-jurisdictional — same whitelist logic, same designated-operator logic, now with BIS Finternet framing as air cover.</p>
-<h2>Quadrants</h2>
-<p>KK: 3-model taxonomy, OpCo construct, asset-agnostic scope, DvP/PvP/DvPvP composability, trapped-liquidity motivation. KU: OpCo governance detail, jurisdiction rollout order, regulatory perimeter per jurisdiction. UK: Dunbar inheritance; Partior overlap (same JPM/settlement space — GL1 vs Partior lane-division unstated); Onyx's presence in both. UU: <em>OpCo antitrust surface</em> — a bank-owned utility setting participation criteria for competitors is a competition-law question nobody in the paper touches; <em>sovereignty round-trip</em> — Dunbar said sovereigns won't cede control to a shared platform, GL1's answer hands control to private banks instead, which solves the central-bank objection by creating a bigger one for everyone else.</p>
-<h2>Narrative Vector</h2>
-<p>GL1 completes the arc: decentralisation explored (P2) → declined (P4) → re-offered as a bank-consortium franchise wearing open-network language. For the mandate: "who governs the operating company" is the next decade's question, and MAS is convening the answer.</p></div>
-<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
-<p><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a> GL1 proposes the settlement fabric for tokenised finance: a "public permissioned" shared ledger operated by GL1 Operating Companies — bank-consortium utilities — hosting tokenised money and assets with composable DvP/PvP/DvPvP. It is Dunbar's unsolved operator problem answered by incorporation, and the Orchid Blueprint's gatekeeping pattern exported cross-border. The five contributing institutions (BNY, Citi, MUFG, Onyx, SocGen-FORGE) sit at a table whose seat allocation <em>is</em> the economic prize; the openness language describes the membership form, not the power structure.</p>
-<h2>2. Entity Map</h2>
-<p>MAS (convener) | BNY, Citi, MUFG, Onyx/JPM, SocGen-FORGE (contributors/presumptive OpCo core) | BIS (Finternet/Unified Ledger intellectual cover) | absent: any buy-side, any non-G-SIB, any citizen-facing body.</p>
-<h2>3. Mechanics</h2>
-<p><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a> Model taxonomy → public permissioned synthesis; FI-operated nodes, KYC'd participants, restricted activities; asset-agnostic multi-currency hosting; institutional-grade protocols (safeguarded AMMs); select-jurisdiction rollout.</p>
-<h2>4. Pattern</h2>
-<p><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a> OCL <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> → GL1: identical concession logic at two scales. Dunbar <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> → GL1: vacuum → OpCo. Onyx bridges GL1 and Partior — JPM positioned on both candidate fabrics. The corpus's repertory-company pattern goes global with a heavier cast.</p>
-<h2>5. Quantification</h2>
-<p>None published; the addressable stake is the fee/float pool of tokenised settlement (BCG/ADDX US$16tn-by-2030 tokenisation forecast cited in the Guardian track as the industry's own sizing).</p>
-<h2>6. Bull / Base / Bear</h2>
-<p>Bull: GL1 OpCos launch in 2–3 jurisdictions; network effects consolidate; contributors capture utility economics. Base: extended standards-building; pilots on existing rails (Partior et al.) while GL1 governance gestates. <strong>Likely near-term.</strong> Bear: antitrust/sovereignty objections stall OpCo formation; fabric race fragments (GL1 vs Partior vs regional unified-ledger builds) — reproducing the fragmentation GL1 exists to solve.</p>
-<h2>7. Open Threads</h2>
-<p>OpCo incorporation status, domicile, shareholding — track MAS announcements. GL1↔Partior lane division (both Onyx-adjacent). Competition-law analysis of bank-owned participation criteria — unowned, advisory whitespace.</p>
-<h2>8. Sources</h2>
-<p><a class="cite" href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" title="Global Layer One Whitepaper (2024)">P12</a> papers/12, primary. Cross: <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a><a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a>, BIS Finternet (Carstens &amp; Nilekani 2024), BIS Unified Ledger (2023).</p></div></div></body></html>
+
+<h2><span class="n">01</span>What this is</h2>
+<p>The founding design paper for <strong>Global Layer One (GL1)</strong>: a shared "public permissioned" (Model 3) ledger for tokenised money and assets, operated by regulated financial institutions through <strong>GL1 Operating Companies</strong>. It sets out a three-model taxonomy — public-permissionless (rejected as unaccountable), private-permissioned (rejected as fragmenting), and public-permissioned (adopted) — hosting composable DvP/PvP/DvPvP settlement across jurisdictions, asset-agnostic, with FI-operated nodes and KYC'd participants. Contributing institutions named alongside MAS are <strong>BNY, Citi, MUFG, JPMorgan's Onyx and Société Générale-FORGE</strong>, with BIS "Finternet"/Unified Ledger framing cited as intellectual cover.</p>
+
+<h2><span class="n">02</span>Why it matters</h2>
+<p>GL1 is where the domestic concession pattern becomes a global one. Project Dunbar concluded that no sovereign will host its liability on a shared platform it does not control (<a class="cite" href="P14.html">P14</a>); the Orchid Blueprint answered the domestic version by designating who operates the ledger and who may deploy wrappers (<a class="cite" href="P4.html">P4</a>). GL1 answers the international version by <strong>incorporating a company</strong> — turning a governance vacuum into a cap table. Whoever holds the Operating-Company seats owns the settlement layer of tokenised finance. The paper is written in the language of open networks; the power structure it describes is a franchise.</p>
+
+<h2><span class="n">03</span>Key findings</h2>
+<div class="find"><b>Finding 1 — "Public permissioned" is a franchise worded as openness.</b> The network is "open to any entity that fulfils the criteria" — but the criteria are set by the incumbents operating the nodes. Model 3 rhetoric imports internet-scale legitimacy while the KYC gate keeps internet-scale participation out. The openness describes the membership <em>form</em>, not the power structure.</div>
+<div class="find"><b>Finding 2 — The Operating Company is Dunbar's missing operator, incorporated.</b> Dunbar proved sovereigns will not cede control to a shared platform. GL1's answer is an industry utility run by a bank consortium — the governance vacuum becomes a company, and the five contributors <strong>appear to be</strong> the presumptive shareholders of tokenised finance's common rail.</div>
+<div class="find"><b>Finding 3 — The antitrust surface is untouched.</b> A bank-owned utility that sets participation criteria for its own competitors is a competition-law question. It appears nowhere in the paper. The five banks are already "at the table" designing the rules of a market they will also trade in; that positioning is undisclosed as a conflict.</div>
+
+<h2><span class="n">04</span>The Entity Register</h2>
+<p class="legend">Every entity the paper names, its role here, and — the point — whether any downstream commercial interest was disclosed alongside that role. ● none · ▲ watch · ■ interest + no disclosure.</p>
+<div class="tablewrap"><table>
+<tr><th>Entity</th><th>Type</th><th>Role in this document</th><th>Commercial interest?</th><th>Downstream benefit</th><th>Disclosed?</th><th></th></tr>
+<tr><td><b>MAS</b></td><td>Regulator</td><td>Convener, author</td><td>Institutional</td><td>Sets the standard it convenes on; exports the model</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>BNY</b></td><td>Global Bank</td><td>Named contributor</td><td>Yes</td><td>Presumptive OpCo shareholder; settlement/custody economics</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>Citi</b></td><td>Global Bank</td><td>Named contributor</td><td>Yes</td><td>Presumptive OpCo shareholder; settlement/FX economics</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>MUFG</b></td><td>Global Bank</td><td>Named contributor</td><td>Yes</td><td>Presumptive OpCo shareholder; settlement economics</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>Onyx by J.P. Morgan</b></td><td>Commercial Bank unit</td><td>Named contributor</td><td>Yes</td><td>OpCo seat + Partior-adjacent rails on both candidate fabrics</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>Société Générale-FORGE</b></td><td>Bank digital-asset unit</td><td>Named contributor</td><td>Yes</td><td>Presumptive OpCo shareholder; tokenised-issuance economics</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>BIS (Finternet / Unified Ledger)</b></td><td>Multilateral</td><td>Cited intellectual framing</td><td>Policy influence</td><td>Legitimises the shared-ledger construct</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>GL1 Operating Company</b></td><td>Industry utility (construct)</td><td>The proposed operator entity</td><td>Yes</td><td>Owns the settlement layer; fee/float on tokenised flows</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>Absent parties</b></td><td>—</td><td>Any buy-side, non-G-SIB, or citizen-facing body</td><td>—</td><td>No seat at the table</td><td class="disc-yes">n/a</td><td class="f-watch">▲</td></tr>
+</table></div>
+
+<h2><span class="n">05</span>The Money Trail</h2>
+<div class="trail">Read as a money map, GL1 is a seat allocation. The five contributing banks — <strong>BNY, Citi, MUFG, Onyx/JPMorgan and SocGen-FORGE</strong> — are positioned to become the shareholders of the utility that settles tokenised money and assets across borders; the fee and float pool of that settlement layer is the prize, and the industry sizes the addressable tokenisation market in the trillions (the Guardian track cites the US$16tn-by-2030 forecast, see <a class="cite" href="G7.html">G7</a>). The single undisclosed line each bank carries is that it co-authors the rulebook of a market it will also compete in. Onyx sits on <strong>both</strong> candidate fabrics — GL1 and the Partior lineage — with the lane-division unstated. The trail runs domestic-to-global: the Blueprint's designated-operator logic (<a class="cite" href="P4.html">P4</a>) scaled up, Dunbar's operator vacuum (<a class="cite" href="P14.html">P14</a>) filled by incorporation, and the Guardian frameworks (<a class="cite" href="G1.html">G1</a>, <a class="cite" href="G3.html">G3</a>) supplying the assets that will ride these rails.</div>
+
+<h2><span class="n">06</span>The Gap</h2>
+<div class="gap">Three things the paper never says. <strong>(1) The cap table:</strong> the Operating Company's incorporation status, domicile and shareholding are unspecified — the single fact that decides who owns tokenised finance's settlement layer is left blank. <strong>(2) The antitrust analysis:</strong> a bank-owned utility setting participation criteria for competitors is nowhere examined. <strong>(3) The sovereignty round-trip:</strong> Dunbar said sovereigns will not cede control to a shared platform; GL1 hands that control to private banks instead — solving the central-bank objection by creating a larger one for everyone outside the consortium.</div>
+
+<h2><span class="n">07</span>Cross-references</h2>
+<p><a class="cite" href="P4.html">P4</a> Orchid Blueprint (the domestic concession pattern) · <a class="cite" href="P14.html">P14</a> Project Dunbar (the operator vacuum GL1 fills) · <a class="cite" href="P10.html">P10</a> the consortium narrowing · <a class="cite" href="G1.html">G1</a> / <a class="cite" href="G3.html">G3</a> / <a class="cite" href="G7.html">G7</a> the Guardian assets and networks that ride these rails.</p>
+
+<h2><span class="n">08</span>Podcast</h2>
+<div class="audio"><div class="k">Listen · read in your browser</div>
+<p class="src" id="pod" style="margin-bottom:10px">Two hosts on Global Layer One. Host A: So Singapore's central bank has a plan for the plumbing of tokenised money, and it calls it "public permissioned." Sounds open. Host B: The word "public" is doing a lot of work. It's open to anyone who meets the criteria — but the criteria are written by the banks running the nodes. Host A: And who's at the table? Host B: BNY, Citi, MUFG, JPMorgan's Onyx, and Société Générale's FORGE. Five global banks helping design a shared ledger they'll then operate — through something called an Operating Company. Host A: Which is basically a company that owns the settlement layer. Host B: Right. The fee and float on trillions in tokenised assets. And nowhere does the paper ask the obvious question: is it fair for a bank-owned utility to set the rules for its own competitors? Host A: Where's the citizen in this? Host B: Nowhere. No buy-side, no ordinary account holder, no public seat. The table is the product, and the public isn't invited to sit at it.</p>
+<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+
+<h2><span class="n">09</span>Sources</h2>
+<p class="src">Primary: <a href="../papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank">MAS Global Layer One Whitepaper, 2024</a>. Cross: Orchid Blueprint (<a class="cite" href="P4.html">P4</a>), Project Dunbar (<a class="cite" href="P14.html">P14</a>), BIS Finternet (Carstens &amp; Nilekani, 2024), BIS Unified Ledger (2023). Entity roles are as named in the paper; the Disclosed? and Money-Trail columns are analytical assessments of positioning and non-disclosure, tiered per SA-DOC v1 confidence rules — they document interest and disclosure status, not wrongdoing. Consortium-shareholder inferences are labelled "appears/presumptive" (Tier-3).</p>
+</div></body></html>
