@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask the Archive — PBM / CBDC Library</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+.mono{font-family:'IBM Plex Mono',monospace}
+header{border-bottom:1px solid var(--line);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
+header a.back{color:var(--mut);font-family:'IBM Plex Mono',monospace;font-size:11px;text-decoration:none;letter-spacing:.08em}
+.wrap{max-width:760px;margin:0 auto;width:100%;padding:24px;flex:1;display:flex;flex-direction:column}
+h1{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;margin:10px 0 6px}
+.lede{color:var(--mut);font-size:15px;margin-bottom:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px}
+.chip{font-size:12.5px;color:var(--gold2);border:1px solid var(--line);border-radius:20px;padding:6px 12px;cursor:pointer;background:var(--panel)}
+.chip:hover{border-color:var(--gold)}
+#log{flex:1;margin:16px 0;display:flex;flex-direction:column;gap:12px;overflow-y:auto}
+.msg{max-width:88%;padding:12px 15px;border-radius:12px;font-size:15px;line-height:1.55}
+.me{align-self:flex-end;background:#1d2a3a;border:1px solid #2c3f57}
+.ai{align-self:flex-start;background:var(--panel);border:1px solid var(--line)}
+.ai .who{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.bar{display:flex;gap:10px;align-items:center;border-top:1px solid var(--line);padding-top:16px;position:sticky;bottom:0;background:var(--void)}
+#q{flex:1;background:#05060a;border:1px solid var(--line);border-radius:10px;padding:13px 14px;color:var(--ink);font-size:15px;font-family:inherit;outline:none}
+#q:focus{border-color:var(--gold)}
+button{border:none;border-radius:10px;padding:13px 16px;font-size:14px;font-weight:650;cursor:pointer;font-family:inherit}
+#send{background:var(--gold);color:#0a0c10}
+#mic{background:var(--panel);color:var(--gold2);border:1px solid var(--line);font-size:18px;width:50px}
+#mic.live{background:var(--gold);color:#0a0c10;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.55}}
+.foot{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mut);text-align:center;padding:10px 0 20px;line-height:1.7}
+.spk{cursor:pointer;color:var(--mut);font-size:12px;margin-top:6px;display:inline-block}
+.spk:hover{color:var(--gold)}
+</style></head><body>
+<header><div class="brand"><a href="/">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><a class="back" href="/">&larr; Back to the library</a></header>
+<div class="wrap">
+  <h1>Ask the Archive</h1>
+  <p class="lede">A voice you can talk to about Singapore's programmable-money record. Type or tap the mic — it listens and answers out loud. Grounded strictly in the library; it won't make things up.</p>
+  <div class="chips" id="chips">
+    <span class="chip">Are the CDC vouchers programmable money?</span>
+    <span class="chip">Where does the voucher money actually come from?</span>
+    <span class="chip">Has Parliament ever debated this?</span>
+    <span class="chip">What is breakage?</span>
+    <span class="chip">Can the government control how I spend it?</span>
+  </div>
+  <div id="log"></div>
+  <div class="bar">
+    <button id="mic" title="Talk">🎙️</button>
+    <input id="q" placeholder="Ask anything about PBM, CBDC, the vouchers…" autocomplete="off">
+    <button id="send">Ask</button>
+  </div>
+  <div class="foot">Voice runs in your browser (Chrome recommended). Questions are logged anonymously to help focus the research. This is a research aid, not financial or legal advice.</div>
+</div>
+<script>
+const log=document.getElementById('log'),q=document.getElementById('q'),send=document.getElementById('send'),mic=document.getElementById('mic');
+let voiceOn=true;
+function add(text,who,speakable){
+  const d=document.createElement('div'); d.className='msg '+(who==='me'?'me':'ai');
+  if(who==='ai'){ d.innerHTML='<div class="who">The Archivist</div>'+text.replace(/</g,'&lt;'); }
+  else d.textContent=text;
+  log.appendChild(d);
+  if(who==='ai'&&speakable){ const s=document.createElement('span'); s.className='spk'; s.textContent='🔊 replay'; s.onclick=()=>speak(text); d.appendChild(document.createElement('br')); d.appendChild(s); }
+  log.scrollTop=log.scrollHeight; return d;
+}
+function speak(t){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); u.rate=1.02; u.pitch=1; const vs=speechSynthesis.getVoices(); const pref=vs.find(v=>/en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)); if(pref)u.voice=pref; speechSynthesis.speak(u);}catch(e){} }
+async function ask(text){
+  if(!text.trim())return; add(text,'me'); q.value='';
+  const t=add('…','ai',false);
+  try{
+    const r=await fetch('/api/ask',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:text})});
+    const j=await r.json(); const a=j.answer||'(no answer)';
+    t.innerHTML='<div class="who">The Archivist</div>'+a.replace(/</g,'&lt;');
+    const s=document.createElement('span'); s.className='spk'; s.textContent='🔊 replay'; s.onclick=()=>speak(a); t.appendChild(document.createElement('br')); t.appendChild(s);
+    if(voiceOn)speak(a);
+  }catch(e){ t.innerHTML='<div class="who">The Archivist</div>Something went wrong — try again.'; }
+  log.scrollTop=log.scrollHeight;
+}
+send.onclick=()=>ask(q.value);
+q.addEventListener('keydown',e=>{if(e.key==='Enter')ask(q.value);});
+document.getElementById('chips').addEventListener('click',e=>{if(e.target.classList.contains('chip'))ask(e.target.textContent);});
+// Web Speech recognition
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(SR){ const rec=new SR(); rec.lang='en-SG'; rec.interimResults=false; rec.maxAlternatives=1;
+  mic.onclick=()=>{ try{ speechSynthesis.cancel(); mic.classList.add('live'); rec.start(); }catch(e){} };
+  rec.onresult=e=>{ const t=e.results[0][0].transcript; mic.classList.remove('live'); ask(t); };
+  rec.onerror=()=>mic.classList.remove('live'); rec.onend=()=>mic.classList.remove('live');
+} else { mic.style.display='none'; }
+speechSynthesis && speechSynthesis.getVoices();
+add("Ask me anything about Singapore's programmable-money record — the vouchers, the funding, the whitepaper, or why none of it reached Parliament. Tap the mic to talk.",'ai',false);
+</script></body></html>
