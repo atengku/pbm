@@ -1,69 +1,102 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ubin Phase 2: Re-imagining RTGS (2017) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
-*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
-header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
-header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
-.brand a{color:inherit;text-decoration:none}
+<title>P6 · Ubin Phase 2: Re-imagining RTGS (2017) — Forensic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--red:#e5544b;--amber:#d9a441;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 90px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
 .crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
-h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
-h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
-h3{font-size:17px;margin:30px 0 8px}
-p,li{font-size:16px;color:#cdd6e2}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-strong{color:var(--ink)}
-em{color:var(--gold2);font-style:normal}
-a{color:var(--gold2)}
-a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
-a.cite:hover{background:rgba(201,162,75,.12)}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
-blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
-.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
-.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
-.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;margin:40px 0 6px;letter-spacing:-.01em}
+.themetag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0a0c10;background:var(--gold);padding:4px 10px;border-radius:5px;margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 22px;font-size:13.5px}
+.meta div span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.oneline{font-size:17px;color:var(--gold2);margin:14px 0 0;line-height:1.5}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
 .docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
 .docbar a:hover{border-color:var(--gold)}
-.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
-.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
-.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
-.idx a{text-decoration:none}
-.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+h2{font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);margin-right:10px}
+p,li{font-size:16px;color:#cdd6e2}
+.find{margin:16px 0;padding-left:16px;border-left:2px solid var(--gold)}
+.find b{color:var(--gold2)}
+strong{color:var(--ink)}
+.trail{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.gap{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.audio{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.audio .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding:8px 9px;text-align:left;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:9px 9px;vertical-align:top;color:#cdd6e2}
+td b{color:var(--ink)}
+.f-none{color:var(--grn)}.f-watch{color:var(--amber)}.f-conflict{color:var(--red);font-weight:700}
+.disc-no{color:var(--red);font-weight:600}.disc-part{color:var(--amber)}.disc-yes{color:var(--grn)}
+.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px}
+.src{font-size:13px;color:var(--mut);line-height:1.7}.src a{color:var(--gold2)}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px}
 </style></head><body>
-<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P6</div></div></header>
-<div class="wrap"><h1>Ubin Phase 2: Re-imagining RTGS (2017)</h1><p class="byline">Three-stage analytical chain · ref [P6]</p>
-<div class="docbar"><a href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
-<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: Decentralised RTGS functions — fund transfer, queuing, gridlock resolution (LSM) — prototyped on Corda, Hyperledger Fabric, Quorum with transaction privacy preserved.
-SOURCE / RELIABILITY: <strong>Primary</strong>; MAS+ABS led, <strong>Accenture-delivered</strong> (vendor voice), 11 FIs, Azure platform.
-ENTITIES: MAS · ABS · Accenture · BAML · Citi · CS · DBS · HSBC · JPM · MUFG · OCBC · SGX · StanChart · UOB · Microsoft Azure.
-KEY CLAIMS: All three platforms achieved decentralised LSM/gridlock resolution without compromising privacy (Corda UTXO+confidential identities; Fabric channels; Quorum Constellation+ZKP). Headline: feasible to <strong>remove the central infrastructure operator</strong> — "the role of MAS as an infrastructure operator needs to be re-evaluated."
-CONTRADICTIONS w/ KB: The 2023 Blueprint <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> answers this question in the opposite direction — permissioned, FMI-grade, operator-centric. P2's decentralisation enthusiasm was quietly reversed.
-CLASSIFY: Wholesale CBDC / RTGS · tags: LSM, gridlock, Corda, Fabric, Quorum, MEPS+.
-SIGNIFICANCE: The high-water mark of decentralisation rhetoric in official SG fintech literature — useful contrast object.
-ROUTE: → map → SA note. <a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a></p></div>
-<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
-<p><strong>A1 — The road not taken, documented.</strong> P2 proves the central operator can be removed and openly invites re-evaluating MAS's operator role. Six years later the Blueprint reinstates the operator with FMI-grade requirements. The corpus contains its own refutation — decentralisation was tested, feasible, and declined. That is a policy choice on the record.
-<strong>A2 — Privacy tech menu established.</strong> UTXO/confidential identities vs channels vs ZKP — the 2017 catalogue Mandala's ZKP work later industrialises.
-<strong>A3 — LSM decentralisation is the hard genuinely-new result.</strong> Gridlock resolution without a single consolidated view was the real cryptographic contribution; everything else was integration.</p>
-<h2>Quadrants</h2>
-<p>KK: 3 prototypes, 3 privacy models, LSM feasibility, 13-week build. KU: scalability, resilience at production loads, legal finality of decentralised netting. UK: ABS as co-lead — the banking cartel's formal seat at the design table; Azure dependency (decentralised ledger on centralised cloud, unremarked). UU: <em>finality-in-law gap</em> — no analysis of whether decentralised gridlock netting satisfies settlement-finality statutes; <em>the operator-economics silence</em> — removing MAS as operator removes a fee/oversight structure nobody models.</p>
-<h2>Narrative Vector</h2>
-<p>Validates technical decentralisation, and thereby <strong>converts every later centralisation into a documented preference</strong>. Quote P2 against P4 when the "technology requires it" defence appears.</p></div>
-<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
-<p><a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a> P2 decentralised the crown jewels of an RTGS — queuing and gridlock resolution — across Corda, Fabric and Quorum, each with a distinct privacy solution, and concluded the central operator could be removed, explicitly inviting re-evaluation of MAS's own role. That invitation was never taken up: the 2023 Blueprint restores an operator-centric, FMI-grade model. P2 therefore functions today as the corpus's counterfactual — proof that Singapore's permissioned architecture is chosen, not compelled.</p>
-<h2>2. Entity Map</h2>
-<p>MAS + ABS (co-leads) | Accenture (delivery) | 11 FIs incl. Citi, StanChart (only appearances) | Azure.</p>
-<h2>3. Mechanics</h2>
-<p><a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a> Fund transfer, queue, gridlock netting decentralised; privacy via UTXO/confidential identities (Corda), channels (Fabric), Constellation+ZKP (Quorum). MEPS+ context: ~SGD 70bn/day.</p>
-<h2>4. Pattern</h2>
-<p><a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a> Vendor rotation to Accenture; ABS's structural seat = incumbent banks co-author the future of their own settlement layer. Cross-ref <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>: the decentralisation finding is the corpus's largest unacknowledged reversal.</p>
-<h2>5. Quantification</h2>
-<p>13-week build; three parallel workstreams. No cost or throughput figures published against MEPS+ — the comparison that would have mattered.</p>
-<h2>6. Bull / Base / Bear</h2>
-<p>Bull (then): DLT-RTGS replaces MEPS+. Base: findings absorbed, MEPS+ retained, LSM learnings inform future rail design. <strong>Base realised.</strong> Bear: prototypes shelved entirely — avoided; lineage continued to P3-P5.</p>
-<h2>7. Open Threads</h2>
-<p>Whether any P2 LSM design survived into Partior/Ubin V production specs. Settlement-finality legal opinion on decentralised netting — never published.</p>
-<h2>8. Sources</h2>
-<p><a class="cite" href="../papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" title="Ubin Phase 2: Re-imagining RTGS (2017)">P6</a> papers/06, primary (Accenture-delivered). Cross: <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a><a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a>.</p></div></div></body></html>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Forensic Analysis · P6 · SA-DOC v1</div></div></header>
+<div class="wrap">
+
+<h1>Ubin Phase 2: Re-imagining RTGS (2017)</h1>
+<div class="themetag">T3 · Wholesale Rails</div>
+<div class="card">
+  <div class="meta">
+    <div><span>Ref</span>P6</div>
+    <div><span>Publisher</span>MAS + ABS (Accenture)</div>
+    <div><span>Date</span>2017</div>
+    <div><span>Reliability</span>Tier 1 · Primary (vendor-delivered)</div>
+    <div><span>Version</span>v1.0</div>
+    <div><span>Tags</span>Ubin · RTGS · LSM · gridlock · Corda / Fabric / Quorum · MEPS+</div>
+  </div>
+  <p class="oneline">The high-water mark of decentralisation in official Singapore fintech literature — it proved the central operator could be removed, then the 2023 Blueprint quietly put the operator back. The corpus contains its own refutation.</p>
+</div>
+<div class="docbar"><a href="../papers/06_Project_Ubin_Phase2_2017.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
+
+<h2><span class="n">01</span>What this is</h2>
+<p>MAS and the Association of Banks in Singapore (ABS), delivered by <strong>Accenture</strong> on Microsoft Azure, prototyped the core functions of a Real-Time Gross Settlement system — fund transfer, queuing, and gridlock resolution (liquidity-saving mechanisms) — decentralised across three platforms (Corda, Hyperledger Fabric, Quorum), each with transaction privacy preserved. The headline finding: it is feasible to remove the central infrastructure operator, and <strong>“the role of MAS as an infrastructure operator needs to be re-evaluated.”</strong></p>
+
+<h2><span class="n">02</span>Why it matters</h2>
+<p>This is the road not taken, on the record. Phase 2 shows decentralised gridlock resolution works and openly invites re-evaluating MAS’s operator role. Six years later the <a class="cite" href="P4.html">Blueprint</a> reinstates an operator-centric, FMI-grade, permissioned model. That reversal makes P6 the corpus’s <strong>counterfactual</strong> — proof that Singapore’s permissioned architecture is a <em>chosen</em> preference, not a technical necessity. Keep it to quote back whenever the “the technology requires it” defence appears.</p>
+
+<h2><span class="n">03</span>Key findings</h2>
+<div class="find"><b>Finding 1 — The road not taken, documented.</b> P2 proves the central operator can be removed and invites re-evaluating MAS’s role. The Blueprint later reinstates it. <strong>Decentralisation was tested, found feasible, and declined — a policy choice now on the record.</strong></div>
+<div class="find"><b>Finding 2 — Privacy-tech menu established.</b> UTXO / confidential identities (Corda) vs channels (Fabric) vs Constellation+ZKP (Quorum) — the 2017 catalogue that later ZKP work industrialises.</div>
+<div class="find"><b>Finding 3 — LSM decentralisation is the genuinely-new result.</b> Gridlock resolution without a single consolidated view was the real cryptographic contribution; everything else was integration.</div>
+
+<h2><span class="n">04</span>The Entity Register</h2>
+<p class="legend">Every institution the report names, its role in the prototype, and whether its downstream commercial stake was disclosed. ● none · ▲ watch · ■ interest + no disclosure.</p>
+<div class="tablewrap"><table>
+<tr><th>Entity</th><th>Type</th><th>Role in this document</th><th>Commercial interest?</th><th>Downstream benefit</th><th>Disclosed?</th><th>Flag</th></tr>
+<tr><td><b>MAS</b></td><td>Central Bank</td><td>Co-lead of the project</td><td>Institutional</td><td>Convenes; later reverses the finding</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>ABS (Association of Banks in Singapore)</b></td><td>JV/Consortium</td><td>Co-lead — the banking industry’s formal seat</td><td>Yes</td><td>Incumbent banks co-author the future of their own settlement layer</td><td class="disc-part">Partial</td><td class="f-conflict">■</td></tr>
+<tr><td><b>Accenture</b></td><td>Tech Vendor</td><td>Delivery partner / report author</td><td>Yes</td><td>Consulting fees; authors the record it is paid to deliver</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>JPMorgan</b></td><td>Commercial Bank</td><td>Consortium participant</td><td>Yes</td><td>Onyx / Partior wholesale rails downstream</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>DBS · OCBC · UOB</b></td><td>Commercial Bank</td><td>Consortium participants (local banks)</td><td>Yes</td><td>Tokenised-deposit rails they later issue</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Citi · StanChart · HSBC · BAML · Credit Suisse · MUFG</b></td><td>Commercial Bank</td><td>Consortium participants (foreign banks)</td><td>Yes</td><td>Wholesale settlement positioning</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>SGX</b></td><td>JV/Consortium</td><td>Consortium participant</td><td>Yes</td><td>Settlement / DvP future (Marketnode lineage)</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Microsoft Azure</b></td><td>Tech Vendor</td><td>Cloud platform for the prototypes</td><td>Yes</td><td>Cloud infra — a decentralised ledger run on centralised cloud, unremarked</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+</table></div>
+
+<h2><span class="n">05</span>The Money Trail</h2>
+<div class="trail">The money story here is quieter and sharper than the tech. The decentralisation finding <em>appears</em> inconvenient to the very parties who co-authored it: removing the central operator removes a <strong>fee-and-oversight structure</strong> — and the incumbent settlement operator (BCS in the wider lineage) and the banks around the table are the ones whose position that would erode. So the result that “operators can be removed” is documented, then, over the next six years, walked back to an operator-centric model (<a class="cite" href="P4.html">P4</a>) in which incumbents keep their seats. <strong>ABS</strong> co-leading is the tell: the banking cartel holds a structural seat at the design table for its own settlement layer, and <strong>Accenture</strong>, paid to deliver, writes the record. No participant discloses that a decentralised RTGS would have cost them fee income or oversight leverage — the interest that best explains why a feasible design was declined.</div>
+
+<h2><span class="n">06</span>The Gap</h2>
+<div class="gap">What the enthusiasm skips. <strong>(1) Finality-in-law:</strong> no analysis of whether decentralised gridlock netting satisfies settlement-finality statutes. <strong>(2) Operator economics:</strong> removing MAS as operator removes a fee/oversight structure nobody models — the silence that later justifies putting the operator back. <strong>(3) Centralised-cloud dependency:</strong> a “decentralised” ledger running entirely on Azure passes without comment.</div>
+
+<h2><span class="n">07</span>Cross-references</h2>
+<p><a class="cite" href="P5.html">P5</a> Ubin Phase 1 (the consortium this builds on) · <a class="cite" href="P7.html">P7</a> Phase 3 DvP, where the re-centralisation begins · <a class="cite" href="P4.html">P4</a> the Blueprint that reverses this finding · <a class="cite" href="P10.html">P10</a> the consortium that narrows to the commercial JV.</p>
+
+<h2><span class="n">08</span>Podcast</h2>
+<div class="audio"><div class="k">Listen · read in your browser</div>
+<p class="src" id="pod" style="margin-bottom:10px">Two hosts, understated. This is the one that quietly embarrasses everything that came after it. In 2017, MAS and the banks build a prototype settlement system with no central operator — the machine runs itself, privately, across three different platforms. And the report actually says out loud: maybe MAS doesn’t need to be the operator anymore. Feasible. Proven. On the record. Then what happens? Six years later the official Blueprint puts the operator firmly back in the middle, permissioned, gated, incumbents keeping their seats. So when someone tells you the closed design was forced by the technology — this document is the receipt that says otherwise. And notice who ran the study: the central bank, yes, but co-led by the banks’ own association, and written up by a consultant paid to deliver it. A decentralised system would have quietly deleted a fee-and-oversight structure those same players sit on. Nobody writes that sentence down. But it’s the most honest explanation for why the road that worked was the road not taken.</p>
+<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+
+<h2><span class="n">09</span>Sources</h2>
+<p class="src">Primary (Accenture-delivered): <a href="../papers/06_Project_Ubin_Phase2_2017.pdf" target="_blank">MAS / ABS / Accenture, <em>Project Ubin Phase 2: Re-imagining RTGS</em>, 2017</a>. Disclosed? and Money-Trail columns are analytical assessments of positioning and non-disclosure per SA-DOC v1 — they document interest and disclosure status, not wrongdoing. Cross-refs: <a href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank">Orchid Blueprint (2023)</a> as the reversal; MEPS+ context (~SGD 70bn/day).</p>
+</div></body></html>
