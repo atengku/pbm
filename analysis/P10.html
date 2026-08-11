@@ -1,69 +1,104 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ubin Phase 5 (2020) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
-*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
-header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
-header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
-.brand a{color:inherit;text-decoration:none}
+<title>P10 · Ubin Phase 5 (2020) — Forensic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--red:#e5544b;--amber:#d9a441;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 90px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
 .crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
-h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
-h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
-h3{font-size:17px;margin:30px 0 8px}
-p,li{font-size:16px;color:#cdd6e2}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-strong{color:var(--ink)}
-em{color:var(--gold2);font-style:normal}
-a{color:var(--gold2)}
-a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
-a.cite:hover{background:rgba(201,162,75,.12)}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
-blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
-.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
-.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
-.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;margin:40px 0 6px;letter-spacing:-.01em}
+.themetag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0a0c10;background:var(--gold);padding:4px 10px;border-radius:5px;margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 22px;font-size:13.5px}
+.meta div span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.oneline{font-size:17px;color:var(--gold2);margin:14px 0 0;line-height:1.5}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
 .docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
 .docbar a:hover{border-color:var(--gold)}
-.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
-.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
-.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
-.idx a{text-decoration:none}
-.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+h2{font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);margin-right:10px}
+p,li{font-size:16px;color:#cdd6e2}
+.find{margin:16px 0;padding-left:16px;border-left:2px solid var(--gold)}
+.find b{color:var(--gold2)}
+strong{color:var(--ink)}
+.trail{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.gap{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.audio{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.audio .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding:8px 9px;text-align:left;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:9px 9px;vertical-align:top;color:#cdd6e2}
+td b{color:var(--ink)}
+.f-none{color:var(--grn)}.f-watch{color:var(--amber)}.f-conflict{color:var(--red);font-weight:700}
+.disc-no{color:var(--red);font-weight:600}.disc-part{color:var(--amber)}.disc-yes{color:var(--grn)}
+.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px}
+.src{font-size:13px;color:var(--mut);line-height:1.7}.src a{color:var(--gold2)}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px}
 </style></head><body>
-<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · P10</div></div></header>
-<div class="wrap"><h1>Ubin Phase 5 (2020)</h1><p class="byline">Three-stage analytical chain · ref [P10]</p>
+
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Forensic Analysis · P10 · SA-DOC v1</div></div></header>
+<div class="wrap">
+
+<h1>Ubin Phase 5 (2020)</h1>
+<div class="themetag">T5 · The Consortium & the Revolving Door</div>
+<div class="card">
+  <div class="meta">
+    <div><span>Ref</span>P10</div>
+    <div><span>Publisher</span>MAS · Temasek · J.P. Morgan</div>
+    <div><span>Date</span>2020</div>
+    <div><span>Reliability</span>Tier 1 · Primary</div>
+    <div><span>Version</span>v1.0</div>
+    <div><span>Tags</span>Ubin V · Temasek · JPMorgan · escrow APIs · Partior lineage</div>
+  </div>
+  <p class="oneline">The privatisation node. An eleven-bank public consortium narrows to MAS, Temasek and JPMorgan — and within a year the same trio’s joint venture, Partior, commercialises the very design it prototyped.</p>
+</div>
 <div class="docbar"><a href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
-<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: Capstone — "Ubin V" multi-currency payments network built to production fidelity (production-grade infra, bank production standards) with commercial use-case integration and future-of-payments design concepts.
-SOURCE / RELIABILITY: <strong>Primary</strong>; MAS + <strong>Temasek + J.P. Morgan</strong> with Accenture — note the shift from consortium-of-banks to a state-capital + single-bank axis.
-ENTITIES: MAS · Temasek · JPM · Accenture · use-case partners across capital markets, trade finance, insurance · github.com/project-ubin (APIs public, incl. ESCROW.<em> message set).
-KEY CLAIMS: Multi-currency network on one platform; phases 1–4 solved technical feasibility, P5 proves </em>value*; workshops produced user-driven functionality set; governance of common platforms framed as the binding constraint ("trust is not binary"); design concepts offered for future payment infrastructure.
-CONTRADICTIONS w/ KB: None; the corporate epilogue (Partior, the JPM/DBS/Temasek JV commercialising this work) is outside the paper but is the paper's true conclusion.
-CLASSIFY: Wholesale multi-currency infrastructure · tags: Ubin V, Temasek, JPM, escrow APIs, Partior lineage.
-SIGNIFICANCE: The privatisation node — public research consortium narrows to the two parties who then commercialise it.
-ROUTE: → map → SA note. <a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a></p></div>
-<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
-<p><strong>A1 — The exit was the point.</strong> P1's eleven-bank consortium becomes P5's MAS+Temasek+JPM trio; within a year the same trio's commercial echo (Partior: JPM/DBS/Temasek) launches with the multi-currency settlement mandate Ubin V prototyped. Public R&amp;D → private JV, cleanly executed. Who captured the option value of five years of convened research is a fair and unasked question.
-<strong>A2 — Governance named as the real problem.</strong> P5's most durable text: no single party is trusted to hold central-bank liabilities across borders, but "trust is not binary" — less-critical functions can be centralised where incentives suffice. This sentence is the intellectual seed of both Dunbar's platform governance and GL1's operating-company model.
-<strong>A3 — Escrow as first-class primitive.</strong> The public API set ships ESCROW.INIT/SIGN/ENQUIRY/NOTIFY with release/revert/<strong>dispute</strong> actions — wholesale rails got a dispute verb in their message schema; retail PBM still lacks one. Second sighting of the recourse asymmetry (<a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a>).</p>
-<h2>Quadrants</h2>
-<p>KK: Ubin V architecture, production-fidelity claim, use-case survey, API/github publication. KU: commercial/operating model, cross-network connectivity models. UK: Partior's imminent formation; Temasek's dual role as state investor and network participant. UU: <em>option-value capture</em> (above); <em>the SWIFT accommodation</em> — P5 praises SWIFT's cooperative model while sketching its replacement, the diplomatic ambiguity that lets both futures be pursued.</p>
-<h2>Narrative Vector</h2>
-<p>Shifts the Ubin story from technology to industrial policy: the programme's deliverable was a commercialisable network and a chosen set of commercial champions. Everything the sentiment mandate needs to say about public-private value transfer has its cleanest example here.</p></div>
-<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
-<p><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a> P5 closed Project Ubin by building Ubin V — a multi-currency payments network at production fidelity — with MAS, Temasek and J.P. Morgan as principals and the broader ecosystem as consulted users. Its stated purpose was proving value; its structural effect was selecting commercial champions: the Partior JV (JPM/DBS/Temasek) commercialised the design within a year. The report's lasting analytical contribution is its governance framing — trust as a spectrum allocatable by function — and its escrow API with an explicit dispute action, the second wholesale sighting of recourse machinery absent from retail PBM.</p>
-<h2>2. Entity Map</h2>
-<p>MAS | Temasek (state capital) | JPM | Accenture | use-case cohort (capital markets, trade finance, insurance) | github.com/project-ubin.</p>
-<h2>3. Mechanics</h2>
-<p><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a> Multi-currency single-platform settlement; production-grade infra; ESCROW message set with release/revert/dispute; connectivity concepts for common platforms vs interlinked networks.</p>
-<h2>4. Pattern</h2>
-<p><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a> Consortium narrowing P1→P5 (11 banks → 1 bank + sovereign fund); public-to-private handoff (→ Partior); governance text seeds Dunbar <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a> and GL1. Recourse asymmetry recurs (<a class="cite" href="../papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" title="Ubin Phase 3: DvP on DLT (2018)">P7</a>).</p>
-<h2>5. Quantification</h2>
-<p>None published on unit economics — consistent with a report whose commercial answer arrived as a JV, not a table.</p>
-<h2>6. Bull / Base / Bear (on the Ubin V lineage)</h2>
-<p>Bull: Partior becomes the multi-currency wholesale settlement utility for Asia — partially in motion. Base: Partior grows corridor-by-corridor among founder banks; MEPS+/SWIFT persist. <strong>Current state.</strong> Bear: founder concentration deters rival banks, network stalls at club scale — live risk.</p>
-<h2>7. Open Threads</h2>
-<p>Partior cap table + MAS's regulatory posture toward its own research's commercial child (ACRA + licensing register pull). Whether Ubin V escrow/dispute schema persists in Partior production APIs.</p>
-<h2>8. Sources</h2>
-<p><a class="cite" href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" title="Ubin Phase 5 (2020)">P10</a> papers/10, primary. Cross: <a class="cite" href="../papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" title="Ubin Phase 1 (2017)">P5</a>-<a class="cite" href="../papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" title="Jasper–Ubin Design Paper (2019)">P8</a>, <a class="cite" href="../papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" title="Project Dunbar (2022)">P14</a>, Partior public materials.</p></div></div></body></html>
+
+<h2><span class="n">01</span>What this is</h2>
+<p>The capstone of Project Ubin: "Ubin V," a multi-currency payments network built to production fidelity, authored by MAS with <strong>Temasek and J.P. Morgan</strong> and Accenture. It ships a public API set on github.com/project-ubin — including an ESCROW message set whose actions include release, revert and an explicit <strong>dispute</strong> — and frames the governance of common platforms ("trust is not binary") as the binding constraint.</p>
+
+<h2><span class="n">02</span>Why it matters</h2>
+<p>The shift from a consortium of eleven banks to a state-capital-plus-single-bank axis is the industrial-policy pivot of the entire programme. The stated purpose was proving value; the structural effect was selecting commercial champions. Within a year the Partior joint venture — JPMorgan, DBS and Temasek — launched with the multi-currency settlement mandate Ubin V prototyped, then returned as the contractor building BIS Dunbar prototypes <a class="cite" href="P14.html">P14</a>.</p>
+
+<h2><span class="n">03</span>Key findings</h2>
+<div class="find"><b>Finding 1 — The exit was the point.</b> Phase 1’s eleven-bank consortium becomes Phase 5’s MAS + Temasek + JPMorgan trio; within a year the same trio’s commercial echo, Partior (JPM/DBS/Temasek), launches with the mandate Ubin V prototyped. Public R&amp;D to private JV, cleanly executed. Who captured the option value of five years of convened research is a fair and unasked question.</div>
+<div class="find"><b>Finding 2 — Governance named as the real problem.</b> The most durable line in the report: no single party is trusted to hold central-bank liabilities across borders, but "trust is not binary." That sentence is the intellectual seed of both Dunbar’s platform governance and GL1’s operating-company model.</div>
+<div class="find"><b>Finding 3 — Escrow got a dispute verb; retail money did not.</b> The public API ships ESCROW with release, revert and a <strong>dispute</strong> action — wholesale rails carry recourse in their message schema, while retail PBM <a class="cite" href="P1.html">P1</a> still ends at "Expired" with no dispute state. Recourse follows power.</div>
+
+<h2><span class="n">04</span>The Entity Register</h2>
+<p class="legend">Every entity the document names, its role here, and whether any downstream commercial interest was disclosed alongside that role. ● none · ▲ watch · ■ interest + no disclosure.</p>
+<div class="tablewrap"><table>
+<tr><th>Entity</th><th>Type</th><th>Role in this document</th><th>Commercial interest?</th><th>Downstream benefit</th><th>Disclosed?</th><th>Flag</th></tr>
+<tr><td><b>MAS</b></td><td>Regulator</td><td>Convener and co-principal</td><td>Institutional</td><td>Owns research whose commercial child it then licenses</td><td class="disc-part">Partial</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Temasek</b></td><td>State Investor</td><td>Co-principal and network participant</td><td>Yes</td><td>Dual role — state capital and Partior shareholder</td><td class="disc-part">Partial</td><td class="f-conflict">■</td></tr>
+<tr><td><b>J.P. Morgan</b></td><td>Commercial Bank</td><td>Co-principal and build partner</td><td>Yes</td><td>Partior co-founder; commercialises the multi-currency mandate</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>Partior (JPM · DBS · Temasek JV)</b></td><td>Private JV</td><td>Unnamed in-paper; the commercial successor</td><td>Yes</td><td>Captures the design within a year; returns as BIS-Dunbar vendor</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>DBS</b></td><td>Commercial Bank</td><td>Partior co-founder (external to paper)</td><td>Yes</td><td>Third JV shareholder in the private capture</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td><b>Accenture</b></td><td>Consultancy</td><td>Delivery partner</td><td>Yes</td><td>Integration fees across Ubin phases</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Use-case cohort</b></td><td>Industry (capital mkts, trade finance, insurance)</td><td>Consulted users</td><td>Yes</td><td>Feature-set shaping</td><td class="disc-part">Partial</td><td class="f-watch">▲</td></tr>
+<tr><td><b>github.com/project-ubin (ESCROW APIs)</b></td><td>Standard / Code</td><td>Public technical artifact</td><td>No</td><td>—</td><td class="disc-yes">n/a</td><td class="f-none">●</td></tr>
+</table></div>
+
+<h2><span class="n">05</span>The Money Trail</h2>
+<div class="trail">Phase 5 presents itself as public research proving "value," but its structural effect was to select commercial champions. The eleven-bank consortium of Ubin Phase 1 narrows to <strong>MAS, Temasek and JPMorgan</strong>; within a year the <strong>Partior</strong> joint venture — JPMorgan, DBS and Temasek — launches with exactly the multi-currency settlement mandate Ubin V prototyped, and later returns as the contractor building BIS Dunbar prototypes <a class="cite" href="P14.html">P14</a>. Public research → private company → public research’s vendor, inside twenty-four months. Temasek sits on both sides as state investor and JV shareholder; JPMorgan co-authors the public work and co-owns the commercial child; the paper names none of this downstream capture. This is the cleanest example in the corpus of convened public research resolving into a privately held product — the revolving door made infrastructural, pointing onward to the consortium map in <a class="cite" href="P14.html">P14</a> and <a class="cite" href="P12.html">P12</a>.</div>
+
+<h2><span class="n">06</span>The Gap</h2>
+<div class="gap">Three unstated things. <strong>(1) No unit economics:</strong> the commercial answer arrived as a joint venture, not a table — no cost or pricing figure is published. <strong>(2) The Partior cap table:</strong> and MAS’s regulatory posture toward its own research’s commercial child, are undisclosed. <strong>(3) The dispute verb that never crossed over:</strong> the escrow schema carries a dispute action for banks, yet the retail PBM lifecycle <a class="cite" href="P1.html">P1</a> still has none — an asymmetry sitting in plain sight in MAS’s own specifications.</div>
+
+<h2><span class="n">07</span>Cross-references</h2>
+<p><a class="cite" href="P5.html">P5</a> consortium origin (eleven banks) · <a class="cite" href="P8.html">P8</a> the corridor strand · <a class="cite" href="P14.html">P14</a> Partior returns as BIS vendor · <a class="cite" href="P12.html">P12</a> GL1 operating-company · <a class="cite" href="P1.html">P1</a> the recourse asymmetry on the retail side.</p>
+
+<h2><span class="n">08</span>Podcast</h2>
+<div class="audio"><div class="k">Listen · read in your browser</div>
+<p class="src" id="pod" style="margin-bottom:10px">HOST A: If you only read one of these, maybe read this one — because this is where the public research quietly becomes a private company. HOST B: Project Ubin, final phase, 2020. And look at the author line: it started as eleven banks, and it ends as MAS, Temasek, and JPMorgan. Three names. HOST A: And then? HOST B: And then, within a year, those same names — JPMorgan, DBS, Temasek — spin up Partior, a private joint venture, selling the exact multi-currency settlement system Ubin just prototyped. Public money proved it; a private firm now owns it. HOST A: And the kicker — Partior comes back later as the paid contractor building the BIS Dunbar prototypes. HOST B: Public research, private company, public research’s vendor. Twenty-four months. Temasek’s on both sides of that table. HOST A: What did citizens get? HOST B: Here’s the tell. This wholesale system ships with a "dispute" button built into its escrow messages. The citizen voucher system never got one. The machinery for recourse exists — it was just built for the banks.</p>
+<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+
+<h2><span class="n">09</span>Sources</h2>
+<p class="src">Primary: <a href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank">Project Ubin Phase 5 Ecosystem Report, MAS/Temasek/J.P. Morgan, 2020</a>; public APIs at github.com/project-ubin. The Partior lineage is drawn from public JV materials; the Disclosed? and Money-Trail columns assess positioning and non-disclosure per SA-DOC v1 — documenting interest and disclosure status, not wrongdoing.</p>
+
+</div></body></html>
