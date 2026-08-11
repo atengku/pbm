@@ -59,8 +59,9 @@
   function close(){ panel.classList.remove('open'); try{speechSynthesis.cancel();}catch(e){} }
   btn.onclick=function(){ panel.classList.contains('open')?close():open(); };
   closeb.onclick=close;
+  function saaPickVoice(){var vs=speechSynthesis.getVoices();var names=['Samantha','Google US English','Microsoft Aria','Microsoft Jenny','Aria','Jenny','Ava','Allison','Microsoft Zira','Nicky','Susan'];for(var i=0;i<names.length;i++){var v=vs.find(function(x){return x.name.indexOf(names[i])>-1&&!/GB|UK/.test(x.name);});if(v)return v;}var us=vs.find(function(v){return /en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name);});if(us)return us;return vs.find(function(v){return /^en/.test(v.lang)&&!/GB|UK/.test(v.name);})||null;}
   function speak(t){ try{ if(!voiceOn)return; speechSynthesis.cancel(); var u=new SpeechSynthesisUtterance(t); u.rate=1.02;
-    var vs=speechSynthesis.getVoices(); var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena|Samantha/.test(v.name+v.lang)}); if(p)u.voice=p; speechSynthesis.speak(u);}catch(e){} }
+    u.voice=saaPickVoice(); speechSynthesis.speak(u);}catch(e){} }
   function add(text,who,speakable){ var d=document.createElement('div'); d.className='saaMsg '+(who==='me'?'saaMe':'saaAi');
     if(who==='ai'){ d.innerHTML='<div class="who">The Archivist</div>'+String(text).replace(/</g,'&lt;'); } else d.textContent=text;
     log.appendChild(d);
