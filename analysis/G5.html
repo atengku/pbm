@@ -1,69 +1,101 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guardian FX Workstream (2024) — Analysis</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--void:#0a0c10;--panel:#12161d;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877}
-*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:840px;margin:0 auto;padding:0 24px 80px}
-header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.85);backdrop-filter:blur(10px);z-index:9}
-header.top .w{max-width:840px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}
-.brand a{color:inherit;text-decoration:none}
+<title>G5 · Guardian FX Workstream (2024) — Forensic Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--void:#0a0c10;--panel:#12161d;--panel2:#161c24;--line:#232c38;--ink:#e8edf4;--mut:#8c98a8;--gold:#c9a24b;--gold2:#e5c877;--red:#e5544b;--amber:#d9a441;--grn:#57b98a}
+*{box-sizing:border-box}body{margin:0;background:var(--void);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 90px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,12,16,.9);backdrop-filter:blur(10px);z-index:9}
+header.top .w{max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px}.brand b{color:var(--gold)}.brand a{color:inherit;text-decoration:none}
 .crumb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em}
-h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:48px 0 6px;letter-spacing:-.01em}
-h2{font-size:22px;margin:44px 0 12px;color:var(--gold2);letter-spacing:-.01em}
-h3{font-size:17px;margin:30px 0 8px}
-p,li{font-size:16px;color:#cdd6e2}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-strong{color:var(--ink)}
-em{color:var(--gold2);font-style:normal}
-a{color:var(--gold2)}
-a.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px;margin:0 1px;white-space:nowrap}
-a.cite:hover{background:rgba(201,162,75,.12)}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}th{color:var(--gold2);font-family:'IBM Plex Mono',monospace;font-size:12px}
-blockquote{border-left:3px solid var(--gold);margin:14px 0;padding:4px 18px;color:var(--mut)}
-.stage{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 26px 20px;margin:22px 0}
-.stagehead{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:18px 0 0}
-.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 6px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.12;margin:40px 0 6px;letter-spacing:-.01em}
+.themetag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#0a0c10;background:var(--gold);padding:4px 10px;border-radius:5px;margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px 22px;font-size:13.5px}
+.meta div span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.oneline{font-size:17px;color:var(--gold2);margin:14px 0 0;line-height:1.5}
+.docbar{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 6px}
 .docbar a{font-family:'IBM Plex Mono',monospace;font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px 14px;color:var(--gold2)}
 .docbar a:hover{border-color:var(--gold)}
-.byline{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mut);margin:0 0 28px}
-.note{font-size:13.5px;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:20px 0}
-.idx{list-style:none;padding:0}.idx li{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:var(--panel)}
-.idx a{text-decoration:none}
-.idx .t{font-weight:600;color:var(--ink)}.idx .s{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut)}
+h2{font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2 .n{color:var(--mut);margin-right:10px}
+p,li{font-size:16px;color:#cdd6e2}
+.find{margin:16px 0;padding-left:16px;border-left:2px solid var(--gold)}
+.find b{color:var(--gold2)}
+strong{color:var(--ink)}
+.trail{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.gap{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:10px;padding:16px 20px;margin:16px 0;font-size:15px}
+.audio{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}
+.audio .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:760px}
+th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding:8px 9px;text-align:left;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:9px 9px;vertical-align:top;color:#cdd6e2}
+td b{color:var(--ink)}
+.f-none{color:var(--grn)}.f-watch{color:var(--amber)}.f-conflict{color:var(--red);font-weight:700}
+.disc-no{color:var(--red);font-weight:600}.disc-part{color:var(--amber)}.disc-yes{color:var(--grn)}
+.cite{font-family:'IBM Plex Mono',monospace;font-size:.82em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,162,75,.35);border-radius:5px;padding:0 5px}
+.src{font-size:13px;color:var(--mut);line-height:1.7}.src a{color:var(--gold2)}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mut);margin-top:8px}
 </style></head><body>
-<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Analysis · G5</div></div></header>
-<div class="wrap"><h1>Guardian FX Workstream (2024)</h1><p class="byline">Three-stage analytical chain · ref [G5]</p>
+<header class="top"><div class="w"><div class="brand"><a href="../index.html">PBM<b>/</b>CBDC <span style="color:var(--mut);font-weight:400">Library</span></a></div><div class="crumb">Forensic Analysis · G5 · SA-DOC v1</div></div></header>
+<div class="wrap">
+
+<h1>Guardian FX Workstream</h1>
+<div class="themetag">T5 · The Consortium &amp; the Revolving Door</div>
+<div class="card">
+  <div class="meta">
+    <div><span>Ref</span>G5</div>
+    <div><span>Publisher</span>MAS · Project Guardian</div>
+    <div><span>Date</span>2024</div>
+    <div><span>Reliability</span>Tier 1 · Primary</div>
+    <div><span>Version</span>v2.0</div>
+    <div><span>Tags</span>TBL · 24/7 FX · Ant · documentation standards</div>
+  </div>
+  <p class="oneline">The wholesale programme reaches commercial ground: tokenised bank liabilities become the winning money and platform treasuries enter the regulated tent as clients, not issuers.</p>
+</div>
 <div class="docbar"><a href="../papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank">Open the original PDF ↗</a><a href="../synthesis.html">Master synthesis</a><a href="index.html">All analyses</a></div>
-<p class="stagehead">Stage 1 — Intake Analysis</p><div class="stage"><p>SUBJECT: Shared ledgers + tokenised bank liabilities applied to transaction banking and FX — lifecycle redesign of cross-border corporate payments; use cases from Ant International, BNY+OCBC, HSBC; standardised documentation agenda.
-SOURCE / RELIABILITY: <strong>Primary</strong>; Guardian FX workstream.
-ENTITIES: <strong>Ant International</strong> [NEW — first big-tech/platform treasury in the corpus] · BNY · OCBC · HSBC · FSB/CPMI RTGS-hours initiatives referenced.
-KEY CLAIMS: FX pain: market hours, legacy RTGS downtime, opaque end-to-end costs; tokenised bank liabilities as 24/7 settlement money for corporates; TBL distinguished from stablecoins/CBDCs (bank-balance-sheet claim); operating-model changes and risk/mitigant catalogue; push for standardised tokenised-FX documentation atop existing industry standards.
-CONTRADICTIONS w/ KB: None; this is <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>'s TBL category finding its commercial lane, and <a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a>'s vehicle-currency logic reappearing at corporate-treasury level.
-CLASSIFY: Tokenised FX / transaction banking · tags: TBL, 24/7 FX, Ant, documentation standards.
-SIGNIFICANCE: The commercialisation edge of the wholesale track — where research becomes bank product; Ant's presence marks platform treasuries entering the regulated tokenised-money tent.
-ROUTE: <a class="cite" href="../papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank" title="Guardian FX Workstream (2024)">G5</a></p></div>
-<p class="stagehead">Stage 2 — Knowledge Map</p><div class="stage"><h2>Alphas</h2>
-<p><strong>A1 — TBLs win the money race by default.</strong> Of the Blueprint's three permitted monies <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a>, tokenised bank liabilities are the one shipping in corporate use cases — CBDC deferred, stablecoins licensing slowly. The two-tier system's digital heir is the bank deposit, exactly as the 2021 monograph's protective doctrine <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a> would predict.
-<strong>A2 — Ant inside the tent.</strong> A platform giant's treasury operating on bank-issued tokenised money under MAS convening is the co-option play in miniature: big tech joins the rails as <em>client</em>, not issuer — the walled-garden threat <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a> neutralised by membership.
-<strong>A3 — Documentation is destiny.</strong> The standardised tokenised-FX documentation push is ISDA-style infrastructure: whoever writes the master terms writes the market.</p>
-<h2>Quadrants</h2>
-<p>KK: FX/transaction-banking lifecycle on shared ledgers, TBL definition vs alternatives, three use cases, ops/risk catalogues, documentation agenda. KU: legal enforceability of tokenised-FX docs across jurisdictions; intraday liquidity effects of 24/7. UK: FSB/CPMI RTGS-hours workstreams as the incumbent-rail response; Partior as the unnamed adjacent production rail. UU: <em>24/7 risk transformation</em> — continuous settlement abolishes the overnight batch that current risk/ops models assume; the paper lists risks but not the institutional redesign continuous FX implies; <em>platform-treasury power</em> — Ant-scale treasuries on tokenised rails could internalise FX flow at volumes that rival mid-tier banks; the co-option may breed the next disintermediation.</p>
-<h2>Narrative Vector</h2>
-<p>G5 is where the wholesale corpus touches commercial ground: TBLs as the winning money, platforms as clients, documentation as the next battlefield. The research phase is ending; the market-structure phase has begun.</p></div>
-<p class="stagehead">Stage 3 — Research Note</p><div class="stage"><h2>1. Executive Summary</h2>
-<p><a class="cite" href="../papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank" title="Guardian FX Workstream (2024)">G5</a> The FX workstream lands the wholesale programme in commercial territory: tokenised bank liabilities on shared ledgers as 24/7 settlement money for corporate transaction banking, with live-shaped use cases from Ant International, BNY+OCBC and HSBC, and a push to standardise tokenised-FX documentation. TBLs emerge as the de facto winner among the Blueprint's permitted monies — the bank deposit digitising itself, precisely as the 2021 doctrine's deposit-protection logic implied. Ant's presence signals platform treasuries entering as clients of bank money; whether that co-option holds at volume is the live question.</p>
-<h2>2. Entity Map</h2>
-<p>Ant International | BNY, OCBC, HSBC | Guardian FX group (MAS-convened) | FSB/CPMI (incumbent-rail context) | Partior (unnamed adjacency).</p>
-<h2>3. Mechanics</h2>
-<p><a class="cite" href="../papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank" title="Guardian FX Workstream (2024)">G5</a> Cross-border corporate payment lifecycle re-mapped on shared ledger; TBL as balance-sheet claim distinct from stablecoin/CBDC; operating-model shifts; risk/mitigant tables; documentation standardisation atop existing FX standards.</p>
-<h2>4. Pattern</h2>
-<p><a class="cite" href="../papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank" title="Guardian FX Workstream (2024)">G5</a> <a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a> money-whitelist → TBL commercial primacy; <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a> deposit-protection doctrine vindicated in market outcome; <a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a> vehicle-currency logic at treasury level; co-option-of-challengers pattern (Ant) consistent with corpus-wide incumbent absorption.</p>
-<h2>5. Quantification</h2>
-<p>End-to-end FX cost opacity named as pain but not measured; 24/7 liquidity impacts unquantified. Ant-scale internalisable FX flow — the number that would reveal the co-option's fragility — absent.</p>
-<h2>6. Bull / Base / Bear</h2>
-<p>Bull: TBL-based 24/7 FX scales across Guardian banks; documentation standard lands; corporates re-treasury around continuous settlement. Base: bilateral pilots grow; documentation drafting extends; RTGS-hours reforms blunt urgency. <strong>Current.</strong> Bear: platform treasuries leverage the rails to internalise flow, re-opening the disintermediation fight inside the tent.</p>
-<h2>7. Open Threads</h2>
-<p>Tokenised-FX master documentation drafting venue and drafters — the ISDA-analogue watch. Ant's SG licensing perimeter. TBL issuance volumes by bank — the adoption tracker.</p>
-<h2>8. Sources</h2>
-<p><a class="cite" href="../papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank" title="Guardian FX Workstream (2024)">G5</a> papers/G5, primary. Cross: <a class="cite" href="../papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" title="Retail CBDC: Economic Considerations (2021)">P3</a><a class="cite" href="../papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" title="Orchid Blueprint (2023)">P4</a><a class="cite" href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" title="Cedar II × Ubin+ (2022)">P11</a>, FSB/CPMI publications cited in-doc.</p></div></div></body></html>
+
+<h2><span class="n">01</span>What this is</h2>
+<p>The Guardian FX workstream applies shared ledgers and <strong>tokenised bank liabilities (TBLs)</strong> to cross-border corporate transaction banking and FX. It re-maps the payment lifecycle for 24/7 settlement, carries live-shaped use cases from Ant International, BNY+OCBC and HSBC, and pushes an agenda to <strong>standardise tokenised-FX documentation</strong> atop existing industry standards. TBLs are defined as bank-balance-sheet claims, deliberately distinct from stablecoins and CBDCs.</p>
+
+<h2><span class="n">02</span>Why it matters</h2>
+<p>This is where wholesale research becomes bank product. Among the Orchid Blueprint&#39;s three permitted monies <a class="cite" href="P4.html">P4</a>, TBLs are the one shipping in commercial use cases — CBDC deferred, stablecoins licensed slowly — vindicating the 2021 deposit-protection doctrine <a class="cite" href="P3.html">P3</a> in a market outcome. The documentation push is ISDA-style infrastructure: whoever writes the master terms writes the market.</p>
+
+<h2><span class="n">03</span>Key findings</h2>
+<div class="find"><b>Finding 1 — TBLs win the money race by default.</b> Of the Blueprint&#39;s permitted monies <a class="cite" href="P4.html">P4</a>, tokenised bank liabilities are the ones live in corporate use cases. The two-tier system&#39;s digital heir is the bank deposit, exactly as the retail-CBDC doctrine <a class="cite" href="P3.html">P3</a> predicted.</div>
+<div class="find"><b>Finding 2 — Ant inside the tent.</b> A platform giant&#39;s treasury operating on bank-issued tokenised money under MAS convening is co-option in miniature: big tech joins the rails as <strong>client, not issuer</strong> — the walled-garden threat neutralised by membership.</div>
+<div class="find"><b>Finding 3 — Documentation is destiny.</b> The standardised tokenised-FX documentation agenda is market infrastructure. The drafting venue and drafters are not named in the paper, yet those master terms will bind every corporate that signs — the ISDA-analogue to watch.</div>
+
+<h2><span class="n">04</span>The Entity Register</h2>
+<p class="legend">Every entity the paper names, its role here, and — the point — whether any downstream commercial interest was disclosed alongside that role. ● none · ▲ watch · ■ interest + no disclosure.</p>
+<div class="tablewrap"><table>
+<tr><th>Entity</th><th>Type</th><th>Role in this document</th><th>Commercial interest?</th><th>Downstream benefit</th><th>Disclosed?</th><th></th></tr>
+<tr><td><b>MAS</b></td><td>Regulator / Convener</td><td>Convenes the workstream, sets the agenda</td><td>Institutional</td><td>Sets the standard the state and banks deploy on</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+<tr><td><b>Ant International</b></td><td>Platform treasury</td><td>Named use-case participant (first platform treasury in corpus)</td><td>Yes</td><td>Could internalise FX flow at bank-rivalling scale</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>HSBC</b></td><td>Commercial bank</td><td>Named use-case participant</td><td>Yes</td><td>TBL issuance and FX rails it helps standardise</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>OCBC</b></td><td>Commercial bank</td><td>Named use-case (with BNY)</td><td>Yes</td><td>TBL issuance and settlement</td><td class="disc-part">Partial</td><td class="f-watch">▲</td></tr>
+<tr><td><b>BNY</b></td><td>Custodian bank</td><td>Named use-case (with OCBC)</td><td>Yes</td><td>Tokenised custody / settlement fees</td><td class="disc-no">Not disclosed</td><td class="f-watch">▲</td></tr>
+<tr><td><b>Partior</b></td><td>Consortium rail</td><td>Unnamed adjacent production rail (owners overlap Guardian banks)</td><td>Yes</td><td>Settlement volume the standard routes onto</td><td class="disc-no">Not disclosed</td><td class="f-conflict">■</td></tr>
+<tr><td>FSB / CPMI</td><td>Standard-setters</td><td>Incumbent RTGS-hours context</td><td>Policy</td><td>—</td><td class="disc-yes">Disclosed</td><td class="f-none">●</td></tr>
+</table></div>
+
+<h2><span class="n">05</span>The Money Trail</h2>
+<div class="trail">The workstream presents TBLs and three use cases as neutral plumbing. As a money map, the banks that co-shape the standard (OCBC, HSBC, BNY) are the same institutions that <strong>issue and settle the very TBLs the standard blesses</strong>; <a class="cite" href="P12.html">P12</a> — the consortium rail whose owners overlap the Guardian banks <a class="cite" href="P10.html">P10</a> — is the unnamed production venue the flow lands on. Ant enters as client, but at platform scale could internalise FX flow rivalling mid-tier banks. The non-disclosure sits in the gap between &#8220;co-author of the tokenised-FX standard&#8221; and &#8220;issuer and settler of the money it standardises&#8221; — positioning, not wrongdoing, but undisclosed in-paper. The trail points onward to the consortium map in <a class="cite" href="P10.html">P10</a> and <a class="cite" href="P12.html">P12</a>.</div>
+
+<h2><span class="n">06</span>The Gap</h2>
+<div class="gap">Three things the paper never resolves. <strong>(1) Whose master documentation:</strong> the drafting venue and drafters are unnamed, yet these terms will govern every corporate contract. <strong>(2) The co-option number:</strong> Ant-scale internalisable FX volume — the figure that would show whether client-not-issuer holds — is absent. <strong>(3) 24/7 risk redesign:</strong> continuous settlement abolishes the overnight batch every current risk and ops model assumes; the paper lists risks but not the institutional redesign continuous FX implies.</div>
+
+<h2><span class="n">07</span>Cross-references</h2>
+<p><a class="cite" href="P3.html">P3</a> deposit-protection doctrine · <a class="cite" href="P4.html">P4</a> the money whitelist · <a class="cite" href="P11.html">P11</a> vehicle-currency logic at treasury level · <a class="cite" href="P10.html">P10</a> / <a class="cite" href="P12.html">P12</a> the consortium &amp; Partior lineage · <a class="cite" href="G7.html">G7</a> trust-anchor doctrine.</p>
+
+<h2><span class="n">08</span>Podcast</h2>
+<div class="audio"><div class="k">Listen · read in your browser</div>
+<p class="src" id="pod" style="margin-bottom:10px">Host A: This is the paper where Singapore&#39;s wholesale research turns into product. The winning money isn&#39;t a central bank digital currency — it&#39;s the tokenised bank deposit, the TBL. Host B: And the banks writing the FX standard, OCBC, HSBC, BNY, are the same ones that issue and settle those deposits, and route the flow onto Partior, a consortium rail their own owners sit on. None of that downstream position is disclosed in the paper. Host A: Then there&#39;s Ant International — a platform treasury walking in as a client, not an issuer. Co-option by membership. Host B: The catch for the rest of us: whoever drafts the master documentation writes the market, and we don&#39;t know who that is. The corporate paying FX fees inherits terms set in a room with no public minutes. Host A: 24/7 settlement also quietly rewrites who bears overnight risk — unpriced. Host B: Neutral-looking plumbing, but the profit and the silence both sit with the standard&#39;s own authors.</p>
+<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /en-GB|Google UK|Daniel|Serena/.test(v.name+v.lang)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+
+<h2><span class="n">09</span>Sources</h2>
+<p class="src">Primary: <a href="../papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank">Guardian FX Workstream, MAS Project Guardian (2024)</a>. FSB/CPMI RTGS-hours publications cited in-doc. Entity roles are as named; the Disclosed? and Money-Trail columns are analytical assessments of positioning and non-disclosure per SA-DOC v1 — they document interest and disclosure status, not wrongdoing.</p>
+</div></body></html>
