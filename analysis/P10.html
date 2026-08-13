@@ -96,11 +96,12 @@ td b{color:var(--ink)}
 <h2><span class="n">08</span>Podcast</h2>
 <div class="audio"><div class="k">Listen · read in your browser</div>
 <p class="src" id="pod" style="margin-bottom:10px">Host A: If you only read one of these, maybe read this one — because this is where the public research quietly becomes a private company. Host B: Project Ubin, final phase, 2020. And look at the author line: it started as eleven banks, and it ends as MAS, Temasek, and JPMorgan. Three names. Host A: And then? Host B: And then, within a year, those same names — JPMorgan, DBS, Temasek — spin up Partior, a private joint venture, selling the exact multi-currency settlement system Ubin just prototyped. Public money proved it; a private firm now owns it. Host A: And the kicker — Partior comes back later as the paid contractor building the BIS Dunbar prototypes. Host B: Public research, private company, public research’s vendor. Twenty-four months. Temasek’s on both sides of that table. Host A: What did citizens get? Host B: Here’s the tell. This wholesale system ships with a "dispute" button built into its escrow messages. The citizen voucher system never got one. The machinery for recourse exists — it was just built for the banks.</p>
-<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /Samantha|Google US English|Aria|Jenny|Ava|Allison|Zira/.test(v.name)&&!/GB|UK/.test(v.name)})||vs.find(function(v){return /en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+<button onclick="SAAPod.play(document.getElementById('pod').textContent,this)" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">&#9654; Play analysis</button></div>
 
 <h2><span class="n">09</span>Sources</h2>
 <p class="src">Primary: <a href="../papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank">Project Ubin Phase 5 Ecosystem Report, MAS/Temasek/J.P. Morgan, 2020</a>; public APIs at github.com/project-ubin. The Partior lineage is drawn from public JV materials; the Disclosed? and Money-Trail columns assess positioning and non-disclosure per SA-DOC v1 — documenting interest and disclosure status, not wrongdoing.</p>
 
 </div>
+<script src="/podplay.js" defer></script>
 <script src="/widget.js" defer></script>
 </body></html>

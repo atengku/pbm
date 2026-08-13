@@ -95,11 +95,12 @@ td b{color:var(--ink)}
 <h2><span class="n">08</span>Podcast</h2>
 <div class="audio"><div class="k">Listen · read in your browser</div>
 <p class="src" id="pod" style="margin-bottom:10px">Host A: On paper this is a rerun. The New York Fed and MAS prove you can settle cross-border FX atomically, under thirty seconds, across different blockchains — using the same lock-and-timeout trick from 2019. Host B: So why do it again? Because the science isn’t the point. The point is the handshake. MAS standing next to the New York Fed says: Singapore is the Fed’s partner on the future of the wholesale dollar. Host A: And there’s a design choice buried in it. Every awkward currency pair gets routed through a "vehicle currency." Host B: Which is the US dollar. So the dollar isn’t just convenient here — it’s wired into the protocol. Dollarisation, wearing a neutrality badge. Host A: Anyone profit from that bridge leg? Host B: Someone has to market-make it and earn the spread — but the experiment literally can’t ask who. It’s out of scope by design. Host A: Citizens? Host B: Nowhere in sight. This is diplomacy conducted by prototype — and the disclaimers are the loudest in the entire library, which tells you exactly how touchy it is.</p>
-<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /Samantha|Google US English|Aria|Jenny|Ava|Allison|Zira/.test(v.name)&&!/GB|UK/.test(v.name)})||vs.find(function(v){return /en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+<button onclick="SAAPod.play(document.getElementById('pod').textContent,this)" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">&#9654; Play analysis</button></div>
 
 <h2><span class="n">09</span>Sources</h2>
 <p class="src">Primary: <a href="../papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank">Project Cedar Phase II × Ubin+, FRBNY NYIC &amp; MAS, 2022</a> (system-metrics appendix; sub-30s result). The Disclosed? and Money-Trail columns assess structural positioning and non-disclosure per SA-DOC v1 — documenting interest and disclosure status, not wrongdoing.</p>
 
 </div>
+<script src="/podplay.js" defer></script>
 <script src="/widget.js" defer></script>
 </body></html>

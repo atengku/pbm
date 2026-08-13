@@ -96,11 +96,12 @@ td b{color:var(--ink)}
 <h2><span class="n">08</span>Podcast</h2>
 <div class="audio"><div class="k">Listen · read in your browser</div>
 <p class="src" id="pod" style="margin-bottom:10px">Host A: This is the one where the rulebook stops being a document and becomes part of the wire. Sanctions checks, capital-flow rules — all encoded, and a little cryptographic "proof of compliance" rides along with the payment and releases the funds only if the check passes. Host B: And technically? It’s beautiful. Zero-knowledge proofs, so no raw data ever leaves the bank. Genuinely the best privacy engineering in this whole library. Host A: But privacy for whom? Host B: That’s the whole story. The bank’s data is shielded. The regulator gets real-time monitoring. And the citizen? Nothing. No window into the rules being run on them. Host A: So the same design is privacy for the powerful and a one-way mirror for everyone else. Host B: And nobody in the paper points at the mirror. Meanwhile the commercial rails — Partior, R3’s Corda, SWIFT through an ISO change request — each get validated as "compliant." Everyone at the table wins a lane. Host A: Except the person the money is actually for. Host B: Exactly. The surveillance flows up; the recourse never flows down.</p>
-<button onclick="(function(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(document.getElementById('pod').textContent);u.rate=1.02;var vs=speechSynthesis.getVoices();var p=vs.find(function(v){return /Samantha|Google US English|Aria|Jenny|Ava|Allison|Zira/.test(v.name)&&!/GB|UK/.test(v.name)})||vs.find(function(v){return /en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name)});if(p)u.voice=p;speechSynthesis.speak(u);}catch(e){}})()" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">▶ Play analysis</button></div>
+<button onclick="SAAPod.play(document.getElementById('pod').textContent,this)" style="background:var(--gold);color:#0a0c10;border:none;border-radius:8px;padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;cursor:pointer">&#9654; Play analysis</button></div>
 
 <h2><span class="n">09</span>Sources</h2>
 <p class="src">Primary: <a href="../papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank">Project Mandala, BIS Innovation Hub with RBA/BOK/BNM/MAS, 2024</a> (PoC stage). The Disclosed? and Money-Trail columns assess positioning, transparency direction and non-disclosure per SA-DOC v1 — documenting interest and disclosure status, not wrongdoing.</p>
 
 </div>
+<script src="/podplay.js" defer></script>
 <script src="/widget.js" defer></script>
 </body></html>

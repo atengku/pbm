@@ -449,12 +449,7 @@ ul.idx li a{flex:1}
     reset();
     var d=PODS&&PODS[stem];
     if(!d||!d.script){return;}
-    var u=new SpeechSynthesisUtterance(d.script);
-    u.rate=1.02;
-    var v=pickVoice(); if(v){u.voice=v;}
-    u.onend=reset; u.onerror=reset;
-    cur=stem; btn.classList.add('on'); btn.innerHTML='&#9632;';
-    speechSynthesis.speak(u);
+    cur=stem; window.SAAPod ? SAAPod.play(d.script,btn) : (function(){var u=new SpeechSynthesisUtterance(d.script);u.onend=reset;u.onerror=reset;btn.classList.add('on');btn.innerHTML='&#9632;';speechSynthesis.speak(u);})();
   }
   function wire(){
     Array.prototype.forEach.call(document.querySelectorAll('.podbtn'),function(b){
@@ -470,4 +465,5 @@ ul.idx li a{flex:1}
     .catch(function(){Array.prototype.forEach.call(document.querySelectorAll('.podbtn'),function(b){b.setAttribute('disabled','');b.title='Scripts unavailable';});});
 })();
 </script>
+<script src="/podplay.js" defer></script>
 </body></html>
