@@ -84,6 +84,18 @@ footer p{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mut);m
 footer a{color:var(--gold)}
 @media(max-width:560px){.orig{padding:26px} .hero{padding:44px 0 16px}}
 </style>
+
+<style>
+.podbtn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
+ margin-left:10px;vertical-align:middle;border-radius:50%;border:1px solid var(--line,#232c38);
+ background:#0f1319;color:var(--gold,#c9a24b);font-size:12px;line-height:1;cursor:pointer;
+ flex:none;transition:border-color .15s,background .15s}
+.podbtn:hover{border-color:var(--gold,#c9a24b);background:#151a22}
+.podbtn.on{background:var(--gold,#c9a24b);color:#0a0c10;border-color:var(--gold,#c9a24b)}
+.podbtn[disabled]{opacity:.35;cursor:default}
+ul.idx li{display:flex;align-items:center;gap:4px}
+ul.idx li a{flex:1}
+</style>
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -179,7 +191,7 @@ footer a{color:var(--gold)}
     <p class="sum">The founding technical specification of Purpose Bound Money. Defines the two-part model — a smart-contract <em>wrapper</em> that encodes usage conditions (validity/expiry period, merchant whitelists, denominations) around an underlying <em>store-of-value</em> token (CBDC, tokenised deposits, or regulated stablecoins). Establishes PBM as a bearer instrument with self-contained logic, transferable without intermediaries, and later formalised as Ethereum standard ERC-7291. This is the reference document for how programmable conditions — including the expiry behaviour built into government vouchers — are specified and enforced.</p>
     <a class="btn" href="papers/01_PBM_Technical_Whitepaper_2023.pdf" target="_blank" rel="noopener">Open the White Paper &#8599;</a>
     <a class="btn ghost" href="synthesis.html">Read the Full Analysis</a>
-    <a class="btn ghost" href="analysis/P1.html">Whitepaper Analysis</a>
+    <a class="btn ghost" href="analysis/P1.html">Whitepaper Analysis</a><button class="podbtn" data-stem="P1" aria-label="Play the analysis" disabled>&#9654;</button>
   </div>
 </div></div>
 
@@ -211,7 +223,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Project Orchid — Phase 1 Report</h3>
         <p class="summary">Marks completion of Phase 1. Introduces the PBM concept to the public, sets out design considerations for a programmable digital SGD, and presents live use cases contributed by industry and government — government vouchers, SkillsFuture credits, and conditional disbursements.</p>
-        <div class="links"><a class="open" href="papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P2.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/02_Project_Orchid_Phase1_Report_2022.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P2.html">Analysis</a><button class="podbtn" data-stem="P2" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -219,7 +231,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Project Orchid — Blueprint</h3>
         <p class="summary">The infrastructure blueprint for a digital SGD ecosystem: the roles of settlement ledgers, tokenised bank liabilities, PBM as the common interface layer, programmability, name-service and interoperability components needed before any retail issuance decision.</p>
-        <div class="links"><a class="open" href="papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P4.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/04_Project_Orchid_Blueprint_2023.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P4.html">Analysis</a><button class="podbtn" data-stem="P4" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -227,7 +239,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>A Retail CBDC — Economic Considerations in the Singapore Context</h3>
         <p class="summary">MAS's economic assessment of a retail central bank digital currency. Concludes the case for a retail CBDC in Singapore is not compelling for now given pervasive electronic payments, while committing to build the readiness to issue one should conditions change.</p>
-        <div class="links"><a class="open" href="papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P3.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/03_Retail_CBDC_Economic_Considerations_2021.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P3.html">Analysis</a><button class="podbtn" data-stem="P3" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article></div>
     </section>
     <section class="band">
@@ -242,7 +254,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Ubin Phase 1 — SGD on a Distributed Ledger</h3>
         <p class="summary">Proof-of-concept placing a tokenised SGD on a distributed ledger for interbank settlement, with banks pledging cash against digital tokens redeemable at MAS.</p>
-        <div class="links"><a class="open" href="papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P5.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/05_Project_Ubin_Phase1_SGD_on_DLT_2017.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P5.html">Analysis</a><button class="podbtn" data-stem="P5" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -250,7 +262,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Ubin Phase 2 — Reimagining RTGS</h3>
         <p class="summary">Decentralised interbank payment and netting with a liquidity-saving mechanism, prototyped across three platforms (Corda, Quorum, Hyperledger Fabric).</p>
-        <div class="links"><a class="open" href="papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P6.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/06_Project_Ubin_Phase2_Reimagining_RTGS_2017.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P6.html">Analysis</a><button class="podbtn" data-stem="P6" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -258,7 +270,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Ubin Phase 3 — Delivery-versus-Payment on DLT</h3>
         <p class="summary">Delivery-versus-payment settlement of tokenised assets across different blockchains, demonstrating simultaneous exchange of securities and cash (with SGX).</p>
-        <div class="links"><a class="open" href="papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P7.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/07_Project_Ubin_Phase3_DvP_on_DLT_2018.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P7.html">Analysis</a><button class="podbtn" data-stem="P7" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -266,7 +278,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Jasper–Ubin — Cross-Border Design Paper</h3>
         <p class="summary">Joint work with the Bank of Canada on cross-border, cross-currency payments across two different DLT networks using hashed time-locked contracts.</p>
-        <div class="links"><a class="open" href="papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P8.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/08_Jasper_Ubin_CrossBorder_Design_Paper_2019.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P8.html">Analysis</a><button class="podbtn" data-stem="P8" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -274,7 +286,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Ubin — Cross-Border Interbank Payments &amp; Settlements</h3>
         <p class="summary">A blockchain-based multi-currency payments network prototype for cross-border interbank settlement, developed with industry partners.</p>
-        <div class="links"><a class="open" href="papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P9.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/09_Ubin_CrossBorder_Interbank_Payments_Settlements_2019.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P9.html">Analysis</a><button class="podbtn" data-stem="P9" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -282,7 +294,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Ubin Phase 5 — Enabling Broad Ecosystem Opportunities</h3>
         <p class="summary">The capstone report: a multi-currency payments network prototype with commercial applications and interfaces, produced with Temasek, JPMorgan and Accenture.</p>
-        <div class="links"><a class="open" href="papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P10.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/10_Project_Ubin_Phase5_Ecosystem_2020.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P10.html">Analysis</a><button class="podbtn" data-stem="P10" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -290,7 +302,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Project Cedar Phase II × Ubin — Cross-Border</h3>
         <p class="summary">Joint experiment with the Federal Reserve Bank of New York on wholesale cross-border, multi-currency settlement using a vehicle currency and distributed-ledger interoperability.</p>
-        <div class="links"><a class="open" href="papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P11.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/11_Project_Cedar_x_Ubin_CrossBorder_2022.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P11.html">Analysis</a><button class="podbtn" data-stem="P11" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -298,7 +310,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Project Dunbar — International Settlements Using Multi-CBDCs</h3>
         <p class="summary">BIS Innovation Hub Singapore Centre with MAS, RBA, BNM and SARB: a shared multi-CBDC platform prototype enabling direct cross-border settlement between commercial banks in different central bank digital currencies.</p>
-        <div class="links"><a class="open" href="papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P14.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/14_Project_Dunbar_Multi_CBDC_2022.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P14.html">Analysis</a><button class="podbtn" data-stem="P14" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -306,7 +318,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Project Mandala — Streamlining Cross-Border Transaction Compliance</h3>
         <p class="summary">BIS Innovation Hub Singapore Centre with MAS, RBA, BOK and BNM: a compliance-by-design architecture (peer-to-peer messaging, rules engine, proof engine) that embeds sanctions screening and capital-flow rules into cross-border payments, generating a compliance proof before funds move.</p>
-        <div class="links"><a class="open" href="papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P13.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/13_Project_Mandala_Compliance_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P13.html">Analysis</a><button class="podbtn" data-stem="P13" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article></div>
     </section>
     <section class="band">
@@ -321,7 +333,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Global Layer One (GL1) — Whitepaper</h3>
         <p class="summary">MAS with international policymakers and financial institutions: design principles, governance and architecture for a multi-purpose shared-ledger infrastructure on which regulated institutions deploy interoperable tokenised-asset applications across jurisdictions.</p>
-        <div class="links"><a class="open" href="papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P12.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/12_GL1_Global_Layer_One_Whitepaper_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/P12.html">Analysis</a><button class="podbtn" data-stem="P12" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -329,7 +341,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Guardian Fixed Income Framework</h3>
         <p class="summary">Industry framework for applying tokenisation to fixed-income instruments and issuance.</p>
-        <div class="links"><a class="open" href="papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G1.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/G1_Guardian_Fixed_Income_Framework_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G1.html">Analysis</a><button class="podbtn" data-stem="G1" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -337,7 +349,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Guardian Funds Framework</h3>
         <p class="summary">Framework for tokenised investment funds — structuring, distribution and lifecycle.</p>
-        <div class="links"><a class="open" href="papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G2.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/G2_Guardian_Funds_Framework_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G2.html">Analysis</a><button class="podbtn" data-stem="G2" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -345,7 +357,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Guardian — Interlinking Networks Technical Paper</h3>
         <p class="summary">Technical models for connecting digital-asset networks to enable interoperable tokenised transactions.</p>
-        <div class="links"><a class="open" href="papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G3.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/G3_Guardian_Interlinking_Networks_2023.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G3.html">Analysis</a><button class="podbtn" data-stem="G3" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -353,7 +365,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Guardian — Bridging the Adoption Gap</h3>
         <p class="summary">An enabling framework to move tokenisation from pilots toward commercial scale across asset classes.</p>
-        <div class="links"><a class="open" href="papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G4.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/G4_Guardian_Bridging_Adoption_Gap_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G4.html">Analysis</a><button class="podbtn" data-stem="G4" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -361,7 +373,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Guardian — FX Workstream / Transaction Banking</h3>
         <p class="summary">Findings from the FX and transaction-banking workstream on tokenised foreign-exchange settlement.</p>
-        <div class="links"><a class="open" href="papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G5.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/G5_Guardian_FX_Workstream_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G5.html">Analysis</a><button class="podbtn" data-stem="G5" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -369,7 +381,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Guardian — Operationalising Tokenised Funds</h3>
         <p class="summary">Operational playbook for taking tokenised funds into production — controls, roles and settlement.</p>
-        <div class="links"><a class="open" href="papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G6.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/G6_Guardian_Operationalising_Tokenised_Funds_2024.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G6.html">Analysis</a><button class="podbtn" data-stem="G6" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top">
@@ -377,7 +389,7 @@ footer a{color:var(--gold)}
         </div>
         <h3>Guardian — Open &amp; Interoperable Network</h3>
         <p class="summary">Design principles for open, interoperable networks underpinning tokenised asset markets.</p>
-        <div class="links"><a class="open" href="papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G7.html">Analysis</a></div>
+        <div class="links"><a class="open" href="papers/G7_Guardian_Open_Interoperable_Network_2023.pdf" target="_blank" rel="noopener">Open PDF <span>&#8599;</span></a><a class="open alt" href="analysis/G7.html">Analysis</a><button class="podbtn" data-stem="G7" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article></div>
     </section>
     <section class="band" id="context">
@@ -390,25 +402,25 @@ footer a{color:var(--gold)}
         <div class="card-top"><span class="date">Oct 2008</span></div>
         <h3>Satoshi Nakamoto &mdash; Bitcoin: A Peer-to-Peer Electronic Cash System</h3>
         <p class="summary">The starting point. Nine pages, six weeks after Lehman, proving money can move without banks &mdash; the counter-idea every later document answers. Analysis covers the authorship question, including the same-actors hypothesis, under strict confidence tiering.</p>
-        <div class="links"><a class="open" href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">Open original <span>&#8599;</span></a><a class="open alt" href="analysis/X1.html">Analysis</a></div>
+        <div class="links"><a class="open" href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">Open original <span>&#8599;</span></a><a class="open alt" href="analysis/X1.html">Analysis</a><button class="podbtn" data-stem="X1" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top"><span class="date">Mar 2018</span></div>
         <h3>BIS CPMI &mdash; Central Bank Digital Currencies</h3>
         <p class="summary">The first official BIS framework: the wholesale/retail taxonomy, the deposit-flight doctrine, and a MAS Deputy Managing Director co-chairing &mdash; Singapore co-writing the arc, not following it.</p>
-        <div class="links"><a class="open" href="https://www.bis.org/cpmi/publ/d174.pdf" target="_blank" rel="noopener">Open original <span>&#8599;</span></a><a class="open alt" href="analysis/X2.html">Analysis</a></div>
+        <div class="links"><a class="open" href="https://www.bis.org/cpmi/publ/d174.pdf" target="_blank" rel="noopener">Open original <span>&#8599;</span></a><a class="open alt" href="analysis/X2.html">Analysis</a><button class="podbtn" data-stem="X2" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top"><span class="date">Nov 2018</span></div>
         <h3>IMF Lagarde &mdash; Winds of Change (Singapore Fintech Festival)</h3>
         <p class="summary">The permission speech: the IMF chief moves the question from whether to how &mdash; delivered on MAS's home stage, anointing Singapore as the laboratory jurisdiction.</p>
-        <div class="links"><a class="open" href="https://www.imf.org/en/news/articles/2018/11/13/sp111418-winds-of-change-the-case-for-new-digital-currency" target="_blank" rel="noopener">Open original <span>&#8599;</span></a><a class="open alt" href="analysis/X3.html">Analysis</a></div>
+        <div class="links"><a class="open" href="https://www.imf.org/en/news/articles/2018/11/13/sp111418-winds-of-change-the-case-for-new-digital-currency" target="_blank" rel="noopener">Open original <span>&#8599;</span></a><a class="open alt" href="analysis/X3.html">Analysis</a><button class="podbtn" data-stem="X3" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article>
       <article class="card">
         <div class="card-top"><span class="date">Oct 2020</span></div>
         <h3>BIS &amp; Seven Central Banks &mdash; Foundational Principles</h3>
         <p class="summary">CBDC becomes coordinated bloc doctrine &mdash; while Singapore's CDC vouchers were already running at population scale. The doctrine caught up to the deployment.</p>
-        <div class="links"><a class="open" href="https://www.bis.org/publ/othp33.pdf" target="_blank" rel="noopener">Open original <span>&#8599;</span></a><a class="open alt" href="analysis/X4.html">Analysis</a></div>
+        <div class="links"><a class="open" href="https://www.bis.org/publ/othp33.pdf" target="_blank" rel="noopener">Open original <span>&#8599;</span></a><a class="open alt" href="analysis/X4.html">Analysis</a><button class="podbtn" data-stem="X4" aria-label="Play the analysis" disabled>&#9654;</button></div>
       </article></div>
     </section></div>
 
@@ -418,4 +430,44 @@ footer a{color:var(--gold)}
 </div></footer>
 
 <script src="/widget.js" defer></script>
+
+<script>
+(function(){
+  var PODS=null,cur=null;
+  function pickVoice(){
+    var vs=speechSynthesis.getVoices();
+    return vs.find(function(v){return /Samantha|Google US English|Aria|Jenny|Ava|Allison|Zira/.test(v.name)&&!/GB|UK/.test(v.name);})
+        || vs.find(function(v){return /en[-_]US/.test(v.lang)&&!/GB|UK/.test(v.name);});
+  }
+  function reset(){
+    try{speechSynthesis.cancel();}catch(e){}
+    Array.prototype.forEach.call(document.querySelectorAll('.podbtn'),function(b){b.classList.remove('on');b.innerHTML='&#9654;';});
+    cur=null;
+  }
+  function play(btn,stem){
+    if(cur===stem){reset();return;}
+    reset();
+    var d=PODS&&PODS[stem];
+    if(!d||!d.script){return;}
+    var u=new SpeechSynthesisUtterance(d.script);
+    u.rate=1.02;
+    var v=pickVoice(); if(v){u.voice=v;}
+    u.onend=reset; u.onerror=reset;
+    cur=stem; btn.classList.add('on'); btn.innerHTML='&#9632;';
+    speechSynthesis.speak(u);
+  }
+  function wire(){
+    Array.prototype.forEach.call(document.querySelectorAll('.podbtn'),function(b){
+      var stem=b.getAttribute('data-stem');
+      if(!PODS||!PODS[stem]){b.setAttribute('disabled','');b.title='No script for this one yet';return;}
+      b.removeAttribute('disabled');
+      b.title='Play the analysis \u00b7 '+(PODS[stem].title||stem);
+      b.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();play(b,stem);});
+    });
+  }
+  window.addEventListener('beforeunload',function(){try{speechSynthesis.cancel();}catch(e){}});
+  fetch('analysis/pods.json').then(function(r){return r.json();}).then(function(j){PODS=j;wire();})
+    .catch(function(){Array.prototype.forEach.call(document.querySelectorAll('.podbtn'),function(b){b.setAttribute('disabled','');b.title='Scripts unavailable';});});
+})();
+</script>
 </body></html>

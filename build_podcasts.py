@@ -119,6 +119,40 @@ def wire_player(path, stem):
     return True
 
 
+def write_manifest():
+    """Collect every page's script into analysis/pods.json.
+
+    The listing pages need the text to read it aloud, and re-deriving it in the
+    browser would mean fetching 25 pages. Generated from the same #pod
+    paragraphs the pages render, so it cannot drift from what is on screen.
+    """
+    out = {}
+    for page in sorted(os.listdir(ANALYSIS)):
+        if not page.endswith('.html') or page in ('index.html', 'entity-graph.html'):
+            continue
+        text = script_for(os.path.join(ANALYSIS, page))
+        if not text:
+            continue
+        html = open(os.path.join(ANALYSIS, page), encoding='utf-8').read()
+        title = re.search(r'<title>([^<]*)</title>', html)
+        stem = os.path.splitext(page)[0]
+        out[stem] = {
+            'title': unescape(title.group(1)).strip() if title else stem,
+            'script': text,
+            'mp3': ('audio/%s_analysis.mp3' % stem
+                    if os.path.exists(os.path.join(AUDIO, '%s_analysis.mp3' % stem))
+                    else None),
+        }
+    path = os.path.join(ANALYSIS, 'pods.json')
+    with open(path, 'w', encoding='utf-8', newline='\n') as fh:
+        json.dump(out, fh, ensure_ascii=False, indent=1, sort_keys=True)
+    chars = sum(len(v['script']) for v in out.values())
+    recorded = sum(1 for v in out.values() if v['mp3'])
+    print('pods.json: %d scripts, %d characters, %d with a recorded mp3'
+          % (len(out), chars, recorded))
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--only', nargs='*', metavar='STEM',
@@ -134,7 +168,13 @@ def main():
     ap.add_argument('--similarity', type=float, default=0.75)
     ap.add_argument('--dry-run', action='store_true',
                     help='list what would be rendered, call nothing')
+    ap.add_argument('--manifest', action='store_true',
+                    help='write analysis/pods.json and exit, so listing pages '
+                         'can offer play without opening each analysis')
     args = ap.parse_args()
+
+    if args.manifest:
+        return write_manifest()
 
     if not os.path.isdir(ANALYSIS):
         die('no analysis/ directory beside this script - run it from the repo')
